@@ -1,0 +1,45 @@
+{
+  "name": "cashless",
+  "version": "1.0.0",
+  "description": "Cashless Tips",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "test": "./test-runner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmoops/cashless.git"
+  },
+  "keywords": [
+    "cashless",
+    "tips"
+  ],
+  "author": "Eric Moore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsmoops/cashless/issues"
+  },
+  "homepage": "https://github.com/itsmoops/cashless#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "image-webpack-loader": "^3.3.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.15.3",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.68.3",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
