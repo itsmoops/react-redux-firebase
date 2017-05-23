@@ -1,10 +1,19 @@
+var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
-    entry: './app/index.js',
+    entry: './src/index.jsx',
     output: {
-        path: __dirname + '/dist',
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     devtool: 'inline-source-map',
+    plugins: [
+        new webpack.ProvidePlugin({
+            'React': 'react',
+            'ReactDOM': 'react-dom'
+        })
+    ],
     module: {
         loaders: [
             {
@@ -28,5 +37,8 @@ module.exports = {
                 ]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     }
 }
