@@ -6,7 +6,7 @@ class About extends React.Component {
         return (
             <Container>
                 <Header size="large">About</Header>
-                <Link to="/">Landing</Link>
+                <Link to="/">Home</Link>
             </Container>
         )
     }
