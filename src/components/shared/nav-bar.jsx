@@ -4,7 +4,7 @@ import './nav-bar.less'
 class NavBar extends React.Component {
     render() {
         return (
-            <Segment inverted attached="top" textAlign="center" className="nav-bar">React | Redux | Webpack</Segment>
+            <Segment inverted attached="top" textAlign="center">React | Redux | Webpack</Segment>
         )
     }
 }
