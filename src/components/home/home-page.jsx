@@ -6,7 +6,7 @@ class HomePage extends React.Component {
         return (
             <Grid columns={3} className="max-height">
                 <Grid.Row verticalAlign="middle" centered>
-                    <Grid.Column textAlign="center" width={6}>
+                    <Grid.Column textAlign="center">
                         <Header size="large">Home</Header>
                         <Link to="/about">About</Link>
                     </Grid.Column>
