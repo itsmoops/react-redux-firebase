@@ -1,9 +1,10 @@
 import {Segment} from 'semantic-ui-react'
+import './nav-bar.less'
 
 class NavBar extends React.Component {
     render() {
         return (
-            <Segment textAlign="center">React // Redux // Webpack</Segment>
+            <Segment inverted attached="top" textAlign="center" className="nav-bar">React | Redux | Webpack</Segment>
         )
     }
 }

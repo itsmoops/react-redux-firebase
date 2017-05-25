@@ -46,12 +46,8 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx']
+    },
+    devServer: {
+        historyApiFallback: true
     }
-    // devServer: {
-    //     compress: true,
-    //     hot: true,
-    //     noInfo: true,
-    //     historyApiFallback: true
-    // },
-    // plugins: [new webpack.HotModuleReplacementPlugin()]
 }
