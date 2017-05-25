@@ -18,8 +18,11 @@ module.exports = {
                     loader: "babel-loader"
                 }
             }, {
+                test: /\.css$/,
+                include: /node_modules\/semantic-ui-css/, // run css loader just for Semantic UI
+                loader: 'style-loader!css-loader'
+            }, {
                 test: /\.less$/,
-                exclude: /node_modules/,
                 use: [
                     {
                         loader: "style-loader"
@@ -36,12 +39,19 @@ module.exports = {
                     }
                 ]
             }, {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: ['file-loader?hash=sha512&digest=hex&name=[hash].[ext]', 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
+                test: /.jpe?g$|.gif$|.png$|.svg$|.woff2?$|.ttf$|.eot$|.wav$|.mp3$/,
+                loader: require.resolve("file-loader") + "?name=[path][name].[ext]"
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.less']
+        extensions: ['.js', '.jsx']
     }
+    // devServer: {
+    //     compress: true,
+    //     hot: true,
+    //     noInfo: true,
+    //     historyApiFallback: true
+    // },
+    // plugins: [new webpack.HotModuleReplacementPlugin()]
 }
