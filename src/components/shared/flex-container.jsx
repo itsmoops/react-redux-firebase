@@ -15,15 +15,21 @@ class FlexContainer extends React.Component {
         return (
             <Grid columns={3} className="max-height">
                 <Grid.Row verticalAlign="middle" centered>
-                    <Grid.Column computer={this.gutterSize(computerSize)} tablet={this.gutterSize(tabletSize)} mobile={this.gutterSize(mobileSize)}/>
-                    <Grid.Column computer={computerSize} tablet={tabletSize} mobile={mobileSize} textAlign="center">
+                    <Grid.Column computer={this.gutterSize(this.props.computer)} tablet={this.gutterSize(this.props.tablet)} mobile={this.gutterSize(this.props.mobile)}/>
+                    <Grid.Column computer={this.props.computer} tablet={this.props.tablet} mobile={this.props.mobile} textAlign="center">
                         {this.props.children}
                     </Grid.Column>
-                    <Grid.Column computer={this.gutterSize(computerSize)} tablet={this.gutterSize(tabletSize)} mobile={this.gutterSize(mobileSize)}/>
+                    <Grid.Column computer={this.gutterSize(this.props.computer)} tablet={this.gutterSize(this.props.tablet)} mobile={this.gutterSize(this.props.mobile)}/>
                 </Grid.Row>
             </Grid>
         )
     }
+}
+
+FlexContainer.defaultProps = {
+    computer: 6,
+    tablet: 10,
+    mobile: 14
 }
 
 export default FlexContainer
