@@ -26,11 +26,14 @@ class NavBar extends React.Component {
                     About
                 </Menu.Item>
                 <Menu.Menu position='right'>
-                    <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}>
+                    <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick} as={Link} to="/help">
+                        Help
+                    </Menu.Item>
+                    <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick} as={Link} to="/sign-up">
                         Sign Up
                     </Menu.Item>
-                    <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
-                        Help
+                    <Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick} as={Link} to="/login">
+                        Log In
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>
