@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Menu} from 'semantic-ui-react'
 import './nav-bar.less'
 
@@ -18,11 +18,11 @@ class NavBar extends React.Component {
     render() {
         const {activeItem} = this.state
         return (
-            <Menu attached="top" pointing secondary>
-                <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as={NavLink} to="/">
+            <Menu attached="top" pointing secondary stackable className="nav-bar">
+                <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} as={Link} to="/">
                     Home
                 </Menu.Item>
-                <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as={NavLink} to="/about">
+                <Menu.Item name='about' active={activeItem === 'about'} onClick={this.handleItemClick} as={Link} to="/about">
                     About
                 </Menu.Item>
                 <Menu.Menu position='right'>
