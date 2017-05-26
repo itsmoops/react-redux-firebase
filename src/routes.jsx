@@ -8,7 +8,7 @@ import Login from './components/user/login'
 
 export default(
     <div>
-        <NavBar/>
+        <Route component={NavBar}/>
         <Route exact path="/" component={HomePage}/>
         <Route path="/about" component={About}/>
         <Route path="/help" component={Help}/>
