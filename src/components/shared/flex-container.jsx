@@ -21,7 +21,7 @@ class FlexContainer extends React.Component {
 FlexContainer.defaultProps = {
     computer: 6,
     tablet: 10,
-    mobile: 14
+    mobile: 16
 }
 
 export default FlexContainer
