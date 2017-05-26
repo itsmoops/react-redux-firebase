@@ -1,0 +1,37 @@
+@nav-bar-height: 50px;
+
+.nav-bar {
+    position: relative;
+    z-index: 10;
+}
+// semantic UI icon and menu overrides
+
+.ui.basic.button {
+    margin-top: 10px;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+
+    &:visited {
+        box-shadow: none;
+    }
+}
+
+.ui[class*="top attached"].menu {
+    margin-top: 0;
+}
+
+.ui.attached.menu:not(.tabular) {
+    border: 0;
+    border-bottom: 1px solid #D4D4D5;
+}

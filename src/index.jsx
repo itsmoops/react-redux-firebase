@@ -1,6 +1,5 @@
 import {BrowserRouter as Router} from 'react-router-dom'
 import routes from './routes'
-import NavBar from './components/shared/nav-bar'
 // import { Provider } from 'react-redux'
 // import { createStore, applyMiddleware } from 'redux'
 
