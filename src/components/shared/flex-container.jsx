@@ -6,6 +6,7 @@ class FlexContainer extends React.Component {
         this.gutterSize = this.gutterSize.bind(this)
     }
     gutterSize(size) {
+        // semantic UI has a 16 column grid
         return (16 - size) / 2
     }
     render() {
@@ -26,6 +27,7 @@ class FlexContainer extends React.Component {
     }
 }
 
+// default responsive column widths
 FlexContainer.defaultProps = {
     computer: 6,
     tablet: 10,
