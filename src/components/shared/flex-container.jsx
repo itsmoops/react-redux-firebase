@@ -11,7 +11,7 @@ class FlexContainer extends React.Component {
     render() {
         const computerSize = (this.props.computer && parseInt(this.props.computer)) || 6
         const tabletSize = (this.props.tablet && parseInt(this.props.tablet)) || 10
-        const mobileSize = (this.props.tablet && parseInt(this.props.tablet)) || 14
+        const mobileSize = (this.props.mobile && parseInt(this.props.mobile)) || 14
         return (
             <Grid columns={3} className="max-height">
                 <Grid.Row verticalAlign="middle" centered>
