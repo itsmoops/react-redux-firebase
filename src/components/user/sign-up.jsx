@@ -1,3 +1,6 @@
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as userActions from '../../actions/user-actions'
 import {
     Grid,
     Header,
@@ -9,25 +12,50 @@ import {
 import FlexContainer from '../shared/flex-container'
 
 class SignUp extends React.Component {
+    state = {
+        email: undefined,
+        password: undefined
+    }
+    handleInputChange = (event) => {
+        const type = event.target.type
+        const value = event.target.value
+        this.setState({[type]: value})
+    }
+    onClickSubmit = (event) => {
+        event.preventDefault();
+        this.props.actions.userSignUp({email: this.state.email, password: this.state.password})
+    }
     render() {
         return (
             <FlexContainer>
                 <Header size="large">Sign Up</Header>
                 <Form size="big">
                     <Form.Field>
-                        <Input transparent type="email" placeholder='Email'/>
+                        <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange} error/>
                     </Form.Field>
                     <Form.Field>
-                        <Input transparent type="password" placeholder='Password'/>
+                        <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange} error/>
                     </Form.Field>
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions'/>
                     </Form.Field>
-                    <Button type='submit' size="big" className="float-right">Sign Up</Button>
+                    <Button type='submit' size="big" className="float-right" onClick={this.onClickSubmit}>Sign Up</Button>
                 </Form>
             </FlexContainer>
         )
     }
 }
 
-export default SignUp
+function mapStateToProps(state, ownProps) {
+    return {
+        users: state.users // determined by our reducers/index.js file
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(userActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

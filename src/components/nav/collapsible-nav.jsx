@@ -10,9 +10,9 @@ class CollapsibleNav extends React.Component {
         menuOpen: false
     }
     componentDidMount = () => {
-        window.addEventListener("resize", this.updateDimensions)
+        window.addEventListener("resize", this.updateWidth)
     }
-    updateDimensions = () => {
+    updateWidth = () => {
         this.setState({
             stackMenu: window.innerWidth < 768
                 ? true
@@ -28,7 +28,6 @@ class CollapsibleNav extends React.Component {
         })
     }
     render() {
-        console.log(this.props.children)
         if (!this.props.children.type.name === "Menu") {
             console.error("CollapsibleNav requires Semantic UI Menu as child")
         }
