@@ -16,13 +16,13 @@ class SignUp extends React.Component {
         email: undefined,
         password: undefined
     }
-    handleInputChange = (event) => {
-        const type = event.target.type
-        const value = event.target.value
+    handleInputChange = (e) => {
+        const type = e.target.type
+        const value = e.target.value
         this.setState({[type]: value})
     }
-    onClickSubmit = (event) => {
-        event.preventDefault();
+    onClickSubmit = (e) => {
+        e.preventDefault();
         this.props.actions.userSignUp({email: this.state.email, password: this.state.password})
     }
     render() {
