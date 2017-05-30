@@ -31,10 +31,10 @@ class SignUp extends React.Component {
                 <Header size="large">Sign Up</Header>
                 <Form size="big">
                     <Form.Field>
-                        <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange} error/>
+                        <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange}/>
                     </Form.Field>
                     <Form.Field>
-                        <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange} error/>
+                        <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange}/>
                     </Form.Field>
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions'/>
