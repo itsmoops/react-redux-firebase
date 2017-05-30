@@ -5,7 +5,7 @@ import * as types from './action-types'
 
 export function userSignUp(user) {
     return {
-        type: types.USER_SIGN_UP,
+        type: types.USER_SIGN_UP_REQUEST,
         user
     }
 }
