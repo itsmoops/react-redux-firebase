@@ -51,6 +51,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "devDependencies": {
+    "extract-text-webpack-plugin": "^2.1.0",
     "redux-immutable-state-invariant": "^2.0.0"
   }
 }

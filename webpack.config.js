@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
     entry: './src/index.jsx',
@@ -8,7 +9,10 @@ module.exports = {
         filename: 'bundle.js'
     },
     devtool: 'inline-source-map',
-    plugins: [new webpack.ProvidePlugin({'React': 'react', 'ReactDOM': 'react-dom'})],
+    plugins: [
+        new webpack.ProvidePlugin({'React': 'react', 'ReactDOM': 'react-dom'}),
+        new ExtractTextPlugin("[name].css")
+    ],
     module: {
         rules: [
             {
@@ -19,25 +23,10 @@ module.exports = {
                 }
             }, {
                 test: /\.css$/,
-                include: /node_modules\/semantic-ui-css/, // run css loader just for Semantic UI
-                loader: 'style-loader!css-loader'
+                loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"})
             }, {
                 test: /\.less$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }, {
-                        loader: "less-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ]
+                loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!less-loader"})
             }, {
                 test: /.jpe?g$|.gif$|.png$|.svg$|.woff2?$|.ttf$|.eot$|.wav$|.mp3$/,
                 loader: require.resolve("file-loader") + "?name=[path][name].[ext]"

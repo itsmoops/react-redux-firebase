@@ -3,8 +3,8 @@ import routes from './routes'
 import configureStore from './store/config'
 import {Provider} from 'react-redux'
 
-import 'semantic-ui-css/semantic.min.css'
 import './app.less'
+import 'semantic-ui-css/semantic.min.css'
 
 // can pass our initialState here - useful for server rendering
 const store = configureStore()
