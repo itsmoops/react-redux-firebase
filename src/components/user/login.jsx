@@ -9,6 +9,9 @@ import {
 import FlexContainer from '../shared/flex-container'
 
 class Login extends React.Component {
+    componentDidMount() {
+        document.title = "Login"
+    }
     render() {
         return (
             <FlexContainer>

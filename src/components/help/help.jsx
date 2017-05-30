@@ -2,6 +2,9 @@ import {Container, Header} from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class Help extends React.Component {
+    componentDidMount() {
+        document.title = "Help"
+    }
     render() {
         return (
             <FlexContainer>
