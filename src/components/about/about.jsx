@@ -3,6 +3,9 @@ import {Container, Header} from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class About extends React.Component {
+    componentDidMount() {
+        document.title = "About"
+    }
     render() {
         return (
             <FlexContainer>

@@ -3,6 +3,9 @@ import {Container, Header} from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class HomePage extends React.Component {
+    componentDidMount() {
+        document.title = "Home"
+    }
     render() {
         return (
             <FlexContainer>

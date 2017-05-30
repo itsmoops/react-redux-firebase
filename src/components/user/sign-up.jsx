@@ -16,6 +16,9 @@ class SignUp extends React.Component {
         email: undefined,
         password: undefined
     }
+    componentDidMount() {
+        document.title = "Sign Up"
+    }
     handleInputChange = (e) => {
         const type = e.target.type
         const value = e.target.value
