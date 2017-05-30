@@ -8,7 +8,7 @@ class NavBar extends React.Component {
 
         return (
             <CollapsibleNav>
-                <Menu attached="top" pointing secondary stackable className="nav-bar">
+                <Menu pointing secondary stackable className="nav-bar">
                     <Menu.Item name="home" active={activeItem === ""} as={Link} to="/" onClick={this.handleItemClick}>
                         Home
                     </Menu.Item>
