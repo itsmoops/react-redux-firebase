@@ -43,12 +43,8 @@ class SignUp extends React.Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions'/>
                     </Form.Field>
-                    <Form.Field>
-                        <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Sign Up</Button>
-                    </Form.Field>
-                    <Form.Field>
-                        <Message error size="tiny" header="Error signing up" content={this.props.user.message} visible={!!this.props.user.message}/>
-                    </Form.Field>
+                    <Message error size="tiny" header="Error signing up" content={this.props.user.message} visible={!!this.props.user.message}/>
+                    <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Sign Up</Button>
                 </Form>
             </FlexContainer>
         )

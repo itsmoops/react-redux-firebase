@@ -40,12 +40,8 @@ class Login extends React.Component {
                     <Form.Field>
                         <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange}/>
                     </Form.Field>
-                    <Form.Field>
-                        <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Login</Button>
-                    </Form.Field>
-                    <Form.Field>
-                        <Message error size="tiny" header="Error logging in" content={this.props.user.message} visible={!!this.props.user.message}/>
-                    </Form.Field>
+                    <Message error size="tiny" header="Error logging in" content={this.props.user.message} visible={!!this.props.user.message}/>
+                    <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Login</Button>
                 </Form>
             </FlexContainer>
         )
