@@ -2,6 +2,10 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import routes from './routes'
 import configureStore from './store/config'
 import {Provider} from 'react-redux'
+import * as firebase from 'firebase';
+import config from './firebase-config'
+
+firebase.initializeApp(config)
 
 import 'semantic-ui-css/semantic.min.css'
 import './app.less'

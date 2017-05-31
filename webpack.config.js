@@ -30,7 +30,8 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             'React': 'react',
-            'ReactDOM': 'react-dom'
+            'ReactDOM': 'react-dom',
+            'firebase': 'firebase'
         }),
         new ExtractTextPlugin("[name].css")
     ],

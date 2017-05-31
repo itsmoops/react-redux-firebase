@@ -51,7 +51,7 @@ class SignUp extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        users: state.users // determined by our reducers/index.js file
+        user: state.user // determined by our reducers/index.js file
     }
 }
 
