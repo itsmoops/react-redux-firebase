@@ -5,6 +5,7 @@ import {
     Grid,
     Header,
     Form,
+    Message,
     Input,
     Checkbox,
     Button
@@ -13,8 +14,8 @@ import FlexContainer from '../shared/flex-container'
 
 class SignUp extends React.Component {
     state = {
-        email: undefined,
-        password: undefined
+        email: "",
+        password: ""
     }
     componentDidMount() {
         document.title = "Sign Up"
@@ -25,14 +26,14 @@ class SignUp extends React.Component {
         this.setState({[type]: value})
     }
     onClickSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.actions.userSignUp({email: this.state.email, password: this.state.password})
     }
     render() {
         return (
             <FlexContainer>
                 <Header size="large">Sign Up</Header>
-                <Form size="big">
+                <Form size="big" loading={this.props.user.loading}>
                     <Form.Field>
                         <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange}/>
                     </Form.Field>
@@ -42,7 +43,12 @@ class SignUp extends React.Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions'/>
                     </Form.Field>
-                    <Button type='submit' size="big" className="float-right" onClick={this.onClickSubmit}>Sign Up</Button>
+                    <Form.Field>
+                        <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Sign Up</Button>
+                    </Form.Field>
+                    <Form.Field>
+                        <Message error size="tiny" header="Error signing up" content={this.props.user.message} visible={!!this.props.user.message}/>
+                    </Form.Field>
                 </Form>
             </FlexContainer>
         )

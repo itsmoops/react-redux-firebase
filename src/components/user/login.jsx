@@ -5,6 +5,7 @@ import {
     Grid,
     Header,
     Form,
+    Message,
     Input,
     Checkbox,
     Button
@@ -13,8 +14,8 @@ import FlexContainer from '../shared/flex-container'
 
 class Login extends React.Component {
     state = {
-        email: undefined,
-        password: undefined
+        email: "",
+        password: ""
     }
     componentDidMount() {
         document.title = "Login"
@@ -25,21 +26,26 @@ class Login extends React.Component {
         this.setState({[type]: value})
     }
     onClickSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.actions.userLogin({email: this.state.email, password: this.state.password})
     }
     render() {
         return (
             <FlexContainer>
                 <Header size="large">Login</Header>
-                <Form size="big">
+                <Form size="big" loading={this.props.user.loading}>
                     <Form.Field>
                         <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange}/>
                     </Form.Field>
                     <Form.Field>
                         <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange}/>
                     </Form.Field>
-                    <Button type='submit' size="big" className="float-right" onClick={this.onClickSubmit}>Login</Button>
+                    <Form.Field>
+                        <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Login</Button>
+                    </Form.Field>
+                    <Form.Field>
+                        <Message error size="tiny" header="Error logging in" content={this.props.user.message} visible={!!this.props.user.message}/>
+                    </Form.Field>
                 </Form>
             </FlexContainer>
         )

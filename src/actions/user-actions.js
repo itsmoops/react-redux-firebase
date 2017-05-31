@@ -1,5 +1,12 @@
 import * as types from './action-types'
 
+export function loadingStateChange(loading) {
+    return {
+        type: types.LOADING_STATE_CHANGE,
+        loading: loading
+    }
+}
+
 export function userSignUpSuccess(user) {
     return {
         type: types.USER_SIGN_UP_SUCCESS,
@@ -16,14 +23,17 @@ export function userSignUpError(error) {
 
 export function userSignUp(user) {
     return dispatch => {
-        firebase.auth()
+        dispatch(loadingStateChange(true))
+        return firebase.auth()
             .createUserWithEmailAndPassword(user.email, user.password)
             .then(data => {
                 dispatch(userSignUpSuccess(data))
+                dispatch(loadingStateChange(false))
             })
-            .catch(error => {
-                console.error(error.message)
-                dispatch(userSignUpError(error))
+            .catch(e => {
+                console.error(e.message)
+                dispatch(userSignUpError(e))
+                dispatch(loadingStateChange(false))
             })
     }
 }
@@ -44,14 +54,18 @@ export function userLoginError(error) {
 
 export function userLogin(user) {
     return dispatch => {
-        firebase.auth()
+        dispatch(loadingStateChange(true))
+        return firebase.auth()
             .signInWithEmailAndPassword(user.email, user.password)
             .then(data => {
                 dispatch(userSignUpSuccess(data))
+                dispatch(loadingStateChange(false))
             })
-            .catch(error => {
-                console.error(error.message)
-                dispatch(userSignUpError(error))
+            .catch(e => {
+                console.error(e.message)
+                dispatch(userSignUpError(e))
+                dispatch(loadingStateChange(false))
             })
+
     }
 }
