@@ -27,13 +27,22 @@ export function userSignUp(user) {
         return firebase.auth()
             .createUserWithEmailAndPassword(user.email, user.password)
             .then(data => {
-                dispatch(userSignUpSuccess(data))
+                let user = {
+                	email: data.email,
+                    emailVerified: data.emailVerified,
+                    displayName: data.displayName,
+                    isAnonymous: data.isAnonymous,
+                    phoneNumber: data.phoneNumber,
+                    photoURL: data.photoURL,
+                    refreshToken: data.refreshToken
+                }
+                dispatch(userSignUpSuccess(user))
                 dispatch(loadingStateChange(false))
             })
             .catch(e => {
-                console.error(e.message)
                 dispatch(userSignUpError(e))
                 dispatch(loadingStateChange(false))
+                console.error(e.message)
             })
     }
 }
@@ -58,13 +67,22 @@ export function userLogin(user) {
         return firebase.auth()
             .signInWithEmailAndPassword(user.email, user.password)
             .then(data => {
-                dispatch(userSignUpSuccess(data))
+                let user = {
+                	email: data.email,
+                    emailVerified: data.emailVerified,
+                    displayName: data.displayName,
+                    isAnonymous: data.isAnonymous,
+                    phoneNumber: data.phoneNumber,
+                    photoURL: data.photoURL,
+                    refreshToken: data.refreshToken
+                }
+                dispatch(userLoginSuccess(user))
                 dispatch(loadingStateChange(false))
             })
             .catch(e => {
-                console.error(e.message)
-                dispatch(userSignUpError(e))
+                dispatch(userLoginError(e))
                 dispatch(loadingStateChange(false))
+                console.error(e.message)
             })
 
     }

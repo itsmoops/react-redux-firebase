@@ -1,6 +1,8 @@
 import * as types from '../actions/action-types'
 
-const defaultState = {}
+const defaultState = {
+    loading: false
+}
 
 export default function userReducer(state = defaultState, action) {
     switch (action.type) {
