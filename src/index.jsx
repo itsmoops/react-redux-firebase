@@ -15,5 +15,6 @@ const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>
-    <Router>{routes}</Router>
-</Provider>, document.getElementById('app'))
+        <Router>{routes}</Router>
+    </Provider>,
+document.getElementById('app'))
