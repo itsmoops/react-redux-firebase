@@ -1,6 +1,6 @@
-import {Link} from "react-router-dom"
-import {Button, Container, Menu, Icon} from "semantic-ui-react"
-import "./nav-bar.less"
+import {Link} from 'react-router-dom'
+import {Button, Container, Menu, Icon} from 'semantic-ui-react'
+import './nav-bar.less'
 
 class CollapsibleNav extends React.Component {
     state = {
@@ -10,7 +10,7 @@ class CollapsibleNav extends React.Component {
         menuOpen: false
     }
     componentDidMount = () => {
-        window.addEventListener("resize", this.updateWidth)
+        window.addEventListener('resize', this.updateWidth)
     }
     updateWidth = () => {
         this.setState({
@@ -28,17 +28,17 @@ class CollapsibleNav extends React.Component {
         })
     }
     render() {
-        if (!this.props.children.type.name === "Menu") {
-            console.error("CollapsibleNav requires Semantic UI Menu as child")
+        if (!this.props.children.type.name === 'Menu') {
+            console.error('CollapsibleNav requires Semantic UI Menu as child')
         }
         return (
             <div>
                 {this.state.stackMenu
-                    ? <div className="nav-bar">
+                    ? <div className='nav-bar'>
                             <Button basic icon onClick={this.handleIconClick}>
                                 <Icon flipped={!this.state.menuOpen
-                                    ? "vertically"
-                                    : "horizontally"} size="large" name="chevron up"/>
+                                    ? 'vertically'
+                                    : 'horizontally'} size='large' name='chevron up'/>
                             </Button>
                             {this.state.menuOpen && this.props.children}
                         </div>

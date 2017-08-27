@@ -14,11 +14,11 @@ import FlexContainer from '../shared/flex-container'
 
 class SignUp extends React.Component {
     state = {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
     }
     componentDidMount() {
-        document.title = "Sign Up"
+        document.title = 'Sign Up'
     }
     handleInputChange = (e) => {
         const type = e.target.type
@@ -32,19 +32,19 @@ class SignUp extends React.Component {
     render() {
         return (
             <FlexContainer>
-                <Header size="large">Sign Up</Header>
-                <Form size="big" loading={this.props.user.loading}>
+                <Header size='large'>Sign Up</Header>
+                <Form size='big' loading={this.props.user.loading}>
                     <Form.Field>
-                        <Input transparent type="email" placeholder='Email' onChange={this.handleInputChange}/>
+                        <Input transparent type='email' placeholder='Email' onChange={this.handleInputChange}/>
                     </Form.Field>
                     <Form.Field>
-                        <Input transparent type="password" placeholder='Password' onChange={this.handleInputChange}/>
+                        <Input transparent type='password' placeholder='Password' onChange={this.handleInputChange}/>
                     </Form.Field>
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions'/>
                     </Form.Field>
-                    <Message error size="tiny" header="Error signing up" content={this.props.user.message} visible={!!this.props.user.message}/>
-                    <Button type='submit' size="big" floated="right" onClick={this.onClickSubmit}>Sign Up</Button>
+                    <Message error size='tiny' header='Error signing up' content={this.props.user.message} visible={!!this.props.user.message}/>
+                    <Button type='submit' size='big' floated='right' onClick={this.onClickSubmit}>Sign Up</Button>
                 </Form>
             </FlexContainer>
         )

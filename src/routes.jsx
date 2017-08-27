@@ -9,10 +9,10 @@ import Login from './components/user/login'
 export default(
     <div>
         <Route component={NavBar}/>
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/about" component={About}/>
-        <Route path="/help" component={Help}/>
-        <Route path="/sign-up" component={SignUp}/>
-        <Route path="/login" component={Login}/>
+        <Route exact path='/' component={HomePage}/>
+        <Route path='/about' component={About}/>
+        <Route path='/help' component={Help}/>
+        <Route path='/sign-up' component={SignUp}/>
+        <Route path='/login' component={Login}/>
     </div>
 )

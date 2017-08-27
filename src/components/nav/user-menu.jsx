@@ -1,8 +1,8 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as userActions from '../../actions/user-actions'
-import {Link} from "react-router-dom"
-import {Menu, Icon, Dropdown} from "semantic-ui-react"
+import {Link} from 'react-router-dom'
+import {Menu, Icon, Dropdown} from 'semantic-ui-react'
 
 class UserMenu extends React.Component {
     handleDropDownClick = (e) => {
@@ -15,14 +15,14 @@ class UserMenu extends React.Component {
         const user = this.props.user
         const userName = user.displayName || user.email
         return (
-            <Menu pointing secondary stackable className="nav-bar">
-                <Menu.Item name="home" active={this.props.activeItem === ""} as={Link} to="/" onClick={this.handleItemClick}>
+            <Menu pointing secondary stackable className='nav-bar'>
+                <Menu.Item name='home' active={this.props.activeItem === ''} as={Link} to='/' onClick={this.handleItemClick}>
                     Home
                 </Menu.Item>
-                <Menu.Item name="about" active={this.props.activeItem === "about"} as={Link} to="/about" onClick={this.handleItemClick}>
+                <Menu.Item name='about' active={this.props.activeItem === 'about'} as={Link} to='/about' onClick={this.handleItemClick}>
                     About
                 </Menu.Item>
-                <Menu.Menu position="right"/>
+                <Menu.Menu position='right'/>
                 <Menu.Item>
                     <Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
                         <Dropdown.Menu>
@@ -30,7 +30,7 @@ class UserMenu extends React.Component {
                             <Dropdown.Item>Profile</Dropdown.Item>
                             <Dropdown.Divider/>
                             <Dropdown.Item>
-                                <Link to="/" onClick={this.handleLogout}>Logout</Link>
+                                <Link to='/' onClick={this.handleLogout}>Logout</Link>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
