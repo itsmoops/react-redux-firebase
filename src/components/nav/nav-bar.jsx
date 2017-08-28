@@ -14,15 +14,15 @@ class NavBar extends React.Component {
         window.addEventListener('resize', this.updateWidth)
     }
     updateWidth = () => {
-        this.setState({
-            smallMenu: isSmallDevice()
-        })
+        this.setState({smallMenu: isSmallDevice()})
     }
     render() {
         const activeItem = this.props.location.pathname.replace('/', '')
         return (
             <div>
-                {this.state.smallMenu ? <MenuSmall activeItem={activeItem}/> : <MenuLarge activeItem={activeItem}/>}
+                {this.state.smallMenu
+                    ? <MenuSmall activeItem={activeItem}/>
+                    : <MenuLarge activeItem={activeItem}/>}
             </div>
         )
     }

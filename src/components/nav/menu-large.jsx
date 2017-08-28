@@ -15,7 +15,7 @@ class MenuLarge extends React.Component {
         const user = this.props.user
         const userName = user.displayName || user.email
         const userMenu = <Menu.Menu>
-                <Menu.Item>
+            <Menu.Item>
                 <Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
                     <Dropdown.Menu>
                         <Dropdown.Item icon='user circle' text='Edit Profile' as={Link} to='/profile'/>
@@ -27,7 +27,7 @@ class MenuLarge extends React.Component {
             </Menu.Item>
         </Menu.Menu>
 
-    const guestMenu = <Menu.Menu>
+        const guestMenu = <Menu.Menu>
             <Menu.Item name='help' active={this.props.activeItem === 'help'} as={Link} to='/help' onClick={this.handleItemClick}>
                 Help
             </Menu.Item>
@@ -47,8 +47,9 @@ class MenuLarge extends React.Component {
                 <Menu.Item name='about' active={this.props.activeItem === 'about'} as={Link} to='/about' onClick={this.handleItemClick}>
                     About
                 </Menu.Item>
-                <Menu.Menu position='right'/>
-                {this.props.user.authenticated ? userMenu : guestMenu}
+                <Menu.Menu position='right'/> {this.props.user.authenticated
+                    ? userMenu
+                    : guestMenu}
             </Menu>
         )
     }
