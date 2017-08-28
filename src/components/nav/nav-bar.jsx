@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as userActions from '../../actions/user-actions'
-import {isMobile} from '../../utilities/utilities'
+import {isSmallDevice} from '../../utilities/utilities'
 import MenuLarge from './menu-large'
 import MenuSmall from './menu-small'
 
 class NavBar extends React.Component {
     state = {
-        mobileMenu: isMobile()
+        smallMenu: isSmallDevice()
     }
     componentDidMount() {
         this.props.actions.checkForUser()
@@ -15,14 +15,14 @@ class NavBar extends React.Component {
     }
     updateWidth = () => {
         this.setState({
-            mobileMenu: isMobile()
+            smallMenu: isSmallDevice()
         })
     }
     render() {
         const activeItem = this.props.location.pathname.replace('/', '')
         return (
             <div>
-                {this.state.mobileMenu ? <MenuSmall activeItem={activeItem}/> : <MenuLarge activeItem={activeItem}/>}
+                {this.state.smallMenu ? <MenuSmall activeItem={activeItem}/> : <MenuLarge activeItem={activeItem}/>}
             </div>
         )
     }
