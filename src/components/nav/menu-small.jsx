@@ -2,11 +2,20 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as userActions from '../../actions/user-actions'
 import {Link} from 'react-router-dom'
-import {Menu, Icon, Dropdown} from 'semantic-ui-react'
+import {Menu, Icon, Dropdown, Button} from 'semantic-ui-react'
+import './nav-bar.less'
 
 class MenuSmall extends React.Component {
-    handleDropDownClick = (e) => {
-        e.preventDefault()
+    state = {
+        menuOpen: false
+    }
+    handleIconClick = (event) => {
+        this.setState({
+            menuOpen: !this.state.menuOpen
+        })
+    }
+    handleItemClick = (event) => {
+        this.setState({menuOpen: false})
     }
     handleLogout = (e) => {
         this.props.actions.userLogout()
@@ -49,16 +58,23 @@ class MenuSmall extends React.Component {
         </div>
 
         return (
-            <Menu pointing secondary vertical size='massive' className='nav-bar menu-small'>
-                <Menu.Item name='home' active={this.props.activeItem === ''} as={Link} to='/' onClick={this.handleItemClick}>
-                    Home
-                </Menu.Item>
-                <Menu.Item name='about' active={this.props.activeItem === 'about'} as={Link} to='/about' onClick={this.handleItemClick}>
-                    About
-                </Menu.Item>
-                <Menu.Menu position='right'/>
-                {this.props.user.authenticated ? userMenu : guestMenu}
-            </Menu>
+            <div className='nav-bar'>
+                <Button basic icon onClick={this.handleIconClick}>
+                    <Icon flipped={!this.state.menuOpen
+                        ? 'vertically'
+                        : 'horizontally'} size='large' name='chevron up'/>
+                </Button>
+                {this.state.menuOpen && <Menu pointing secondary vertical size='massive' className='nav-bar menu-small'>
+                    <Menu.Item name='home' active={this.props.activeItem === ''} as={Link} to='/' onClick={this.handleItemClick}>
+                        Home
+                    </Menu.Item>
+                    <Menu.Item name='about' active={this.props.activeItem === 'about'} as={Link} to='/about' onClick={this.handleItemClick}>
+                        About
+                    </Menu.Item>
+                    <Menu.Menu position='right'/>
+                    {this.props.user.authenticated ? userMenu : guestMenu}
+                </Menu>}
+            </div>
         )
     }
 }

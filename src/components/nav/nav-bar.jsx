@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as userActions from '../../actions/user-actions'
-import CollapsibleNav from './collapsible-nav'
 import {isMobile} from '../../utilities/utilities'
 import MenuLarge from './menu-large'
 import MenuSmall from './menu-small'
@@ -22,11 +21,9 @@ class NavBar extends React.Component {
     render() {
         const activeItem = this.props.location.pathname.replace('/', '')
         return (
-            <CollapsibleNav>
-                {this.state.mobileMenu
-                    ? <MenuSmall activeItem={activeItem}/>
-                    : <MenuLarge activeItem={activeItem}/>}
-            </CollapsibleNav>
+            <div>
+                {this.state.mobileMenu ? <MenuSmall activeItem={activeItem}/> : <MenuLarge activeItem={activeItem}/>}
+            </div>
         )
     }
 }
