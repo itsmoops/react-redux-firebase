@@ -1,12 +1,11 @@
 import {Link} from 'react-router-dom'
 import {Button, Container, Menu, Icon} from 'semantic-ui-react'
+import {isMobile} from '../../utilities/utilities'
 import './nav-bar.less'
 
 class CollapsibleNav extends React.Component {
     state = {
-        stackMenu: window.innerWidth < 768
-            ? true
-            : false,
+        mobileMenu: isMobile(),
         menuOpen: false
     }
     componentDidMount = () => {
@@ -14,9 +13,7 @@ class CollapsibleNav extends React.Component {
     }
     updateWidth = () => {
         this.setState({
-            stackMenu: window.innerWidth < 768
-                ? true
-                : false
+            mobileMenu: isMobile()
         })
     }
     handleItemClick = (event) => {
@@ -33,7 +30,7 @@ class CollapsibleNav extends React.Component {
         }
         return (
             <div>
-                {this.state.stackMenu
+                {this.state.mobileMenu
                     ? <div className='nav-bar'>
                             <Button basic icon onClick={this.handleIconClick}>
                                 <Icon flipped={!this.state.menuOpen
