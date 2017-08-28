@@ -49,7 +49,7 @@ class MenuSmall extends React.Component {
         </div>
 
         return (
-            <Menu pointing secondary vertical className='nav-bar menu-small'>
+            <Menu pointing secondary vertical size='massive' className='nav-bar menu-small'>
                 <Menu.Item name='home' active={this.props.activeItem === ''} as={Link} to='/' onClick={this.handleItemClick}>
                     Home
                 </Menu.Item>
