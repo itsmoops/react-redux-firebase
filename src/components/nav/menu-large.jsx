@@ -18,8 +18,8 @@ class MenuLarge extends React.Component {
                 <Menu.Item>
                 <Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
                     <Dropdown.Menu>
-                        <Dropdown.Item icon='user circle' text='Edit Profile'/>
-                        <Dropdown.Item icon='setting' text='Setting'/>
+                        <Dropdown.Item icon='user circle' text='Edit Profile' as={Link} to='/profile'/>
+                        <Dropdown.Item icon='setting' text='Setting' as={Link} to='/account'/>
                         <Dropdown.Divider/>
                         <Dropdown.Item icon='log out' text='Logout' onClick={this.handleLogout} as={Link} to='/'/>
                     </Dropdown.Menu>

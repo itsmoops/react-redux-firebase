@@ -19,6 +19,7 @@ class MenuSmall extends React.Component {
     }
     handleLogout = (e) => {
         this.props.actions.userLogout()
+        this.handleItemClick()
     }
     render() {
         const user = this.props.user
