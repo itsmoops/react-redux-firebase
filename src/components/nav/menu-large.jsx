@@ -14,20 +14,20 @@ class MenuLarge extends React.Component {
     render() {
         const user = this.props.user
         const userName = user.displayName || user.email
-        const userMenu = <Menu.Menu><Menu.Item>
-            <Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
-                <Dropdown.Menu>
-                    <Dropdown.Item>Edit Profile</Dropdown.Item>
-                    <Dropdown.Item>Account Settings</Dropdown.Item>
-                    <Dropdown.Divider/>
-                    <Dropdown.Item>
-                        <Link to='/' onClick={this.handleLogout}>Logout</Link>
-                    </Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        </Menu.Item></Menu.Menu>
+        const userMenu = <Menu.Menu>
+                <Menu.Item>
+                <Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
+                    <Dropdown.Menu>
+                        <Dropdown.Item icon='user circle' text='Edit Profile'/>
+                        <Dropdown.Item icon='setting' text='Setting'/>
+                        <Dropdown.Divider/>
+                        <Dropdown.Item icon='log out' text='Logout' onClick={this.handleLogout} as={Link} to='/'/>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </Menu.Item>
+        </Menu.Menu>
 
-        const guestMenu = <Menu.Menu>
+    const guestMenu = <Menu.Menu>
             <Menu.Item name='help' active={this.props.activeItem === 'help'} as={Link} to='/help' onClick={this.handleItemClick}>
                 Help
             </Menu.Item>

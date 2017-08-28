@@ -18,12 +18,15 @@ class MenuSmall extends React.Component {
             <hr/>
             <Menu.Item name='profile' active={this.props.activeItem === 'profile'} as={Link} to='/profile' onClick={this.handleItemClick}>
                 Edit Profile
+                <Icon size='large' name='user circle' />
             </Menu.Item>
             <Menu.Item name='account-settings' active={this.props.activeItem === 'account-settings'} as={Link} to='/account-settings' onClick={this.handleItemClick}>
                 Account Settings
+                <Icon size='large' name='setting' />
             </Menu.Item>
             <Menu.Item name='logout' active={this.props.activeItem === 'logout'} as={Link} to='/' onClick={this.handleLogout}>
                 Logout
+                <Icon size='large' name='log out' />
             </Menu.Item>
         </div>
 
