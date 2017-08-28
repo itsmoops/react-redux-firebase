@@ -8,7 +8,7 @@ class FlexContainer extends React.Component {
         return (
             <Grid columns={3} verticalAlign='middle' className='max-height'>
                 <Grid.Row centered>
-                    <Grid.Column desktop={this.props.desktop} tablet={this.props.tablet} mobile={this.props.mobile} textAlign='center'>
+                    <Grid.Column computer={this.props.computer} tablet={this.props.tablet} mobile={this.props.mobile} textAlign='center'>
                         {this.props.children}
                     </Grid.Column>
                 </Grid.Row>
@@ -19,7 +19,7 @@ class FlexContainer extends React.Component {
 
 // default responsive column widths
 FlexContainer.defaultProps = {
-    desktop: 6,
+    computer: 6,
     tablet: 10,
     mobile: 14
 }
