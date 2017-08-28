@@ -26,7 +26,7 @@ class CollapsibleNav extends React.Component {
     }
     render() {
         if (!this.props.children.type.name === 'Menu') {
-            console.error('CollapsibleNav requires Semantic UI Menu as child')
+            throw new TypeError('CollapsibleNav requires Semantic UI Menu as child')
         }
         return (
             <div>
