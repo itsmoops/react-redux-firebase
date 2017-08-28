@@ -20,7 +20,7 @@ class MenuSmall extends React.Component {
                 Edit Profile
                 <Icon size='large' name='user circle' />
             </Menu.Item>
-            <Menu.Item name='account-settings' active={this.props.activeItem === 'account-settings'} as={Link} to='/account-settings' onClick={this.handleItemClick}>
+            <Menu.Item name='account' active={this.props.activeItem === 'account'} as={Link} to='/account' onClick={this.handleItemClick}>
                 Account Settings
                 <Icon size='large' name='setting' />
             </Menu.Item>
@@ -28,18 +28,23 @@ class MenuSmall extends React.Component {
                 Logout
                 <Icon size='large' name='log out' />
             </Menu.Item>
-        </div>
-
-        const guestMenu = <div>
             <hr/>
             <Menu.Item name='help' active={this.props.activeItem === 'help'} as={Link} to='/help' onClick={this.handleItemClick}>
                 Help
             </Menu.Item>
+        </div>
+
+        const guestMenu = <div>
+            <hr/>
             <Menu.Item name='signup' active={this.props.activeItem === 'sign-up'} as={Link} to='/sign-up' onClick={this.handleItemClick}>
                 Sign Up
             </Menu.Item>
             <Menu.Item name='login' active={this.props.activeItem === 'login'} as={Link} to='/login' onClick={this.handleItemClick}>
                 Log In
+            </Menu.Item>
+            <hr/>
+            <Menu.Item name='help' active={this.props.activeItem === 'help'} as={Link} to='/help' onClick={this.handleItemClick}>
+                Help
             </Menu.Item>
         </div>
 
