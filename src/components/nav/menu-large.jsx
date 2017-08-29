@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as userActions from '../../actions/user-actions'
-import { Link } from 'react-router-dom'
 import { Menu, Icon, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import * as userActions from '../../actions/user-actions'
 
 class MenuLarge extends React.Component {
 	handleDropDownClick = e => {

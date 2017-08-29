@@ -1,4 +1,7 @@
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Container, Header } from 'semantic-ui-react'
+import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 
 class Profile extends React.Component {
@@ -6,9 +9,11 @@ class Profile extends React.Component {
         document.title = 'Profile'
     }
     render() {
+        const user = this.props.user
+        const userName = user.displayName || user.email
         return (
             <FlexContainer>
-                <Header size="large">Profile</Header>
+                <Header size="large">{userName || 'Profile'}</Header>
                 <Container textAlign="left">
 					But I must explain to you how all this mistaken idea of denouncing pleasure and
 					praising pain was born and I will give you a complete account of the system, and
@@ -29,4 +34,14 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile
+function mapStateToProps(state) {
+    return { user: state.user }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(userActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
