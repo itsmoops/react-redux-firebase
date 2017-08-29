@@ -9,14 +9,14 @@ import Account from './components/user/account'
 import Profile from './components/user/profile'
 
 export default (
-  <div>
-      <Route component={NavBar} />
-      <Route exact path="/" component={HomePage} />
-      <Route path="/about" component={About} />
-      <Route path="/help" component={Help} />
-      <Route path="/sign-up" component={SignUp} />
-      <Route path="/login" component={Login} />
-      <Route path="/account" component={Account} />
-      <Route path="/profile" component={Profile} />
+    <div>
+        <Route component={NavBar} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={About} />
+        <Route path="/help" component={Help} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route path="/login" component={Login} />
+        <Route path="/account" component={Account} />
+        <Route path="/profile" component={Profile} />
     </div>
 )

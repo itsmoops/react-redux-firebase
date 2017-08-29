@@ -13,8 +13,8 @@ firebase.initializeApp(config)
 const store = configureStore()
 
 ReactDOM.render(
-  <Provider store={store}>
-      <Router>{routes}</Router>
+    <Provider store={store}>
+        <Router>{routes}</Router>
     </Provider>,
     document.getElementById('app')
 )
