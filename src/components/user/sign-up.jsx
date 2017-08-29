@@ -11,6 +11,9 @@ class SignUp extends React.Component {
 	}
 	componentDidMount() {
 		document.title = 'Sign Up'
+		if (this.props.user.authenticated) {
+			this.props.history.push('/')
+		}
 	}
 	handleInputChange = e => {
 		const type = e.target.type
@@ -19,7 +22,13 @@ class SignUp extends React.Component {
 	}
 	onClickSubmit = e => {
 		e.preventDefault()
-		this.props.actions.userSignUp({ email: this.state.email, password: this.state.password })
+		this.props.actions
+			.userSignUp({ email: this.state.email, password: this.state.password })
+			.then(() => {
+				if (this.props.user.authenticated) {
+					this.props.history.push('/profile')
+				}
+			})
 	}
 	render() {
 		return (

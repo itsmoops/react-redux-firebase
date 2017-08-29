@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as userActions from '../../actions/user-actions'
 import { Grid, Header, Form, Message, Input, Checkbox, Button } from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
@@ -11,6 +12,9 @@ class Login extends React.Component {
 	}
 	componentDidMount() {
 		document.title = 'Login'
+		if (this.props.user.authenticated) {
+			this.props.history.push('/')
+		}
 	}
 	handleInputChange = e => {
 		const type = e.target.type
@@ -19,7 +23,13 @@ class Login extends React.Component {
 	}
 	onClickSubmit = e => {
 		e.preventDefault()
-		this.props.actions.userLogin({ email: this.state.email, password: this.state.password })
+		this.props.actions
+			.userLogin({ email: this.state.email, password: this.state.password })
+			.then(() => {
+				if (this.props.user.authenticated) {
+					this.props.history.push('/profile')
+				}
+			})
 	}
 	render() {
 		return (
