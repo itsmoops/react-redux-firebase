@@ -10,15 +10,18 @@ class MenuSmall extends React.Component {
 		menuOpen: false
 	}
 	handleIconClick = e => {
-		e.currentTarget.classList.forEach(className => {
-			if (className === 'nav-bar-icon-up') {
-				e.currentTarget.classList.remove('nav-bar-icon-up')
-				e.currentTarget.classList.add('nav-bar-icon-down')
-			} else if (className === 'nav-bar-icon-down') {
-				e.currentTarget.classList.remove('nav-bar-icon-down')
-				e.currentTarget.classList.add('nav-bar-icon-up')
+		const classList = e.currentTarget.classList
+		const iconUp = 'nav-bar-icon-up'
+		const iconDown = 'nav-bar-icon-down'
+		classList.forEach(className => {
+			if (className === iconUp) {
+				classList.remove(iconUp)
+				classList.add(iconDown)
+			} else if (className === iconDown) {
+				classList.remove(iconDown)
+				classList.add(iconUp)
 			} else {
-				e.currentTarget.classList.add('nav-bar-icon-up')
+				classList.add(iconUp)
 			}
 		})
 		this.setState({
