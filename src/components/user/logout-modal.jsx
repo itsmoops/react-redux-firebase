@@ -1,6 +1,13 @@
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../actions/user-actions'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
-class LogoutModal extends React.PureComponent {
+class LogoutModal extends React.Component {
+    handleLogout = e => {
+		this.props.actions.userLogout()
+		this.handleItemClick()
+	}
     render() {
         return (
             <Modal open={this.props.open} basic size="small">
@@ -21,4 +28,14 @@ class LogoutModal extends React.PureComponent {
     }
 }
 
-export default LogoutModal
+function mapStateToProps(state, ownProps) {
+	return { user: state.user }
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(userActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutModal)
