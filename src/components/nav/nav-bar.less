@@ -1,7 +1,8 @@
 @import '../../palette';
 
-@nav-bar-height: 41px;
-@animation-time: .25s;
+@nav-bar-height: 46px;
+@animation-time: .5s;
+@menu-margin-top: -200%;
 
 .nav-bar {
 	position: relative;
@@ -11,8 +12,8 @@
 .chevron-container {
 	position: relative;
 	background: @background;
-	// padding-bottom: 5px;
-	z-index: 1
+	padding-bottom: 5px;
+	z-index: 1;
 }
 
 .menu-small-down {
@@ -25,7 +26,7 @@
 
 @keyframes menu-slide-down {
 	from {
-		margin-top: -250%;
+		margin-top: @menu-margin-top;
 	}
 	to {
 		margin-top: 0%;
@@ -37,7 +38,7 @@
 		margin-top: 0%;
 	}
 	to {
-		margin-top: -250%;
+		margin-top: @menu-margin-top;
 	}
 }
 
@@ -120,10 +121,9 @@
 }
 
 .ui.vertical.menu.menu-small {
+	margin-top: @menu-margin-top;
+	padding-top: 2em;
 	width: 100%;
-	// height: -moz-calc(100% - 50px);
-	// height: -webkit-calc(100% - 50px);
-	// height: -o-calc(100% - 50px);
-	height: ~"calc(100% - @{nav-bar-height})";
-	background: blue;
+	height: ~'calc(100% - @{nav-bar-height})';
+	background: @background;
 }
