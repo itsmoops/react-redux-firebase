@@ -9,12 +9,21 @@ class MenuSmall extends React.Component {
 	state = {
 		menuOpen: false
 	}
-	handleIconClick = event => {
+	handleIconClick = e => {
+		e.currentTarget.classList.forEach(className => {
+			if (className === 'nav-bar-icon') {
+				e.currentTarget.classList.remove('nav-bar-icon')
+				e.currentTarget.classList.add('nav-bar-icon-flipped')
+			} else if (className === 'nav-bar-icon-flipped') {
+				e.currentTarget.classList.remove('nav-bar-icon-flipped')
+				e.currentTarget.classList.add('nav-bar-icon')
+			}
+		})
 		this.setState({
 			menuOpen: !this.state.menuOpen
 		})
 	}
-	handleItemClick = event => {
+	handleItemClick = e => {
 		this.setState({ menuOpen: false })
 	}
 	handleLogout = e => {
@@ -106,12 +115,8 @@ class MenuSmall extends React.Component {
 
 		return (
 			<div className="nav-bar">
-				<Button basic icon onClick={this.handleIconClick}>
-					<Icon
-						flipped={!this.state.menuOpen ? 'vertically' : 'horizontally'}
-						size="small"
-						name="chevron up"
-					/>
+				<Button className="nav-bar-icon" basic icon onClick={this.handleIconClick}>
+					<Icon size="small" name="chevron down" />
 				</Button>
 				{this.state.menuOpen && (
 					<Menu pointing secondary vertical size="massive" className="nav-bar menu-small">
@@ -134,7 +139,9 @@ class MenuSmall extends React.Component {
 							About
 						</Menu.Item>
 						<Menu.Menu position="right" />{' '}
-						{this.props.user.authenticated ? userMenu : guestMenu}
+						<div className="nav-small-dropdown">
+							{this.props.user.authenticated ? userMenu : guestMenu}
+						</div>
 					</Menu>
 				)}
 			</div>

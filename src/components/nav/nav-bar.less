@@ -1,6 +1,7 @@
 @import '../../palette';
 
 @nav-bar-height: 50px;
+@animation-time: 2.5s;
 
 .nav-bar {
 	top: 0;
@@ -8,6 +9,59 @@
 	z-index: 10;
 	background: @background !important;
 	width: 100%;
+	animation-name: nav-bar-slide-down;
+	animation-duration: @animation-time;
+}
+
+@keyframes nav-bar-slide-down {
+	from {
+		top: -300;
+	}
+	to {
+		top: 0;
+	}
+}
+
+.nav-bar-icon {
+	animation: nav-bar-icon-rotate @animation-time forwards;
+}
+
+.nav-bar-icon-flipped {
+	animation: nav-bar-icon-rotate-inverse @animation-time forwards;
+}
+
+@keyframes nav-bar-icon-rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes nav-bar-icon-rotate-inverse {
+	from {
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
 }
 
 // semantic UI icon and menu overrides
