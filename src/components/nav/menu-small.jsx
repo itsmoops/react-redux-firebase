@@ -109,7 +109,7 @@ class MenuSmall extends React.Component {
 				<Button basic icon onClick={this.handleIconClick}>
 					<Icon
 						flipped={!this.state.menuOpen ? 'vertically' : 'horizontally'}
-						size="large"
+						size="small"
 						name="chevron up"
 					/>
 				</Button>
