@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react'
 class FlexContainer extends React.PureComponent {
     render() {
         return (
-            <Grid columns={3} verticalAlign="middle" className="max-height">
+            <Grid columns={3} verticalAlign="middle" className="max-height flex-container">
                 <Grid.Row centered>
                     <Grid.Column
                       computer={this.props.computer}
