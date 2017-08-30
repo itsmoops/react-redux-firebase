@@ -1,7 +1,7 @@
 @import '../../palette';
 
 @nav-bar-height: 50px;
-@animation-time: 2.5s;
+@animation-time: .25s;
 
 .nav-bar {
 	top: 0;
@@ -9,8 +9,6 @@
 	z-index: 10;
 	background: @background !important;
 	width: 100%;
-	animation-name: nav-bar-slide-down;
-	animation-duration: @animation-time;
 }
 
 @keyframes nav-bar-slide-down {
@@ -22,15 +20,15 @@
 	}
 }
 
-.nav-bar-icon {
-	animation: nav-bar-icon-rotate @animation-time forwards;
+.nav-bar-icon-up {
+	animation: icon-rotate-up @animation-time forwards;
 }
 
-.nav-bar-icon-flipped {
-	animation: nav-bar-icon-rotate-inverse @animation-time forwards;
+.nav-bar-icon-down {
+	animation: icon-rotate-down @animation-time forwards;
 }
 
-@keyframes nav-bar-icon-rotate {
+@keyframes icon-rotate-up {
 	from {
 		-webkit-transform: rotate(0deg);
 		-moz-transform: rotate(0deg);
@@ -47,7 +45,7 @@
 	}
 }
 
-@keyframes nav-bar-icon-rotate-inverse {
+@keyframes icon-rotate-down {
 	from {
 		-webkit-transform: rotate(180deg);
 		-moz-transform: rotate(180deg);

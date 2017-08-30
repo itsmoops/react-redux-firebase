@@ -11,12 +11,14 @@ class MenuSmall extends React.Component {
 	}
 	handleIconClick = e => {
 		e.currentTarget.classList.forEach(className => {
-			if (className === 'nav-bar-icon') {
-				e.currentTarget.classList.remove('nav-bar-icon')
-				e.currentTarget.classList.add('nav-bar-icon-flipped')
-			} else if (className === 'nav-bar-icon-flipped') {
-				e.currentTarget.classList.remove('nav-bar-icon-flipped')
-				e.currentTarget.classList.add('nav-bar-icon')
+			if (className === 'nav-bar-icon-up') {
+				e.currentTarget.classList.remove('nav-bar-icon-up')
+				e.currentTarget.classList.add('nav-bar-icon-down')
+			} else if (className === 'nav-bar-icon-down') {
+				e.currentTarget.classList.remove('nav-bar-icon-down')
+				e.currentTarget.classList.add('nav-bar-icon-up')
+			} else {
+				e.currentTarget.classList.add('nav-bar-icon-up')
 			}
 		})
 		this.setState({
@@ -115,7 +117,7 @@ class MenuSmall extends React.Component {
 
 		return (
 			<div className="nav-bar">
-				<Button className="nav-bar-icon" basic icon onClick={this.handleIconClick}>
+				<Button basic icon onClick={this.handleIconClick}>
 					<Icon size="small" name="chevron down" />
 				</Button>
 				{this.state.menuOpen && (
