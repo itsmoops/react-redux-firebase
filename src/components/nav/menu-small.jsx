@@ -10,20 +10,28 @@ class MenuSmall extends React.Component {
 		menuOpen: false
 	}
 	handleIconClick = e => {
-		const classList = e.currentTarget.classList
+		const iconClassList = e.currentTarget.classList
 		const iconUp = 'nav-bar-icon-up'
 		const iconDown = 'nav-bar-icon-down'
-		classList.forEach(className => {
-			if (className === iconUp) {
-				classList.remove(iconUp)
-				classList.add(iconDown)
-			} else if (className === iconDown) {
-				classList.remove(iconDown)
-				classList.add(iconUp)
-			} else {
-				classList.add(iconUp)
-			}
-		})
+		if (iconClassList.value.includes(iconUp)) {
+			iconClassList.remove(iconUp)
+			iconClassList.add(iconDown)
+		} else if (iconClassList.value.includes(iconDown)) {
+			iconClassList.remove(iconDown)
+			iconClassList.add(iconUp)
+		} else if (!iconClassList.value.includes('nav-bar')) {
+			iconClassList.add(iconUp)
+		}
+
+		// const menu = document.getElementById('menu-small')
+		// const menuClassList = menu && menu.classList
+		// const menuUp = 'menu-small-up'
+		// const menuDown = 'menu-small-down'
+		// if (menuClassList && menuClassList.value.includes(menuDown)) {
+		// 	menuClassList.remove(menuDown)
+		// 	menuClassList.add(menuUp)
+		// }
+
 		this.setState({
 			menuOpen: !this.state.menuOpen
 		})
@@ -36,6 +44,7 @@ class MenuSmall extends React.Component {
 		this.handleItemClick()
 	}
 	render() {
+		const menuClass = this.state.menuOpen ? 'menu-small-down' : 'menu-small-up'
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		const userMenu = (
@@ -120,35 +129,35 @@ class MenuSmall extends React.Component {
 
 		return (
 			<div className="nav-bar">
-				<Button basic icon onClick={this.handleIconClick}>
-					<Icon size="small" name="chevron down" />
-				</Button>
-				{this.state.menuOpen && (
-					<Menu pointing secondary vertical size="massive" className="nav-bar menu-small">
-						<Menu.Item
-							name="home"
-							active={this.props.activeItem === ''}
-							as={Link}
-							to="/"
-							onClick={this.handleItemClick}
-						>
-							Home
-						</Menu.Item>
-						<Menu.Item
-							name="about"
-							active={this.props.activeItem === 'about'}
-							as={Link}
-							to="/about"
-							onClick={this.handleItemClick}
-						>
-							About
-						</Menu.Item>
-						<Menu.Menu position="right" />{' '}
-						<div className="nav-small-dropdown">
-							{this.props.user.authenticated ? userMenu : guestMenu}
-						</div>
-					</Menu>
-				)}
+				<div className="chevron-container">
+					<Button basic icon onClick={this.handleIconClick}>
+						<Icon size="small" name="chevron down" />
+					</Button>
+				</div>
+				<Menu pointing secondary vertical size="massive" className={`menu-small ${menuClass}`}>
+					<Menu.Item
+						name="home"
+						active={this.props.activeItem === ''}
+						as={Link}
+						to="/"
+						onClick={this.handleItemClick}
+					>
+						Home
+					</Menu.Item>
+					<Menu.Item
+						name="about"
+						active={this.props.activeItem === 'about'}
+						as={Link}
+						to="/about"
+						onClick={this.handleItemClick}
+					>
+						About
+					</Menu.Item>
+					<Menu.Menu position="right" />{' '}
+					<div>
+						{this.props.user.authenticated ? userMenu : guestMenu}
+					</div>
+				</Menu>
 			</div>
 		)
 	}
