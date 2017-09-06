@@ -25,6 +25,13 @@
   },
   "homepage": "https://github.com/itsmoops/react-redux-webpack#readme",
   "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.1",
     "file-loader": "^0.11.1",
     "firebase": "^4.1.0",
@@ -42,16 +49,10 @@
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.68.3",
-    "style-loader": "^0.18.1"
+    "style-loader": "^0.18.1",
+    "webpack": "^3.5.5",
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-standard": "^10.2.1",
@@ -62,7 +63,6 @@
     "eslint-plugin-react": "^7.3.0",
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
 }
