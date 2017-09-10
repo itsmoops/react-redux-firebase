@@ -6,8 +6,10 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/dist/'
     },
+    target: 'web',
     devtool: 'inline-source-map',
     module: {
         rules: [
