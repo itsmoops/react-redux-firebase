@@ -44,6 +44,7 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     devServer: {
+        contentBase: path.join(__dirname, 'src'),
         historyApiFallback: true
     }
 }
