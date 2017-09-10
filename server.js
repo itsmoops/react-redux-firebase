@@ -1,7 +1,19 @@
-const http = require('http')
+const express = require('express')
+const path = require('path')
 
-const port = process.env.PORT || 8000
+const app = express()
 
-http.createServer(() => {}).listen(port)
+const error = (err, response, body) => console.log('ERROR [%s]', err) // eslint-disable-line
 
-console.log(`Server running at http://127.0.0.1:${port}/`)
+app.set('port', process.env.PORT || 8080)
+app.set('json spaces', 2)
+
+app.use(express.static(path.join(__dirname, '/src')))
+
+app.get('/', (request, response) => {
+  response.render('pages/index')
+})
+
+app.listen(app.get('port'), () => {
+  console.log('Node app is running on port', app.get('port'))
+})
