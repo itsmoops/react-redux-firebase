@@ -4,7 +4,7 @@
   "description": "React Redux Webpack",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p && node server.js",
+    "start": "webpack -p",
     "dev": "webpack-dev-server",
     "test": "./test-runner.js"
   },
