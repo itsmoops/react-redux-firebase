@@ -3,15 +3,13 @@ const path = require('path')
 
 const app = express()
 
-const error = (err, response, body) => console.log('ERROR [%s]', err) // eslint-disable-line
-
 app.set('port', process.env.PORT || 8080)
 app.set('json spaces', 2)
 
-app.use(express.static(path.join(__dirname, '/src')))
+app.use(express.static(path.join(__dirname, '/dist')))
 
 app.get('/', (request, response) => {
-  response.render('pages/index')
+  response.send('App is running')
 })
 
 app.listen(app.get('port'), () => {
