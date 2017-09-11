@@ -6,11 +6,14 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/dist/'
+        filename: 'bundle.js'
     },
-    target: 'web',
+    devServer: {
+        contentBase: path.join(__dirname, 'src'),
+        historyApiFallback: true
+    },
     devtool: 'inline-source-map',
+    target: 'web',
     module: {
         rules: [
             {
@@ -44,9 +47,5 @@ module.exports = {
     ],
     resolve: {
         extensions: ['.js', '.jsx']
-    },
-    devServer: {
-        contentBase: path.join(__dirname, 'src'),
-        historyApiFallback: true
     }
 }

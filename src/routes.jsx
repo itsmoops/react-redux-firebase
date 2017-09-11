@@ -7,6 +7,7 @@ import SignUp from './components/user/sign-up'
 import Login from './components/user/login'
 import Account from './components/user/account'
 import Profile from './components/user/profile'
+import NotFound from './components/not-found/not-found'
 
 export default (
     <div>
