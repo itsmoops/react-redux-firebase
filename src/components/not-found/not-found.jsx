@@ -1,4 +1,3 @@
-import { Header } from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class NotFound extends React.Component {
@@ -8,8 +7,8 @@ class NotFound extends React.Component {
     render() {
         return (
             <FlexContainer>
-                <Header size="large">404</Header>
-				<Header size="medium">Page not found!</Header>
+                <h1>404</h1>
+                <h2>Page not found!</h2>
             </FlexContainer>
         )
     }

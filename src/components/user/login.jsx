@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import * as userActions from '../../actions/user-actions'
-import { Grid, Header, Form, Message, Input, Checkbox, Button } from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class Login extends React.Component {
@@ -34,35 +33,7 @@ class Login extends React.Component {
 	render() {
 		return (
 			<FlexContainer>
-				<Header size="large">Login</Header>
-				<Form size="big" loading={this.props.user.loading}>
-					<Form.Field>
-						<Input
-							transparent
-							type="email"
-							placeholder="Email"
-							onChange={this.handleInputChange}
-						/>
-					</Form.Field>
-					<Form.Field>
-						<Input
-							transparent
-							type="password"
-							placeholder="Password"
-							onChange={this.handleInputChange}
-						/>
-					</Form.Field>
-					<Message
-						error
-						size="tiny"
-						header="Error logging in"
-						content={this.props.user.message}
-						visible={!!this.props.user.message}
-					/>
-					<Button type="submit" size="big" floated="right" onClick={this.onClickSubmit}>
-						Login
-					</Button>
-				</Form>
+				<h1>Login</h1>
 			</FlexContainer>
 		)
 	}

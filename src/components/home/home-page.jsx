@@ -1,4 +1,3 @@
-import { Container, Header } from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class HomePage extends React.Component {
@@ -8,8 +7,8 @@ class HomePage extends React.Component {
     render() {
         return (
             <FlexContainer>
-                <Header size="large">Home</Header>
-                <Container textAlign="left">
+                <h1>Home</h1>
+                <div>
 					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
 					doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
 					veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
@@ -22,7 +21,7 @@ class HomePage extends React.Component {
 					consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
 					esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
 					voluptas nulla pariatur?
-                </Container>
+                </div>
             </FlexContainer>
         )
     }

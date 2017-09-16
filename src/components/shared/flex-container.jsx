@@ -1,38 +1,29 @@
-import { Grid } from 'semantic-ui-react'
-
 /**
  * FlexContainer - Semantic UI grid wrapper that builds a responsive flexbox
  */
 class FlexContainer extends React.PureComponent {
     render() {
         return (
-            <Grid columns={3} verticalAlign="middle" className="max-height flex-container">
-                <Grid.Row centered>
-                    <Grid.Column
-                      computer={this.props.computer}
-                      tablet={this.props.tablet}
-                      mobile={this.props.mobile}
-                      textAlign="center"
-                    >
-                        {this.props.children}
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+            <div className="flex-container">
+                <div className={`${this.props.desktop} ${this.props.tablet} ${this.props.mobile}`}>
+                    {this.props.children}
+                </div>
+            </div>
         )
     }
 }
 
 // default responsive column widths
 FlexContainer.defaultProps = {
-    computer: 6,
-    tablet: 10,
-    mobile: 14
+    desktop: 'flex-lg',
+    tablet: 'flex-md',
+    mobile: 'flex-sm'
 }
 
 FlexContainer.propTypes = {
-    computer: PropTypes.number,
-    tablet: PropTypes.number,
-    mobile: PropTypes.number
+    desktop: PropTypes.string,
+    tablet: PropTypes.string,
+    mobile: PropTypes.string
 }
 
 export default FlexContainer

@@ -2,8 +2,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user-actions'
 import { Link } from 'react-router-dom'
-import { Menu, Icon, Dropdown, Button } from 'semantic-ui-react'
-import LogoutModal from '../user/logout-modal'
 import './nav-bar.less'
 
 class MenuSmall extends React.Component {
@@ -34,7 +32,6 @@ class MenuSmall extends React.Component {
 		const userName = user.displayName || user.email
 		const userMenu = (
 			<div>
-				<LogoutModal open={false} />
 				<hr />
 				<Menu.Item
 					name="profile"

@@ -1,4 +1,3 @@
-import { Container, Header } from 'semantic-ui-react'
 import FlexContainer from '../shared/flex-container'
 
 class Help extends React.Component {
@@ -8,8 +7,8 @@ class Help extends React.Component {
     render() {
         return (
             <FlexContainer>
-                <Header size="large">Help</Header>
-                <Container textAlign="left">
+                <h1>Help</h1>
+                <div>
 					But I must explain to you how all this mistaken idea of denouncing pleasure and
 					praising pain was born and I will give you a complete account of the system, and
 					expound the actual teachings of the great explorer of the truth, the
@@ -23,7 +22,7 @@ class Help extends React.Component {
 					advantage from it? But who has any right to find fault with a man who chooses to
 					enjoy a pleasure that has no annoying consequences, or one who avoids a pain
 					that produces no resultant pleasure?
-                </Container>
+                </div>
             </FlexContainer>
         )
     }
