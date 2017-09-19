@@ -13,90 +13,10 @@ class MenuLarge extends React.Component {
 	render() {
 		const user = this.props.user
 		const userName = user.displayName || user.email
-		const userMenu = (
-			<Menu.Menu>
-				<Menu.Item>
-					<Dropdown pointing text={userName} onClick={this.handleDropDownClick}>
-						<Dropdown.Menu>
-							<Dropdown.Item
-								icon="user circle"
-								text="Edit Profile"
-								as={Link}
-								to="/profile"
-							/>
-							<Dropdown.Item icon="setting" text="Settings" as={Link} to="/account" />
-							<Dropdown.Divider />
-							<Dropdown.Item icon="help" text="Help" as={Link} to="/help" />
-							<Dropdown.Divider />
-							<Dropdown.Item
-								icon="log out"
-								text="Logout"
-								as={Link}
-								to="/"
-								onClick={this.handleLogout}
-							/>
-						</Dropdown.Menu>
-					</Dropdown>
-				</Menu.Item>
-			</Menu.Menu>
-		)
+		const guestMenu = <div className="nav-bar">Home</div>
+		const userMenu = <div />
 
-		const guestMenu = (
-			<Menu.Menu>
-				<Menu.Item
-					name="help"
-					active={this.props.activeItem === 'help'}
-					as={Link}
-					to="/help"
-					onClick={this.handleItemClick}
-				>
-					Help
-				</Menu.Item>
-				<Menu.Item
-					name="signup"
-					active={this.props.activeItem === 'sign-up'}
-					as={Link}
-					to="/sign-up"
-					onClick={this.handleItemClick}
-				>
-					Sign Up
-				</Menu.Item>
-				<Menu.Item
-					name="login"
-					active={this.props.activeItem === 'login'}
-					as={Link}
-					to="/login"
-					onClick={this.handleItemClick}
-				>
-					Log In
-				</Menu.Item>
-			</Menu.Menu>
-		)
-
-		return (
-			<Menu pointing secondary stackable className="nav-bar">
-				<Menu.Item
-					name="home"
-					active={this.props.activeItem === ''}
-					as={Link}
-					to="/"
-					onClick={this.handleItemClick}
-				>
-					Home
-				</Menu.Item>
-				<Menu.Item
-					name="about"
-					active={this.props.activeItem === 'about'}
-					as={Link}
-					to="/about"
-					onClick={this.handleItemClick}
-				>
-					About
-				</Menu.Item>
-				<Menu.Menu position="right" />
-				{this.props.user.authenticated ? userMenu : guestMenu}
-			</Menu>
-		)
+		return guestMenu
 	}
 }
 

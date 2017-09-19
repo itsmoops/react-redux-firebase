@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user-actions'
 import { isSmallDevice } from '../../utilities/utilities'
 import MenuLarge from './menu-large'
-import MenuSmall from './menu-small'
+// import MenuSmall from './menu-small'
 
 class NavBar extends React.Component {
 	state = {
@@ -20,11 +20,7 @@ class NavBar extends React.Component {
 		const activeItem = this.props.location.pathname.replace('/', '')
 		return (
 			<div>
-				{this.state.smallMenu ? (
-					<MenuSmall activeItem={activeItem} />
-				) : (
-					<MenuLarge activeItem={activeItem} />
-				)}
+				<MenuLarge />
 			</div>
 		)
 	}

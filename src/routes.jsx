@@ -9,10 +9,10 @@ import Account from './components/user/account'
 import Profile from './components/user/profile'
 import NotFound from './components/not-found/not-found'
 
-// <Route component={NavBar} />
-
+// <Route path="*" component={NotFound} />
 export default (
     <div>
+        <Route component={NavBar} />
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
