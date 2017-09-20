@@ -1,10 +1,6 @@
-import { BrowserRouter as Router } from 'react-router-dom'
-
 class NavItem extends React.Component {
-    componentDidMount() {
-        this.props.history.push('/')
-    }
     handleClick() {
+        debugger
         this.props.history.push(this.props.linkTo)
     }
 
@@ -19,7 +15,7 @@ class NavItem extends React.Component {
             itemClasses = `${itemClasses} nav-item-right`
         }
         return (
-            <div className={`nav-item ${itemClasses}`} onClick={this.handleClick}>
+            <div className={`nav-item ${itemClasses}`} onClick={this.handleClick.bind(this)}>
                 <p>{this.props.children}</p>
             </div>
         )
