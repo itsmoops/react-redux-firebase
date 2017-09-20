@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as userActions from '../../actions/user-actions'
+import * as userActions from '../../../actions/user-actions'
 import { Link } from 'react-router-dom'
-import './nav-bar.less'
 
 class NavSmall extends React.Component {
 	state = {
@@ -33,7 +32,7 @@ class NavSmall extends React.Component {
 		const guestMenu = <div />
 		const userMenu = <div />
 
-		return <div />
+		return <div>Neat</div>
 	}
 }
 

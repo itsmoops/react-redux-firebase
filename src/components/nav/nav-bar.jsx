@@ -4,7 +4,7 @@ import * as globalActions from '../../actions/global-actions'
 import * as userActions from '../../actions/user-actions'
 import { isSmallDevice } from '../../utilities/utilities'
 import NavLarge from './nav-large/nav-large'
-// import MenuSmall from './menu-small'
+import NavSmall from './nav-small/nav-small'
 
 class NavBar extends React.Component {
 	state = {
@@ -18,12 +18,8 @@ class NavBar extends React.Component {
 		this.setState({ smallMenu: isSmallDevice() })
 	}
 	render() {
-		const activeRoute = this.props.location.pathname.replace('/', '')
-		return (
-			<div>
-				<NavLarge active={activeRoute || ''} />
-			</div>
-		)
+		const activeRoute = this.props.location.pathname.replace('/', '') || ''
+		return this.state.smallMenu ? <NavSmall />: <NavLarge active={activeRoute} />
 	}
 }
 
