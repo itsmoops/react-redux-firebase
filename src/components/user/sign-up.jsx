@@ -11,7 +11,7 @@ class SignUp extends React.Component {
 	componentDidMount() {
 		document.title = 'Sign Up'
 		if (this.props.user.authenticated) {
-			this.props.history.push('/')
+			// this.props.history.push('/')
 		}
 	}
 	handleInputChange = e => {
