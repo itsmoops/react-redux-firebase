@@ -1,3 +1,7 @@
+// global-actions
+export const IS_SMALL_DEVICE = 'IS_SMALL_DEVICE'
+
+// user-actions
 export const LOADING_STATE_CHANGE = 'LOADING_STATE_CHANGE'
 export const CHECK_FOR_USER = 'CHECK_FOR_USER'
 export const USER_SIGN_UP_SUCCESS = 'USER_SIGN_UP_SUCCESS'

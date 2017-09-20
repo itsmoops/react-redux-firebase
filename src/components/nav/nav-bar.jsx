@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as globalActions from '../../actions/global-actions'
 import * as userActions from '../../actions/user-actions'
 import { isSmallDevice } from '../../utilities/utilities'
 import MenuLarge from './menu-large'
@@ -10,7 +11,7 @@ class NavBar extends React.Component {
 		smallMenu: isSmallDevice()
 	}
 	componentDidMount() {
-		this.props.actions.checkForUser()
+		this.props.userActions.checkForUser()
 		window.addEventListener('resize', this.updateWidth)
 	}
 	updateWidth = () => {
@@ -32,7 +33,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(userActions, dispatch)
+		globalActions: bindActionCreators(globalActions, dispatch),
+		userActions: bindActionCreators(userActions, dispatch)
 	}
 }
 
