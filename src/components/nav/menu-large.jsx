@@ -16,11 +16,19 @@ class MenuLarge extends React.Component {
 		const userName = user.displayName || user.email
 		const guestMenu = (
 			<div className="nav-bar">
-				<NavItem active>Home</NavItem>
-				<NavItem>About</NavItem>
-				<NavItem align="right">Login</NavItem>
-				<NavItem align="right">Sign Up</NavItem>
-				<NavItem align="right">Help</NavItem>
+				<NavItem active linkTo="/">
+					Home
+				</NavItem>
+				<NavItem linkTo="/about">About</NavItem>
+				<NavItem linkTo="/login" align="right">
+					Login
+				</NavItem>
+				<NavItem linkTo="/sign-up" align="right">
+					Sign Up
+				</NavItem>
+				<NavItem linkTo="/help" align="right">
+					Help
+				</NavItem>
 			</div>
 		)
 		const userMenu = <div />

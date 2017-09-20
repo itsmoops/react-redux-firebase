@@ -1,4 +1,13 @@
-class NavItem extends React.PureComponent {
+import { BrowserRouter as Router } from 'react-router-dom'
+
+class NavItem extends React.Component {
+    componentDidMount() {
+        this.props.history.push('/')
+    }
+    handleClick() {
+        this.props.history.push(this.props.linkTo)
+    }
+
     render() {
         let itemClasses = ''
         if (this.props.active) {
@@ -10,7 +19,7 @@ class NavItem extends React.PureComponent {
             itemClasses = `${itemClasses} nav-item-right`
         }
         return (
-            <div className={`nav-item ${itemClasses}`}>
+            <div className={`nav-item ${itemClasses}`} onClick={this.handleClick}>
                 <p>{this.props.children}</p>
             </div>
         )
@@ -19,12 +28,14 @@ class NavItem extends React.PureComponent {
 
 NavItem.defaultProps = {
     active: false,
-    align: 'left'
+    align: 'left',
+    linkTo: '/'
 }
 
 NavItem.propTypes = {
     active: PropTypes.bool,
-    align: PropTypes.string
+    align: PropTypes.string,
+    linkTo: PropTypes.string
 }
 
 export default NavItem
