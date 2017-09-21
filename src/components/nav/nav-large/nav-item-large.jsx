@@ -1,4 +1,5 @@
 import { withRouter } from 'react-router'
+import './nav-item-large.less'
 
 class NavItem extends React.PureComponent {
 	handleClick = () => {
@@ -6,7 +7,7 @@ class NavItem extends React.PureComponent {
 	}
 
 	render() {
-		let itemClasses = 'nav-item'
+		let itemClasses = 'nav-item-large'
 		if (this.props.active) {
 			itemClasses = `${itemClasses} nav-item-active`
 		}
@@ -17,7 +18,7 @@ class NavItem extends React.PureComponent {
 		}
 		return (
 			<div className={itemClasses} onClick={this.handleClick}>
-				<p>{this.props.children} {this.props.icon}</p>
+				<p>{this.props.children}</p>
 			</div>
 		)
 	}

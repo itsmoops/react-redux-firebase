@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom'
-import NavItem from './nav-item'
+import NavItem from './nav-item-large'
 import * as userActions from '../../../actions/user-actions'
 
 class NavLarge extends React.Component {
@@ -19,7 +18,9 @@ class NavLarge extends React.Component {
 				<NavItem linkTo="/" active={this.props.active === ''}>
 					Home
 				</NavItem>
-				<NavItem linkTo="/about" active={this.props.active === 'about'}>About</NavItem>
+				<NavItem linkTo="/about" active={this.props.active === 'about'}>
+					About
+				</NavItem>
 				<NavItem linkTo="/login" active={this.props.active === 'login'} align="right">
 					Login
 				</NavItem>

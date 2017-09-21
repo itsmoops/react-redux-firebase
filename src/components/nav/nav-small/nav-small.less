@@ -1,11 +1,19 @@
+@import '../nav-bar';
+
 @animation-time: 0.3s;
 @menu-margin-top: -200%;
 
-.chevron-container {
-	position: relative;
-	background: @background;
-	padding-bottom: 5px;
-	z-index: 1;
+.menu-small {
+	margin-top: @menu-margin-top;
+	top: @nav-bar-height;
+	background-color: @background;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.chevron {
+	padding: 15 0 0 15;
 }
 
 .menu-small-down {

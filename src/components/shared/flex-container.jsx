@@ -1,3 +1,4 @@
+import './flex-container.less'
 /**
  * FlexContainer - Semantic UI grid wrapper that builds a responsive flexbox
  */
