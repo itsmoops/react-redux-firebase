@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-large'
 import * as userActions from '../../../actions/user-actions'
+import './nav-large.less'
 
 class NavLarge extends React.Component {
 	handleDropDownClick = e => {
@@ -14,22 +15,27 @@ class NavLarge extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		const guestMenu = (
-			<div className="nav-bar">
-				<NavItem linkTo="/" active={this.props.active === ''}>
-					Home
-				</NavItem>
-				<NavItem linkTo="/about" active={this.props.active === 'about'}>
-					About
-				</NavItem>
-				<NavItem linkTo="/login" active={this.props.active === 'login'} align="right">
-					Login
-				</NavItem>
-				<NavItem linkTo="/sign-up" active={this.props.active === 'sign-up'} align="right">
-					Sign Up
-				</NavItem>
-				<NavItem linkTo="/help" active={this.props.active === 'help'} align="right">
-					Help
-				</NavItem>
+			<div className="nav-bar nav-large">
+				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
+				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
+				<NavItem
+					linkTo="/login"
+					value="Login"
+					active={this.props.active === 'login'}
+					align="right"
+				/>
+				<NavItem
+					linkTo="/sign-up"
+					value="Sign Up"
+					active={this.props.active === 'sign-up'}
+					align="right"
+				/>
+				<NavItem
+					linkTo="/help"
+					value="Help"
+					active={this.props.active === 'help'}
+					align="right"
+				/>
 			</div>
 		)
 		const userMenu = <div />

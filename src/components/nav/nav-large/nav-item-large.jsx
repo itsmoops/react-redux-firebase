@@ -18,7 +18,7 @@ class NavItem extends React.PureComponent {
 		}
 		return (
 			<div className={itemClasses} onClick={this.handleClick}>
-				<p>{this.props.children}</p>
+				<p>{this.props.value}</p>
 			</div>
 		)
 	}
@@ -27,13 +27,15 @@ class NavItem extends React.PureComponent {
 NavItem.defaultProps = {
 	active: false,
 	align: 'left',
-	linkTo: '/'
+	linkTo: '/',
+	value: ''
 }
 
 NavItem.propTypes = {
 	active: PropTypes.bool,
 	align: PropTypes.string,
-	linkTo: PropTypes.string
+	linkTo: PropTypes.string,
+	value: PropTypes.string
 }
 
 export default withRouter(NavItem)

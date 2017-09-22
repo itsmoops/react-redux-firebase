@@ -10,17 +10,16 @@ class NavSmall extends React.Component {
 		menuOpen: undefined
 	}
 	handleIconClick = () => {
-		debugger
 		this.setState({
 			menuOpen: !this.state.menuOpen
 		})
 	}
-	handleItemClick = () => {
-		this.setState({ menuOpen: false })
-	}
 	handleLogout = () => {
 		this.props.actions.userLogout()
 		this.handleItemClick()
+	}
+	handleItemClick = linkTo => {
+		this.setState({ menuOpen: false })
 	}
 	render() {
 		let iconClass = ''
@@ -48,18 +47,16 @@ class NavSmall extends React.Component {
 				<div className={`menu-small ${menuClass}`}>
 					<NavItem
 						linkTo="/"
-						active={this.props.active === ''}
 						onClick={this.handleItemClick}
-					>
-						Home
-					</NavItem>
+						active={this.props.active === ''}
+						value="Home"
+					/>
 					<NavItem
 						linkTo="/about"
-						active={this.props.active === 'about'}
 						onClick={this.handleItemClick}
-					>
-						About
-					</NavItem>
+						active={this.props.active === 'about'}
+						value="About"
+					/>
 				</div>
 			</div>
 		)
