@@ -47,15 +47,35 @@ class NavSmall extends React.Component {
 				<div className={`menu-small ${menuClass}`}>
 					<NavItem
 						linkTo="/"
-						onClick={this.handleItemClick}
-						active={this.props.active === ''}
 						value="Home"
+						active={this.props.active === ''}
+						onClick={this.handleItemClick}
 					/>
 					<NavItem
 						linkTo="/about"
-						onClick={this.handleItemClick}
-						active={this.props.active === 'about'}
 						value="About"
+						active={this.props.active === 'about'}
+						onClick={this.handleItemClick}
+					/>
+					<hr />
+					<NavItem
+						linkTo="/sign-up"
+						value="Sign Up"
+						active={this.props.active === 'sign-up'}
+						onClick={this.handleItemClick}
+					/>
+					<NavItem
+						linkTo="/login"
+						value="Login"
+						active={this.props.active === 'login'}
+						onClick={this.handleItemClick}
+					/>
+					<hr />
+					<NavItem
+						linkTo="/help"
+						value="Help"
+						active={this.props.active === 'help'}
+						onClick={this.handleItemClick}
 					/>
 				</div>
 			</div>
