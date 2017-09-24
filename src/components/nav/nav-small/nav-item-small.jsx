@@ -6,13 +6,13 @@ class NavItemSmall extends React.PureComponent {
 		this.props.history.push(this.props.linkTo)
 	}
 	render() {
-		let itemClasses = 'nav-item-small'
+		let classes = 'nav-item-small'
 		if (this.props.active) {
-			itemClasses = `${itemClasses} nav-item-active`
+			classes = `${classes} nav-item-active`
 		}
 		return (
 			<div
-				className={itemClasses}
+				className={classes}
 				onClick={() => {
 					this.props.onClick()
 					this.handleClick()

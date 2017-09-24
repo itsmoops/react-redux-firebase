@@ -22,12 +22,12 @@ class NavSmall extends React.Component {
 		this.setState({ menuOpen: false })
 	}
 	render() {
-		let iconClass = ''
-		let menuClass = ''
+		let iconClasses = ''
+		let menuClasses = ''
 		if (this.state.menuOpen !== undefined) {
 			// apply menu animation classes
-			iconClass = this.state.menuOpen ? 'nav-bar-icon-up' : 'nav-bar-icon-down'
-			menuClass = this.state.menuOpen ? 'menu-small-down' : 'menu-small-up'
+			iconClasses = this.state.menuOpen ? 'nav-bar-icon-up' : 'nav-bar-icon-down'
+			menuClasses = this.state.menuOpen ? 'menu-small-down' : 'menu-small-up'
 		}
 
 		const user = this.props.user
@@ -38,13 +38,13 @@ class NavSmall extends React.Component {
 				<div className="nav-bar">
 					<button className="chevron">
 						<Icon
-							className={iconClass}
+							className={iconClasses}
 							icon={chevronDown}
 							onClick={this.handleIconClick}
 						/>
 					</button>
 				</div>
-				<div className={`menu-small ${menuClass}`}>
+				<div className={`menu-small ${menuClasses}`}>
 					<NavItem
 						linkTo="/"
 						value="Home"

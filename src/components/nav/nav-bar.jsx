@@ -8,19 +8,17 @@ import NavSmall from './nav-small/nav-small'
 import './nav-bar.less'
 
 class NavBar extends React.Component {
-	state = {
-		smallMenu: isSmallDevice()
-	}
 	componentDidMount() {
+		this.props.globalActions.checkDeviceSize()
 		this.props.userActions.checkForUser()
 		window.addEventListener('resize', this.updateWidth)
 	}
 	updateWidth = () => {
-		this.setState({ smallMenu: isSmallDevice() })
+		this.props.globalActions.checkDeviceSize()
 	}
 	render() {
 		const activeRoute = this.props.location.pathname.replace('/', '') || ''
-		return this.state.smallMenu ? (
+		return this.props.global.isSmallDevice ? (
 			<NavSmall active={activeRoute} />
 		) : (
 			<NavLarge active={activeRoute} />
@@ -29,7 +27,10 @@ class NavBar extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	return { user: state.user }
+	return {
+		global: state.global,
+		user: state.user
+	}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,8 +1,8 @@
 // global-actions
-export const IS_SMALL_DEVICE = 'IS_SMALL_DEVICE'
+export const CHECK_DEVICE_SIZE = 'CHECK_DEVICE_SIZE'
+export const LOADING_STATE_CHANGE = 'LOADING_STATE_CHANGE'
 
 // user-actions
-export const LOADING_STATE_CHANGE = 'LOADING_STATE_CHANGE'
 export const CHECK_FOR_USER = 'CHECK_FOR_USER'
 export const USER_SIGN_UP_SUCCESS = 'USER_SIGN_UP_SUCCESS'
 export const USER_SIGN_UP_ERROR = 'USER_SIGN_UP_ERROR'

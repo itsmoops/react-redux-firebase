@@ -9,6 +9,8 @@ import Account from './components/user/account'
 import Profile from './components/user/profile'
 import NotFound from './components/not-found/not-found'
 
+import LoadingSpinner from './components/shared/loading-spinner'
+
 // <Route path="*" component={NotFound} />
 export default (
     <div>
@@ -20,5 +22,6 @@ export default (
         <Route path="/login" component={Login} />
         <Route path="/account" component={Account} />
         <Route path="/profile" component={Profile} />
+        <LoadingSpinner />
     </div>
 )

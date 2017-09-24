@@ -1,13 +1,7 @@
 import * as types from './action-types'
+import { loadingStateChange } from './global-actions'
 
-export function loadingStateChange(loading) {
-    return {
-        type: types.LOADING_STATE_CHANGE,
-        loading
-    }
-}
-
-export function checkForUserResult(user) {
+function checkForUserResult(user) {
     return {
         type: types.CHECK_FOR_USER,
         user
@@ -40,14 +34,14 @@ export function checkForUser() {
         })
 }
 
-export function userSignUpSuccess(user) {
+function userSignUpSuccess(user) {
     return {
         type: types.USER_SIGN_UP_SUCCESS,
         user
     }
 }
 
-export function userSignUpError(error) {
+function userSignUpError(error) {
     return {
         type: types.USER_SIGN_UP_ERROR,
         error
@@ -82,14 +76,14 @@ export function userSignUp(user) {
     }
 }
 
-export function userLoginSuccess(user) {
+function userLoginSuccess(user) {
     return {
         type: types.USER_LOGIN_SUCCESS,
         user
     }
 }
 
-export function userLoginError(error) {
+function userLoginError(error) {
     return {
         type: types.USER_LOGIN_ERROR,
         error
@@ -124,14 +118,14 @@ export function userLogin(user) {
     }
 }
 
-export function userLogoutSuccess(user) {
+function userLogoutSuccess(user) {
     return {
         type: types.USER_LOGOUT_SUCCESS,
         user
     }
 }
 
-export function userLogoutError(error) {
+function userLogoutError(error) {
     return {
         type: types.USER_LOGOUT_ERROR,
         error

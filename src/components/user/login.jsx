@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
+import Input from '../shared/input'
+import Button from '../shared/button'
 
 class Login extends React.Component {
 	state = {
@@ -20,8 +22,7 @@ class Login extends React.Component {
 		const value = e.target.value
 		this.setState({ [type]: value })
 	}
-	onClickSubmit = e => {
-		e.preventDefault()
+	onClickSubmit = () => {
 		this.props.actions
 			.userLogin({ email: this.state.email, password: this.state.password })
 			.then(() => {
@@ -34,6 +35,11 @@ class Login extends React.Component {
 		return (
 			<FlexContainer>
 				<h1>Login</h1>
+				<Input type="email" onInput={this.handleInputChange} />
+				<Input type="password" onInput={this.handleInputChange} />
+				<Button right onClick={this.onClickSubmit}>
+					Login
+				</Button>
 			</FlexContainer>
 		)
 	}

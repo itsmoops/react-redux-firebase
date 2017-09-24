@@ -1,6 +1,6 @@
 import './flex-container.less'
 /**
- * FlexContainer - Semantic UI grid wrapper that builds a responsive flexbox
+ * FlexContainer - Wrapper that builds a responsive flexbox
  */
 class FlexContainer extends React.PureComponent {
     render() {

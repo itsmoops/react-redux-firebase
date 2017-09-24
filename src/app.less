@@ -6,8 +6,26 @@ body {
 	font-family: Helvetica;
 }
 
+h1 {
+	text-align: center;
+}
+
 hr {
 	border-top: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+input {
+	width: 100%;
+	min-height: 35px;
+	font-size: 20px;
+	padding: 5;
+	margin: 10 0 10 0;
+	border: none;
+	border-bottom: 2px solid @background-dark;
+	outline: none;
+	&:focus {
+		border-bottom: 2px solid @background-accent-1;
+	}
 }
 
 button,
