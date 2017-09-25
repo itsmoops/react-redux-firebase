@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import NavBar from './components/nav/nav-bar'
 import HomePage from './components/home/home-page'
 import About from './components/about/about'
@@ -14,14 +14,16 @@ import LoadingSpinner from './components/shared/loading-spinner'
 export default (
     <div>
         <Route component={NavBar} />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={About} />
-        <Route path="/help" component={Help} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/login" component={Login} />
-        <Route path="/account" component={Account} />
-        <Route path="/profile" component={Profile} />
-        <Route path="*" component={NotFound} />
+        <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/help" component={Help} />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="*" component={NotFound} />
+        </Switch>
         <LoadingSpinner />
     </div>
 )

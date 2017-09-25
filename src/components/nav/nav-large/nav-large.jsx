@@ -6,7 +6,7 @@ import Dropdown from '../../shared/dropdown'
 import DropdownItem from '../../shared/dropdown-item'
 import * as userActions from '../../../actions/user-actions'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
-import { gears } from 'react-icons-kit/fa/gears'
+import { gear } from 'react-icons-kit/fa/gear'
 import { question } from 'react-icons-kit/fa/question'
 import { signOut } from 'react-icons-kit/fa/signOut'
 import './nav-large.less'
@@ -61,7 +61,7 @@ class NavLarge extends React.Component {
 						active={this.props.active === 'account'}
 						align="left"
 					>
-						<Icon icon={gears} />
+						<Icon icon={gear} />
 					</DropdownItem>
 					<hr />
 					<DropdownItem
