@@ -1,8 +1,14 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router'
 import NavItem from './nav-item-large'
 import Dropdown from '../../shared/dropdown'
+import DropdownItem from '../../shared/dropdown-item'
 import * as userActions from '../../../actions/user-actions'
+import { userCircle } from 'react-icons-kit/fa/userCircle'
+import { gears } from 'react-icons-kit/fa/gears'
+import { question } from 'react-icons-kit/fa/question'
+import { signOut } from 'react-icons-kit/fa/signOut'
 import './nav-large.less'
 
 class NavLarge extends React.Component {
@@ -11,6 +17,7 @@ class NavLarge extends React.Component {
 	}
 	handleLogout = e => {
 		this.props.actions.userLogout()
+		this.props.history.push('/')
 	}
 	render() {
 		const user = this.props.user
@@ -38,16 +45,46 @@ class NavLarge extends React.Component {
 			</div>
 		)
 		const userMenu = (
-			<NavItem align="right">
-				<Dropdown />
-			</NavItem>
+			<div className="nav-item-large nav-item-right">
+				<Dropdown value={userName}>
+					<DropdownItem
+						value="Edit Profile"
+						linkTo="/profile"
+						active={this.props.active === 'profile'}
+						align="left"
+					>
+						<Icon icon={userCircle} />
+					</DropdownItem>
+					<DropdownItem
+						value="Settings"
+						linkTo="/account"
+						active={this.props.active === 'account'}
+						align="left"
+					>
+						<Icon icon={gears} />
+					</DropdownItem>
+					<hr />
+					<DropdownItem
+						value="Help"
+						linkTo="/help"
+						active={this.props.active === 'help'}
+						align="left"
+					>
+						<Icon icon={question} />
+					</DropdownItem>
+					<hr />
+					<DropdownItem value="Logout" align="left" onClick={this.handleLogout}>
+						<Icon icon={signOut} />
+					</DropdownItem>
+				</Dropdown>
+			</div>
 		)
 
 		return (
 			<div className="nav-bar nav-large">
 				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
 				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
-				{userMenu}
+				{this.props.user.authenticated ? userMenu : guestMenu}
 			</div>
 		)
 	}
@@ -63,4 +100,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavLarge)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavLarge))

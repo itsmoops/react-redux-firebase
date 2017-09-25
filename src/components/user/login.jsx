@@ -14,7 +14,7 @@ class Login extends React.Component {
 	componentDidMount() {
 		document.title = 'Login'
 		if (this.props.user.authenticated) {
-			// this.props.history.push('/')
+			this.props.history.push('/')
 		}
 	}
 	handleInputChange = e => {

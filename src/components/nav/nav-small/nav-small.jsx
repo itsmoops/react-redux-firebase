@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-small'
 import * as userActions from '../../../actions/user-actions'
-import { chevronDown } from 'react-icons-kit/fa/chevronDown'
+import { thinDown } from 'react-icons-kit/entypo/thinDown'
 import './nav-small.less'
 
 class NavSmall extends React.Component {
@@ -73,7 +73,7 @@ class NavSmall extends React.Component {
 					<button className="chevron">
 						<Icon
 							className={iconClasses}
-							icon={chevronDown}
+							icon={thinDown}
 							onClick={this.handleIconClick}
 						/>
 					</button>
