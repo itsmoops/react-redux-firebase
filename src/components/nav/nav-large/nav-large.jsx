@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-large'
+import Dropdown from '../../shared/dropdown'
 import * as userActions from '../../../actions/user-actions'
 import './nav-large.less'
 
@@ -15,9 +16,7 @@ class NavLarge extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		const guestMenu = (
-			<div className="nav-bar nav-large">
-				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
-				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
+			<div>
 				<NavItem
 					linkTo="/login"
 					value="Login"
@@ -38,9 +37,19 @@ class NavLarge extends React.Component {
 				/>
 			</div>
 		)
-		const userMenu = <div />
+		const userMenu = (
+			<NavItem align="right">
+				<Dropdown />
+			</NavItem>
+		)
 
-		return guestMenu
+		return (
+			<div className="nav-bar nav-large">
+				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
+				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
+				{userMenu}
+			</div>
+		)
 	}
 }
 

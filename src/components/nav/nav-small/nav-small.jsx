@@ -35,6 +35,40 @@ class NavSmall extends React.Component {
 
 		const guestMenu = (
 			<div>
+				<NavItem
+					linkTo="/sign-up"
+					value="Sign Up"
+					active={this.props.active === 'sign-up'}
+					onClick={this.handleItemClick}
+				/>
+				<NavItem
+					linkTo="/login"
+					value="Login"
+					active={this.props.active === 'login'}
+					onClick={this.handleItemClick}
+				/>
+			</div>
+		)
+		const userMenu = (
+			<div>
+				<NavItem
+					linkTo="/profile"
+					value="Profile"
+					active={this.props.active === 'profile'}
+					onClick={this.handleItemClick}
+				/>
+				<NavItem
+					linkTo="/account"
+					value="Account Settings"
+					active={this.props.active === 'account'}
+					onClick={this.handleItemClick}
+				/>
+				<NavItem value="Logout" onClick={this.handleLogout} />
+			</div>
+		)
+
+		return (
+			<div>
 				<div className="nav-bar">
 					<button className="chevron">
 						<Icon
@@ -58,18 +92,7 @@ class NavSmall extends React.Component {
 						onClick={this.handleItemClick}
 					/>
 					<hr />
-					<NavItem
-						linkTo="/sign-up"
-						value="Sign Up"
-						active={this.props.active === 'sign-up'}
-						onClick={this.handleItemClick}
-					/>
-					<NavItem
-						linkTo="/login"
-						value="Login"
-						active={this.props.active === 'login'}
-						onClick={this.handleItemClick}
-					/>
+					{this.props.user.authenticated ? userMenu : guestMenu}
 					<hr />
 					<NavItem
 						linkTo="/help"
@@ -80,10 +103,6 @@ class NavSmall extends React.Component {
 				</div>
 			</div>
 		)
-
-		const userMenu = <div />
-
-		return guestMenu
 	}
 }
 

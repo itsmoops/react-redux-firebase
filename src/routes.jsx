@@ -14,7 +14,6 @@ import LoadingSpinner from './components/shared/loading-spinner'
 export default (
     <div>
         <Route component={NavBar} />
-        <Route path="*" exact component={NotFound} />
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
@@ -22,6 +21,7 @@ export default (
         <Route path="/login" component={Login} />
         <Route path="/account" component={Account} />
         <Route path="/profile" component={Profile} />
+        <Route path="*" component={NotFound} />
         <LoadingSpinner />
     </div>
 )

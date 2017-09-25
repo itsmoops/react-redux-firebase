@@ -18,7 +18,7 @@ class NavItemSmall extends React.PureComponent {
 					this.handleClick()
 				}}
 			>
-				<p>{this.props.value}</p>
+				<p>{this.props.value || this.props.children}</p>
 			</div>
 		)
 	}

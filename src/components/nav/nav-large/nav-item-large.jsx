@@ -18,7 +18,7 @@ class NavItem extends React.PureComponent {
 		}
 		return (
 			<div className={itemClasses} onClick={this.handleClick}>
-				<p>{this.props.value}</p>
+				<p>{this.props.value || this.props.children}</p>
 			</div>
 		)
 	}
