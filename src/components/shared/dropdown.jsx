@@ -15,15 +15,28 @@ class Dropdown extends React.PureComponent {
 		if (this.state.dropDownOpen) {
 			classes = `${classes} dropdown-open`
 		}
+		const DropdownHeader = horizontalCenter(props => (
+			<button className="dropbtn" onClick={this.displayDropdown}>
+				{props.children}
+			</button>
+		))
 		return (
 			<div className="dropdown">
-				<button className="dropbtn" onClick={this.displayDropdown}>
+				<DropdownHeader>
 					{this.props.value} <Icon icon={caretDown} />
-				</button>
+				</DropdownHeader>
 				<div className={classes}>{this.props.children}</div>
 			</div>
 		)
 	}
+}
+
+Dropdown.defaultProps = {
+	value: ''
+}
+
+Dropdown.propTypes = {
+	value: PropTypes.string
 }
 
 export default Dropdown

@@ -10,7 +10,14 @@ class NavItemSmall extends React.PureComponent {
 		if (this.props.active) {
 			classes = `${classes} nav-item-active`
 		}
-		return (
+
+		const icon = this.props.icon ? (
+			<Icon icon={this.props.icon} size={this.props.iconSize} />
+		) : (
+			undefined
+		)
+
+		const Item = horizontalCenter(props => (
 			<div
 				className={classes}
 				onClick={() => {
@@ -18,8 +25,13 @@ class NavItemSmall extends React.PureComponent {
 					this.handleClick()
 				}}
 			>
-				<p>{this.props.value || this.props.children}</p>
+				<p>{props.children}</p>
 			</div>
+		))
+		return (
+			<Item>
+				{this.props.value || this.props.children} {icon}
+			</Item>
 		)
 	}
 }
@@ -27,13 +39,17 @@ class NavItemSmall extends React.PureComponent {
 NavItemSmall.defaultProps = {
 	active: false,
 	linkTo: '/',
-	value: ''
+	value: '',
+	icon: undefined,
+	iconSize: 24
 }
 
 NavItemSmall.propTypes = {
 	active: PropTypes.bool,
 	linkTo: PropTypes.string,
-	value: PropTypes.string
+	value: PropTypes.string,
+	icon: PropTypes.object,
+	iconSize: PropTypes.number
 }
 
 export default withRouter(NavItemSmall)

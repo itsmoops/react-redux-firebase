@@ -3,11 +3,14 @@ import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-small'
 import * as userActions from '../../../actions/user-actions'
 import { thinDown } from 'react-icons-kit/entypo/thinDown'
+import { userCircle } from 'react-icons-kit/fa/userCircle'
+import { gear } from 'react-icons-kit/fa/gear'
+import { signOut } from 'react-icons-kit/fa/signOut'
 import './nav-small.less'
 
 class NavSmall extends React.Component {
 	state = {
-		menuOpen: undefined
+		menuOpen: true
 	}
 	handleIconClick = () => {
 		this.setState({
@@ -53,17 +56,19 @@ class NavSmall extends React.Component {
 			<div>
 				<NavItem
 					linkTo="/profile"
-					value="Profile"
+					value="Edit Profile"
 					active={this.props.active === 'profile'}
+					icon={userCircle}
 					onClick={this.handleItemClick}
 				/>
 				<NavItem
 					linkTo="/account"
 					value="Account Settings"
 					active={this.props.active === 'account'}
+					icon={gear}
 					onClick={this.handleItemClick}
 				/>
-				<NavItem value="Logout" onClick={this.handleLogout} />
+				<NavItem value="Logout" icon={signOut} onClick={this.handleLogout} />
 			</div>
 		)
 

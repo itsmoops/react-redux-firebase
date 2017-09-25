@@ -52,30 +52,30 @@ class NavLarge extends React.Component {
 						linkTo="/profile"
 						active={this.props.active === 'profile'}
 						align="left"
-					>
-						<Icon icon={userCircle} />
-					</DropdownItem>
+						icon={userCircle}
+					/>
 					<DropdownItem
 						value="Settings"
 						linkTo="/account"
 						active={this.props.active === 'account'}
 						align="left"
-					>
-						<Icon icon={gear} />
-					</DropdownItem>
+						icon={gear}
+					/>
 					<hr />
 					<DropdownItem
 						value="Help"
 						linkTo="/help"
 						active={this.props.active === 'help'}
 						align="left"
-					>
-						<Icon icon={question} />
-					</DropdownItem>
+						icon={question}
+					/>
 					<hr />
-					<DropdownItem value="Logout" align="left" onClick={this.handleLogout}>
-						<Icon icon={signOut} />
-					</DropdownItem>
+					<DropdownItem
+						value="Logout"
+						align="left"
+						onClick={this.handleLogout}
+						icon={signOut}
+					/>
 				</Dropdown>
 			</div>
 		)
