@@ -11,10 +11,10 @@ import NotFound from './components/not-found/not-found'
 
 import LoadingSpinner from './components/shared/loading-spinner'
 
-// <Route path="*" component={NotFound} />
 export default (
     <div>
         <Route component={NavBar} />
+        <Route path="*" exact component={NotFound} />
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
