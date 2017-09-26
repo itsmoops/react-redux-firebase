@@ -5,5 +5,5 @@ Intended to be a simple, stripped-down react-redux boilerplate with as few depen
 ### Usage
 ````
 npm i
-npm start
+npm run dev
 ````
