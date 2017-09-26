@@ -10,7 +10,7 @@ import './nav-small.less'
 
 class NavSmall extends React.Component {
 	state = {
-		menuOpen: true
+		menuOpen: undefined
 	}
 	handleIconClick = () => {
 		this.setState({
