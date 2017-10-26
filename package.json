@@ -13,12 +13,7 @@
 		"type": "git",
 		"url": "git+https://github.com/itsmoops/react-redux-webpack.git"
 	},
-	"keywords": [
-		"react",
-		"redux",
-		"webpack",
-		"boilerplate"
-	],
+	"keywords": ["react", "redux", "webpack", "boilerplate"],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {
@@ -36,9 +31,7 @@
 		"css-loader": "^0.28.1",
 		"extract-text-webpack-plugin": "^2.1.0",
 		"file-loader": "^0.11.1",
-		"firebase": "^4.1.0",
 		"image-webpack-loader": "^3.3.1",
-		"isomorphic-fetch": "^2.2.1",
 		"less": "^2.7.2",
 		"less-loader": "^4.0.3",
 		"prop-types": "^15.5.10",
