@@ -42,7 +42,8 @@ module.exports = {
             ReactDOM: 'react-dom',
             PropTypes: 'prop-types',
             Icon: ['react-icons-kit', 'Icon'],
-            horizontalCenter: ['react-icons-kit', 'horizontalCenter']
+            horizontalCenter: ['react-icons-kit', 'horizontalCenter'],
+            firebase: 'firebase'
         }),
         new ExtractTextPlugin('[name].css')
     ],

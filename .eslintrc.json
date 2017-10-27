@@ -18,6 +18,8 @@
 		"ReactDOM": true,
 		"PropTypes": true,
 		"state": true,
+		"firebase": true,
+		"Icon": true,
 		"horizontalCenter": true
 	},
 	"rules": {
