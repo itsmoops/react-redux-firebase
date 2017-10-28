@@ -2,7 +2,8 @@ import * as types from '../actions/action-types'
 
 const defaultState = {
     isSmallDevice: false,
-    loading: false
+    loading: false,
+    menuOpen: false
 }
 
 export default function globalReducer(state = defaultState, action) {
@@ -11,6 +12,8 @@ export default function globalReducer(state = defaultState, action) {
             return Object.assign({}, state, { isSmallDevice: action.isSmallDevice })
         case types.LOADING_STATE_CHANGE:
             return Object.assign({}, state, { loading: action.loading })
+        case types.TOGGLE_MENU_DROPDOWN:
+            return Object.assign({}, state, { menuOpen: action.menuOpen })
         default:
             return state
     }

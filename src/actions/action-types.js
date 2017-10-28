@@ -1,6 +1,7 @@
 // global-actions
 export const CHECK_DEVICE_SIZE = 'CHECK_DEVICE_SIZE'
 export const LOADING_STATE_CHANGE = 'LOADING_STATE_CHANGE'
+export const TOGGLE_MENU_DROPDOWN = 'TOGGLE_MENU_DROPDOWN'
 
 // user-actions
 export const CHECK_FOR_USER = 'CHECK_FOR_USER'

@@ -1,22 +1,20 @@
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as globalActions from '../../actions/global-actions'
 import { caretDown } from 'react-icons-kit/fa/caretDown'
 import './dropdown.less'
 
 class Dropdown extends React.PureComponent {
-	state = {
-		dropDownOpen: false
-	}
 	displayDropdown = () => {
-		this.setState({
-			dropDownOpen: !this.state.dropDownOpen
-		})
+		this.props.actions.toggleMenuDropdown(!this.props.global.menuOpen)
 	}
 	render() {
 		let classes = 'dropdown-content'
-		if (this.state.dropDownOpen) {
+		if (this.props.global.menuOpen) {
 			classes = `${classes} dropdown-open`
 		}
 		const DropdownHeader = horizontalCenter(props => (
-			<button className="dropbtn" onClick={this.displayDropdown}>
+			<button className="drop-btn" onClick={this.displayDropdown}>
 				{props.children}
 			</button>
 		))
@@ -39,4 +37,14 @@ Dropdown.propTypes = {
 	value: PropTypes.string
 }
 
-export default Dropdown
+function mapStateToProps(state, ownProps) {
+	return { global: state.global }
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(globalActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
