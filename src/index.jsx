@@ -6,7 +6,11 @@ import configureStore from './store/config'
 import config from './firebase-config'
 import './app.less'
 
-firebase.initializeApp(config)
+if (process.env.NODE_ENV === 'production') {
+    firebase.initializeApp(config.prod)
+} else {
+    firebase.initializeApp(config.dev)
+}
 
 // can pass our initialState here - useful for server rendering
 const store = configureStore()
