@@ -11,7 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     firebase.initializeApp(config.dev)
 }
-
 // can pass our initialState here - useful for server rendering
 const store = configureStore()
 
