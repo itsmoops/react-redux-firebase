@@ -5,6 +5,7 @@ import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 import Input from '../shared/input'
 import Button from '../shared/button'
+import Message from '../shared/message'
 
 class Login extends React.Component {
 	state = {
@@ -22,7 +23,8 @@ class Login extends React.Component {
 		const value = e.target.value
 		this.setState({ [type]: value })
 	}
-	onClickSubmit = () => {
+	onHandleSubmit = e => {
+		e.preventDefault()
 		this.props.actions
 			.userLogin({ email: this.state.email, password: this.state.password })
 			.then(() => {
@@ -34,12 +36,13 @@ class Login extends React.Component {
 	render() {
 		return (
 			<FlexContainer>
-				<h1>Login</h1>
-				<Input type="email" onInput={this.handleInputChange} />
-				<Input type="password" onInput={this.handleInputChange} />
-				<Button right onClick={this.onClickSubmit}>
-					Login
-				</Button>
+				<form onSubmit={this.onHandleSubmit}>
+					<h1>Login</h1>
+					<Input type="email" onInput={this.handleInputChange} />
+					<Input type="password" onInput={this.handleInputChange} />
+					<Button>Login</Button>
+					{this.props.user.message && <Message>{this.props.user.message}</Message>}
+				</form>
 			</FlexContainer>
 		)
 	}

@@ -12,7 +12,9 @@ class NavItemSmall extends React.PureComponent {
 		}
 
 		const icon = this.props.icon ? (
-			<Icon icon={this.props.icon} size={this.props.iconSize} />
+			<div>
+				<Icon icon={this.props.icon} size={this.props.iconSize} />
+			</div>
 		) : (
 			undefined
 		)

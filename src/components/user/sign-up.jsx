@@ -4,6 +4,7 @@ import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 import Input from '../shared/input'
 import Button from '../shared/button'
+import Message from '../shared/message'
 
 class SignUp extends React.Component {
 	state = {
@@ -21,7 +22,8 @@ class SignUp extends React.Component {
 		const value = e.target.value
 		this.setState({ [type]: value })
 	}
-	onClickSubmit = () => {
+	onHandleSubmit = e => {
+		e.preventDefault()
 		this.props.actions
 			.userSignUp({ email: this.state.email, password: this.state.password })
 			.then(() => {
@@ -33,12 +35,13 @@ class SignUp extends React.Component {
 	render() {
 		return (
 			<FlexContainer>
-				<h1 size="large">Sign Up</h1>
-				<Input type="email" onInput={this.handleInputChange} />
-				<Input type="password" onInput={this.handleInputChange} />
-				<Button right onClick={this.onClickSubmit}>
-					Sign Up
-				</Button>
+				<form onSubmit={this.onHandleSubmit}>
+					<h1 size="large">Sign Up</h1>
+					<Input type="email" onInput={this.handleInputChange} />
+					<Input type="password" onInput={this.handleInputChange} />
+					<Button>Sign Up</Button>
+					{this.props.user.message && <Message>{this.props.user.message}</Message>}
+				</form>
 			</FlexContainer>
 		)
 	}
