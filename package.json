@@ -4,8 +4,8 @@
 	"description": "React Redux Webpack",
 	"main": "index.js",
 	"scripts": {
-		"start": "webpack -p && node server.js",
-		"server": "node server.js",
+		"start": "webpack --config=webpack.prod.config && node server.js",
+		"stage": "webpack --config=webpack.stage.config && node server.js",
 		"dev": "webpack-dev-server",
 		"test": "./test-runner.js"
 	},
@@ -13,12 +13,7 @@
 		"type": "git",
 		"url": "git+https://github.com/itsmoops/react-redux-webpack.git"
 	},
-	"keywords": [
-		"react",
-		"redux",
-		"webpack",
-		"boilerplate"
-	],
+	"keywords": ["react", "redux", "webpack", "boilerplate"],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {
@@ -33,7 +28,9 @@
 		"babel-preset-env": "^1.6.0",
 		"babel-preset-react": "^6.24.1",
 		"babel-preset-stage-0": "^6.24.1",
+		"copy-webpack-plugin": "^4.2.0",
 		"css-loader": "^0.28.1",
+		"express": "^4.16.2",
 		"extract-text-webpack-plugin": "^2.1.0",
 		"file-loader": "^0.11.1",
 		"firebase": "^4.1.0",
@@ -52,6 +49,7 @@
 		"redux-immutable-state-invariant": "^2.0.0",
 		"redux-thunk": "^2.2.0",
 		"style-loader": "^0.18.1",
+		"uglifyjs-webpack-plugin": "^1.0.1",
 		"webpack": "^3.5.5"
 	},
 	"devDependencies": {

@@ -8,9 +8,9 @@ app.set('port', process.env.PORT || 8080)
 app.use(express.static(path.join(__dirname, '/dist')))
 
 app.get('/', (request, response) => {
-  response.render('bundle')
+    response.render('index.html')
 })
 
 app.listen(app.get('port'), () => {
-  console.log('Node app is running on port', app.get('port'))
+    console.log('Node app is running on port', app.get('port'))
 })

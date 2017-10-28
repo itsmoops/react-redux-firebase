@@ -1,9 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: ['./src/index.jsx'],
+    target: 'web',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -13,7 +15,6 @@ module.exports = {
         historyApiFallback: true
     },
     devtool: 'inline-source-map',
-    target: 'web',
     module: {
         rules: [
             {
@@ -31,7 +32,7 @@ module.exports = {
                 })
             },
             {
-                test: /.jpe?g$|.gif$|.png$|.svg$|.woff2?$|.ttf$|.eot$|.wav$|.mp3$/,
+                test: /.jpe?g$|.gif$|.png$|.svg$|.woff2?$|.ttf$|.eot$|.wav$|.mp3$|.html$/,
                 loader: `${require.resolve('file-loader')}?name=[path][name].[ext]`
             }
         ]
@@ -45,7 +46,8 @@ module.exports = {
             horizontalCenter: ['react-icons-kit', 'horizontalCenter'],
             firebase: 'firebase'
         }),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[name].css'),
+        new CopyWebpackPlugin([{ from: './src/index.html', to: 'index.html' }])
     ],
     resolve: {
         extensions: ['.js', '.jsx']
