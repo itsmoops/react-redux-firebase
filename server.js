@@ -11,6 +11,10 @@ app.get('/', (request, response) => {
     response.render('index.html')
 })
 
+app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+})
+
 app.listen(app.get('port'), () => {
     console.log('Node app is running on port', app.get('port'))
 })
