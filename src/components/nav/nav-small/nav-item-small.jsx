@@ -27,7 +27,9 @@ class NavItemSmall extends React.PureComponent {
 					this.handleClick()
 				}}
 			>
-				<p>{props.children}</p>
+				<div className="nav-item-padding-left">
+					<p>{props.children}</p>
+				</div>
 			</div>
 		))
 		return (
