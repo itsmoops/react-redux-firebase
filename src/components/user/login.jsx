@@ -38,8 +38,12 @@ class Login extends React.Component {
 			<FlexContainer>
 				<form onSubmit={this.onHandleSubmit}>
 					<h1>Login</h1>
-					<Input type="email" onInput={this.handleInputChange} />
-					<Input type="password" onInput={this.handleInputChange} />
+					<Input placeholder="Email" type="email" onInput={this.handleInputChange} />
+					<Input
+						placeholder="Password"
+						type="password"
+						onInput={this.handleInputChange}
+					/>
 					<Button>Login</Button>
 					{this.props.user.message && <Message>{this.props.user.message}</Message>}
 				</form>

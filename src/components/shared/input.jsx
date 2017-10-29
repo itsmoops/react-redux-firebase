@@ -4,7 +4,13 @@ class Input extends React.PureComponent {
         if (this.props.disabled) {
             classes = `${classes} input-disabled`
         }
-        return <input className={classes} type={this.props.type} onInput={this.props.onInput} />
+        return (
+            <input
+                className={classes}
+                placeholder={this.props.placeholder}
+                type={this.props.type}
+                onInput={this.props.onInput} />
+        )
     }
 }
 
