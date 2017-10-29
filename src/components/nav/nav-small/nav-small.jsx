@@ -75,12 +75,8 @@ class NavSmall extends React.Component {
 		return (
 			<div>
 				<div className="nav-bar">
-					<button className="chevron">
-						<Icon
-							className={iconClasses}
-							icon={thinDown}
-							onClick={this.handleIconClick}
-						/>
+					<button className="chevron" onClick={this.handleIconClick}>
+						<Icon className={iconClasses} icon={thinDown} />
 					</button>
 				</div>
 				<div className={`menu-small ${menuClasses}`}>
