@@ -21,4 +21,16 @@
 
 .nav-item-padding-left {
 	padding-left: 20px;
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+// have to override the react icons to get them to float right
+.nav-item-padding-left > div {
+	display: flex !important;
+	justify-content: space-between !important;
+	padding-right: 20px;
 }

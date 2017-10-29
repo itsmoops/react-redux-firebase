@@ -18,7 +18,6 @@ class NavItemSmall extends React.PureComponent {
 		) : (
 			undefined
 		)
-
 		const Item = horizontalCenter(props => (
 			<div
 				className={classes}
@@ -27,9 +26,7 @@ class NavItemSmall extends React.PureComponent {
 					this.handleClick()
 				}}
 			>
-				<div className="nav-item-padding-left">
-					<p>{props.children}</p>
-				</div>
+				<div className="nav-item-padding-left">{props.children}</div>
 			</div>
 		))
 		return (
