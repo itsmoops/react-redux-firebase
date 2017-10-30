@@ -6,6 +6,11 @@ import { caretDown } from 'react-icons-kit/fa/caretDown'
 import './dropdown.less'
 
 class Dropdown extends React.PureComponent {
+	componentDidMount = () => {
+		// disables the grey highlight on mobile devices
+		document.addEventListener("touchstart", function(){}, true);
+	}
+
 	handleClickOutside = () => {
 		this.props.actions.toggleMenuDropdown(false)
 	}
