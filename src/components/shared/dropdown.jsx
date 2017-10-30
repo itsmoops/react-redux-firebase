@@ -1,26 +1,17 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import onClickOutside from 'react-onclickoutside'
 import * as globalActions from '../../actions/global-actions'
 import { caretDown } from 'react-icons-kit/fa/caretDown'
 import './dropdown.less'
 
 class Dropdown extends React.PureComponent {
-	componentDidMount = () => {
-		document.addEventListener('click', this.handleClickOutside)
+	handleClickOutside = () => {
+		this.props.actions.toggleMenuDropdown(false)
 	}
 
-	toggleDropDown = e => {
+	toggleDropDown = () => {
 		this.props.actions.toggleMenuDropdown(!this.props.global.menuOpen)
-	}
-
-	handleClickOutside = e => {
-		if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
-			console.log('You clicked outside of me!')
-		}
-	}
-
-	setWrapperRef = node => {
-		this.wrapperRef = node
 	}
 
 	render() {
@@ -38,7 +29,7 @@ class Dropdown extends React.PureComponent {
 				<DropdownHeader>
 					{this.props.value} <Icon icon={caretDown} />
 				</DropdownHeader>
-				<div className={classes} ref={this.setWrapperRef}>
+				<div className={classes}>
 					{this.props.children}
 				</div>
 			</div>
@@ -64,4 +55,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dropdown)
+export default connect(mapStateToProps, mapDispatchToProps)(onClickOutside(Dropdown))
