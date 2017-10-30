@@ -12,10 +12,7 @@ import { signOut } from 'react-icons-kit/fa/signOut'
 import './nav-large.less'
 
 class NavLarge extends React.Component {
-	handleDropDownClick = e => {
-		e.preventDefault()
-	}
-	handleLogout = e => {
+	handleLogout = () => {
 		this.props.actions.userLogout()
 		this.props.history.push('/')
 	}
