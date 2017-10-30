@@ -14,7 +14,7 @@ class SignUp extends React.Component {
 	componentDidMount() {
 		document.title = 'Sign Up'
 		if (this.props.user.authenticated) {
-			// this.props.history.push('/')
+			this.props.history.push('/')
 		}
 	}
 	handleInputChange = e => {
@@ -25,7 +25,7 @@ class SignUp extends React.Component {
 	onHandleSubmit = e => {
 		e.preventDefault()
 		this.props.actions
-			.userSignUp({ email: this.state.email, password: this.state.password })
+			.userSignUp(this.state.email, this.state.password)
 			.then(() => {
 				if (this.props.user.authenticated) {
 					this.props.history.push('/profile')

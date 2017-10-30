@@ -26,7 +26,7 @@ class Login extends React.Component {
 	onHandleSubmit = e => {
 		e.preventDefault()
 		this.props.actions
-			.userLogin({ email: this.state.email, password: this.state.password })
+			.userLogin(this.state.email, this.state.password)
 			.then(() => {
 				if (this.props.user.authenticated) {
 					this.props.history.push('/profile')

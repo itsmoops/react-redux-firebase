@@ -48,12 +48,12 @@ function userSignUpError(error) {
     }
 }
 
-export function userSignUp(user) {
+export function userSignUp(email, password) {
     return (dispatch) => {
         dispatch(loadingStateChange(true))
         return firebase
             .auth()
-            .createUserWithEmailAndPassword(user.email, user.password)
+            .createUserWithEmailAndPassword(email, password)
             .then((data) => {
                 const userData = {
                     authenticated: true,
@@ -69,8 +69,8 @@ export function userSignUp(user) {
                 dispatch(userSignUpSuccess(userData))
                 dispatch(loadingStateChange(false))
             })
-            .catch((e) => {
-                dispatch(userSignUpError(e))
+            .catch((ex) => {
+                dispatch(userSignUpError(ex))
                 dispatch(loadingStateChange(false))
             })
     }
@@ -90,12 +90,12 @@ function userLoginError(error) {
     }
 }
 
-export function userLogin(user) {
+export function userLogin(email, password) {
     return (dispatch) => {
         dispatch(loadingStateChange(true))
         return firebase
             .auth()
-            .signInWithEmailAndPassword(user.email, user.password)
+            .signInWithEmailAndPassword(email, password)
             .then((data) => {
                 const userData = {
                     authenticated: true,
@@ -111,8 +111,8 @@ export function userLogin(user) {
                 dispatch(userLoginSuccess(userData))
                 dispatch(loadingStateChange(false))
             })
-            .catch((e) => {
-                dispatch(userLoginError(e))
+            .catch((ex) => {
+                dispatch(userLoginError(ex))
                 dispatch(loadingStateChange(false))
             })
     }
@@ -143,7 +143,7 @@ export function userLogout() {
                 }
                 dispatch(userLogoutSuccess(userData))
             })
-            .catch((e) => {
-                dispatch(userLogoutError(e))
+            .catch((ex) => {
+                dispatch(userLogoutError(ex))
             })
 }
