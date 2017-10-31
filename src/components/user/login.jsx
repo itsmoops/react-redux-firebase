@@ -18,6 +18,11 @@ class Login extends React.Component {
 			this.props.history.push('/')
 		}
 	}
+	componentWillUnmount() {
+		if (this.props.user.message) {
+			this.props.actions.clearUserErrorMessage()
+		}
+	}
 	handleInputChange = e => {
 		const type = e.target.type
 		const value = e.target.value
@@ -34,6 +39,7 @@ class Login extends React.Component {
 			})
 	}
 	render() {
+		const { message } = this.props.user
 		return (
 			<FlexContainer>
 				<form onSubmit={this.onHandleSubmit}>
@@ -45,7 +51,7 @@ class Login extends React.Component {
 						onInput={this.handleInputChange}
 					/>
 					<Button>Login</Button>
-					{this.props.user.message && <Message>{this.props.user.message}</Message>}
+					{message && <Message>{message}</Message>}
 				</form>
 			</FlexContainer>
 		)

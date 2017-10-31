@@ -1,9 +1,16 @@
 import * as types from './action-types'
 import { loadingStateChange } from './global-actions'
 
-function checkForUserResult(user) {
+function checkForUserSuccess(user) {
     return {
-        type: types.CHECK_FOR_USER,
+        type: types.CHECK_FOR_USER_SUCCESS,
+        user
+    }
+}
+
+function checkForUserFailed(user) {
+    return {
+        type: types.CHECK_FOR_USER_FAILURE,
         user
     }
 }
@@ -22,13 +29,13 @@ export function checkForUser() {
                     photoURL: data.photoURL,
                     refreshToken: data.refreshToken
                 }
-                dispatch(checkForUserResult(user))
+                dispatch(checkForUserSuccess(user))
                 dispatch(loadingStateChange(false))
             } else {
                 const user = {
                     authenticated: false
                 }
-                dispatch(checkForUserResult(user))
+                dispatch(checkForUserFailed(user))
                 dispatch(loadingStateChange(false))
             }
         })
@@ -41,9 +48,9 @@ function userSignUpSuccess(user) {
     }
 }
 
-function userSignUpError(error) {
+function userSignUpFailure(error) {
     return {
-        type: types.USER_SIGN_UP_ERROR,
+        type: types.USER_SIGN_UP_FAILURE,
         error
     }
 }
@@ -70,7 +77,7 @@ export function userSignUp(email, password) {
                 dispatch(loadingStateChange(false))
             })
             .catch((ex) => {
-                dispatch(userSignUpError(ex))
+                dispatch(userSignUpFailure(ex))
                 dispatch(loadingStateChange(false))
             })
     }
@@ -83,9 +90,9 @@ function userLoginSuccess(user) {
     }
 }
 
-function userLoginError(error) {
+function userLoginFailure(error) {
     return {
-        type: types.USER_LOGIN_ERROR,
+        type: types.USER_LOGIN_FAILURE,
         error
     }
 }
@@ -112,7 +119,7 @@ export function userLogin(email, password) {
                 dispatch(loadingStateChange(false))
             })
             .catch((ex) => {
-                dispatch(userLoginError(ex))
+                dispatch(userLoginFailure(ex))
                 dispatch(loadingStateChange(false))
             })
     }
@@ -125,9 +132,9 @@ function userLogoutSuccess(user) {
     }
 }
 
-function userLogoutError(error) {
+function userLogoutFailure(error) {
     return {
-        type: types.USER_LOGOUT_ERROR,
+        type: types.USER_LOGOUT_FAILURE,
         error
     }
 }
@@ -144,6 +151,12 @@ export function userLogout() {
                 dispatch(userLogoutSuccess(userData))
             })
             .catch((ex) => {
-                dispatch(userLogoutError(ex))
+                dispatch(userLogoutFailure(ex))
             })
+}
+
+export function clearUserErrorMessage() {
+    return {
+        type: types.CLEAR_USER_ERROR_MESSAGE
+    }
 }
