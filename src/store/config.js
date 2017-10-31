@@ -5,16 +5,30 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 
-// our exported function which returns the store
+// our exported functions which returns the store
 // will be called at our app's root and provided to the redux Provider
-export default function configureStore(initialState) {
-    // redux function that actually creates the store
-    return createStore(
-        rootReducer,
-        initialState,
-        compose(
-            applyMiddleware(thunk, reduxImmutableStateInvariant()),
-    		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const storeConfig = {
+    dev(initialState) {
+        // redux function that actually creates the store
+        return createStore(
+            rootReducer,
+            initialState,
+            compose(
+                applyMiddleware(thunk, reduxImmutableStateInvariant()),
+        		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            )
         )
-    )
+    },
+
+    prod(initialState) {
+        return createStore(
+            rootReducer,
+            initialState,
+            compose(
+                applyMiddleware(thunk, reduxImmutableStateInvariant()),
+            )
+        )
+    }
 }
+
+export default storeConfig
