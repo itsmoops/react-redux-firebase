@@ -8,8 +8,9 @@ import rootReducer from '../reducers'
 // our exported functions which returns the store
 // will be called at our app's root and provided to the redux Provider
 const storeConfig = {
+    // redux functions that actually create the store
+
     dev(initialState) {
-        // redux function that actually creates the store
         return createStore(
             rootReducer,
             initialState,
@@ -25,7 +26,7 @@ const storeConfig = {
             rootReducer,
             initialState,
             compose(
-                applyMiddleware(thunk, reduxImmutableStateInvariant()),
+                applyMiddleware(thunk, reduxImmutableStateInvariant())
             )
         )
     }
