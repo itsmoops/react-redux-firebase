@@ -17,7 +17,7 @@ class NavLarge extends React.Component {
 		this.props.history.push('/')
 	}
 	render() {
-		const user = this.props.user
+		const user = this.props.user.data
 		const userName = user.displayName || user.email
 		const guestMenu = (
 			<div>
@@ -81,7 +81,7 @@ class NavLarge extends React.Component {
 			<div className="nav-bar nav-large">
 				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
 				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
-				{this.props.user.authenticated ? userMenu : guestMenu}
+				{ user.authenticated ? userMenu : guestMenu }
 			</div>
 		)
 	}

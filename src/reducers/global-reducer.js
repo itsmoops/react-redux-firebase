@@ -2,8 +2,7 @@ import * as types from '../actions/action-types'
 
 const defaultState = {
     isSmallDevice: false,
-    loading: false,
-    menuOpen: false
+    loading: false
 }
 
 export default function globalReducer(state = defaultState, action) {

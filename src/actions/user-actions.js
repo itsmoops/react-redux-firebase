@@ -17,7 +17,7 @@ function checkForUserFailed(user) {
 
 export function checkForUser() {
     return dispatch =>
-        firebase.auth().onAuthStateChanged((data) => {
+        firebase.auth().onAuthStateChanged(data => {
             if (data) {
                 const user = {
                     authenticated: true,
@@ -56,12 +56,12 @@ function userSignUpFailure(error) {
 }
 
 export function userSignUp(email, password) {
-    return (dispatch) => {
+    return dispatch => {
         dispatch(loadingStateChange(true))
         return firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .then((data) => {
+            .then(data => {
                 const userData = {
                     authenticated: true,
                     email: data.email,
@@ -76,7 +76,7 @@ export function userSignUp(email, password) {
                 dispatch(userSignUpSuccess(userData))
                 dispatch(loadingStateChange(false))
             })
-            .catch((ex) => {
+            .catch(ex => {
                 dispatch(userSignUpFailure(ex))
                 dispatch(loadingStateChange(false))
             })
@@ -103,7 +103,7 @@ export function userLogin(email, password) {
         return firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then((data) => {
+            .then(data => {
                 const userData = {
                     authenticated: true,
                     email: data.email,
@@ -118,7 +118,7 @@ export function userLogin(email, password) {
                 dispatch(userLoginSuccess(userData))
                 dispatch(loadingStateChange(false))
             })
-            .catch((ex) => {
+            .catch(ex => {
                 dispatch(userLoginFailure(ex))
                 dispatch(loadingStateChange(false))
             })
@@ -150,13 +150,15 @@ export function userLogout() {
                 }
                 dispatch(userLogoutSuccess(userData))
             })
-            .catch((ex) => {
+            .catch(ex => {
                 dispatch(userLogoutFailure(ex))
             })
 }
 
 export function clearUserErrorMessage() {
+    const reset = { message: undefined, code: undefined }
     return {
-        type: types.CLEAR_USER_ERROR_MESSAGE
+        type: types.CLEAR_USER_ERROR_MESSAGE,
+        reset
     }
 }

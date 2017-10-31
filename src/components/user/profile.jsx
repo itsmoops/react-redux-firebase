@@ -8,7 +8,7 @@ class Profile extends React.Component {
         document.title = 'Profile'
     }
     render() {
-        const user = this.props.user
+        const user = this.props.user.data
         const userName = user.displayName || user.email
         return (
             <FlexContainer>

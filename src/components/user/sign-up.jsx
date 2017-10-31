@@ -13,12 +13,12 @@ class SignUp extends React.Component {
 	}
 	componentDidMount() {
 		document.title = 'Sign Up'
-		if (this.props.user.authenticated) {
+		if (this.props.user.data.authenticated) {
 			this.props.history.push('/')
 		}
 	}
 	componentWillUnmount() {
-		if (this.props.user.message) {
+		if (this.props.user.error.message) {
 			this.props.actions.clearUserErrorMessage()
 		}
 	}
@@ -32,13 +32,13 @@ class SignUp extends React.Component {
 		this.props.actions
 			.userSignUp(this.state.email, this.state.password)
 			.then(() => {
-				if (this.props.user.authenticated) {
+				if (this.props.user.data.authenticated) {
 					this.props.history.push('/profile')
 				}
 			})
 	}
 	render() {
-		const { message } = this.props.user
+		const { message } = this.props.user.error
 		return (
 			<FlexContainer>
 				<form onSubmit={this.onHandleSubmit}>

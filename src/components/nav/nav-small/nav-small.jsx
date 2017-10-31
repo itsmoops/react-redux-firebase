@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-small'
+import * as globalActions from '../../../actions/global-actions'
 import * as userActions from '../../../actions/user-actions'
 import { thinDown } from 'react-icons-kit/entypo/thinDown'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
@@ -9,31 +10,26 @@ import { signOut } from 'react-icons-kit/fa/signOut'
 import './nav-small.less'
 
 class NavSmall extends React.Component {
-	state = {
-		menuOpen: undefined
-	}
 	handleIconClick = () => {
-		this.setState({
-			menuOpen: !this.state.menuOpen
-		})
+		this.props.globalActions.toggleMenuDropdown(!this.props.global.menuOpen)
+	}
+	handleItemClick = () => {
+		this.props.globalActions.toggleMenuDropdown(!this.props.global.menuOpen)
 	}
 	handleLogout = () => {
-		this.props.actions.userLogout()
+		this.props.userActions.userLogout()
 		this.handleItemClick()
-	}
-	handleItemClick = linkTo => {
-		this.setState({ menuOpen: false })
 	}
 	render() {
 		let iconClasses = ''
 		let menuClasses = ''
-		if (this.state.menuOpen !== undefined) {
+		if (this.props.global.menuOpen !== undefined) {
 			// apply menu animation classes
-			iconClasses = this.state.menuOpen ? 'nav-bar-icon-up' : 'nav-bar-icon-down'
-			menuClasses = this.state.menuOpen ? 'menu-small-down' : 'menu-small-up'
+			iconClasses = this.props.global.menuOpen ? 'nav-bar-icon-up' : 'nav-bar-icon-down'
+			menuClasses = this.props.global.menuOpen ? 'menu-small-down' : 'menu-small-up'
 		}
 
-		const user = this.props.user
+		const user = this.props.user.data
 		const userName = user.displayName || user.email
 
 		const guestMenu = (
@@ -93,7 +89,7 @@ class NavSmall extends React.Component {
 						onClick={this.handleItemClick}
 					/>
 					<hr />
-					{this.props.user.authenticated ? userMenu : guestMenu}
+					{ user.authenticated ? userMenu : guestMenu }
 					<hr />
 					<NavItem
 						linkTo="/help"
@@ -108,12 +104,16 @@ class NavSmall extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	return { user: state.user }
+	return {
+		global: state.global,
+		user: state.user
+	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(userActions, dispatch)
+		globalActions: bindActionCreators(globalActions, dispatch),
+		userActions: bindActionCreators(userActions, dispatch)
 	}
 }
 
