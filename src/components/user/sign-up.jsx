@@ -27,15 +27,12 @@ class SignUp extends React.Component {
 		const value = e.target.value
 		this.setState({ [type]: value })
 	}
-	onHandleSubmit = e => {
+	onHandleSubmit = async e => {
 		e.preventDefault()
-		this.props.actions
-			.userSignUp(this.state.email, this.state.password)
-			.then(() => {
-				if (this.props.user.data.authenticated) {
-					this.props.history.push('/profile')
-				}
-			})
+		await this.props.actions.userSignUp(this.state.email, this.state.password)
+		if (this.props.user.data.authenticated) {
+			this.props.history.push('/profile')
+		}
 	}
 	render() {
 		const { message } = this.props.user.error

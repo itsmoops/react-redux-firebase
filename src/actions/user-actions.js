@@ -16,20 +16,20 @@ function checkForUserFailed(user) {
 }
 
 export function checkForUser() {
-    return dispatch =>
-        firebase.auth().onAuthStateChanged(data => {
-            if (data) {
-                const user = {
+    return dispatch => {}
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                const userData = {
                     authenticated: true,
-                    email: data.email,
-                    emailVerified: data.emailVerified,
-                    displayName: data.displayName,
-                    isAnonymous: data.isAnonymous,
-                    phoneNumber: data.phoneNumber,
-                    photoURL: data.photoURL,
-                    refreshToken: data.refreshToken
+                    email: user.email,
+                    emailVerified: user.emailVerified,
+                    displayName: user.displayName,
+                    isAnonymous: user.isAnonymous,
+                    phoneNumber: user.phoneNumber,
+                    photoURL: user.photoURL,
+                    refreshToken: user.refreshToken
                 }
-                dispatch(checkForUserSuccess(user))
+                dispatch(checkForUserSuccess(userData))
                 dispatch(loadingStateChange(false))
             } else {
                 const user = {
@@ -56,30 +56,28 @@ function userSignUpFailure(error) {
 }
 
 export function userSignUp(email, password) {
-    return dispatch => {
-        dispatch(loadingStateChange(true))
-        return firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(data => {
-                const userData = {
-                    authenticated: true,
-                    email: data.email,
-                    emailVerified: data.emailVerified,
-                    displayName: data.displayName,
-                    isAnonymous: data.isAnonymous,
-                    phoneNumber: data.phoneNumber,
-                    photoURL: data.photoURL,
-                    refreshToken: data.refreshToken,
-                    message: undefined
-                }
-                dispatch(userSignUpSuccess(userData))
-                dispatch(loadingStateChange(false))
-            })
-            .catch(ex => {
-                dispatch(userSignUpFailure(ex))
-                dispatch(loadingStateChange(false))
-            })
+    return async dispatch => {
+		try {
+			dispatch(loadingStateChange(true))
+			const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
+			const userData = {
+				authenticated: true,
+				email: user.email,
+				emailVerified: user.emailVerified,
+				displayName: user.displayName,
+				isAnonymous: user.isAnonymous,
+				phoneNumber: user.phoneNumber,
+				photoURL: user.photoURL,
+				refreshToken: user.refreshToken,
+				message: undefined
+			}
+			dispatch(userSignUpSuccess(userData))
+			dispatch(loadingStateChange(false))
+		}
+		catch (ex) {
+			dispatch(userSignUpFailure(ex))
+			dispatch(loadingStateChange(false))
+		}
     }
 }
 
@@ -98,30 +96,29 @@ function userLoginFailure(error) {
 }
 
 export function userLogin(email, password) {
-    return (dispatch) => {
-        dispatch(loadingStateChange(true))
-        return firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(data => {
-                const userData = {
-                    authenticated: true,
-                    email: data.email,
-                    emailVerified: data.emailVerified,
-                    displayName: data.displayName,
-                    isAnonymous: data.isAnonymous,
-                    phoneNumber: data.phoneNumber,
-                    photoURL: data.photoURL,
-                    refreshToken: data.refreshToken,
-                    message: undefined
-                }
-                dispatch(userLoginSuccess(userData))
-                dispatch(loadingStateChange(false))
-            })
-            .catch(ex => {
-                dispatch(userLoginFailure(ex))
-                dispatch(loadingStateChange(false))
-            })
+    return async dispatch => {
+        try {
+            dispatch(loadingStateChange(true))
+            const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+            const userData = {
+                authenticated: true,
+                email: user.email,
+                emailVerified: user.emailVerified,
+                displayName: user.displayName,
+                isAnonymous: user.isAnonymous,
+                phoneNumber: user.phoneNumber,
+                photoURL: user.photoURL,
+                refreshToken: user.refreshToken,
+                message: undefined
+            }
+            dispatch(userLoginSuccess(userData))
+            dispatch(loadingStateChange(false))
+
+        }
+        catch (ex) {
+            dispatch(userLoginFailure(ex))
+            dispatch(loadingStateChange(false))
+        }
     }
 }
 
@@ -140,19 +137,18 @@ function userLogoutFailure(error) {
 }
 
 export function userLogout() {
-    return dispatch =>
-        firebase
-            .auth()
-            .signOut()
-            .then(() => {
-                const userData = {
-                    authenticated: false
-                }
-                dispatch(userLogoutSuccess(userData))
-            })
-            .catch(ex => {
-                dispatch(userLogoutFailure(ex))
-            })
+    return async dispatch => {
+        try {
+            await firebase.auth().signOut()
+            const userData = {
+                authenticated: false
+            }
+            dispatch(userLogoutSuccess(userData))
+        }
+        catch (ex) {
+            dispatch(userLogoutFailure(ex))
+        }
+    }
 }
 
 export function clearUserErrorMessage() {
