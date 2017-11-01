@@ -9,7 +9,8 @@ class Input extends React.PureComponent {
                 className={classes}
                 placeholder={this.props.placeholder}
                 type={this.props.type}
-                onInput={this.props.onInput} />
+                onInput={this.props.onInput}
+                required={this.props.required} />
         )
     }
 }

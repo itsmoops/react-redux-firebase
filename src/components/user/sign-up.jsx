@@ -42,11 +42,17 @@ class SignUp extends React.Component {
 			<FlexContainer>
 				<form onSubmit={this.onHandleSubmit}>
 					<h1 size="large">Sign Up</h1>
-					<Input placeholder="Email" type="email" onInput={this.handleInputChange} />
+					<Input
+						placeholder="Email"
+						type="email"
+						onInput={this.handleInputChange}
+						required
+					/>
 					<Input
 						placeholder="Password"
 						type="password"
 						onInput={this.handleInputChange}
+						required
 					/>
 					<Button>Sign Up</Button>
 					{message && <Message>{message}</Message>}

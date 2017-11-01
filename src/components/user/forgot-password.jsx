@@ -49,7 +49,7 @@ class ForgotPassword extends React.Component {
 			<form onSubmit={this.onHandleSubmit}>
 				<h1>Recover Password</h1>
 				<p>Enter your email address and a password reset email will be sent to you.</p>
-				<Input placeholder="Email" type="email" onInput={this.handleInputChange} />
+				<Input placeholder="Email" type="email" onInput={this.handleInputChange} required />
 
 				<Button>Submit</Button>
 				{message && <Message>{message}</Message>}
