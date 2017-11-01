@@ -13,7 +13,12 @@
 		"type": "git",
 		"url": "git+https://github.com/itsmoops/react-redux-webpack.git"
 	},
-	"keywords": ["react", "redux", "webpack", "boilerplate"],
+	"keywords": [
+		"react",
+		"redux",
+		"webpack",
+		"boilerplate"
+	],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {

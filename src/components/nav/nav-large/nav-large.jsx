@@ -81,7 +81,7 @@ class NavLarge extends React.Component {
 			<div className="nav-bar nav-large">
 				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
 				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
-				{ user.authenticated ? userMenu : guestMenu }
+				{user.authenticated ? userMenu : guestMenu}
 			</div>
 		)
 	}

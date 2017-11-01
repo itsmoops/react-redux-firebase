@@ -13,13 +13,15 @@ class SignUp extends React.Component {
 	}
 	componentDidMount() {
 		document.title = 'Sign Up'
-		if (this.props.user.data.authenticated) {
-			this.props.history.push('/')
-		}
 	}
 	componentWillUnmount() {
 		if (this.props.user.error.message) {
 			this.props.actions.clearUserErrorMessage()
+		}
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.user.data.authenticated) {
+			this.props.history.push('/')
 		}
 	}
 	handleInputChange = e => {

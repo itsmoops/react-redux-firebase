@@ -1,15 +1,14 @@
 import { withRouter } from 'react-router'
 import styled from 'styled-components'
 
-// prettier-ignore
 const StyledDiv = styled.div`
 	display: inline-block;
 	height: 100%;
 	padding: 0 20px;
 	text-align: center;
 	cursor: pointer;
-	${props => props.active && 'box-shadow: inset 0 -2px 0;'}
-	${props => props.align === 'right' ? 'float: right;' : 'float: left;'}
+	${props => props.active && 'box-shadow: inset 0 -2px 0;'};
+	${props => (props.align === 'right' ? 'float: right;' : 'float: left;')};
 `
 
 class NavItem extends React.PureComponent {

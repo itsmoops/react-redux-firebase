@@ -1,19 +1,21 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 import Input from '../shared/input'
 import Button from '../shared/button'
 import Message from '../shared/message'
 
-class Login extends React.Component {
+class ForgotPassword extends React.Component {
 	state = {
-		email: '',
-		password: ''
+		email: ''
 	}
 	componentDidMount() {
-		document.title = 'Login'
+		document.title = 'Forgot Password'
+		if (this.props.user.data.authenticated) {
+			this.props.history.push('/')
+		}
 	}
 	componentWillUnmount() {
 		if (this.props.user.error.message) {
@@ -32,29 +34,28 @@ class Login extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		await this.props.actions.userLogin(this.state.email, this.state.password)
-		if (this.props.user.data.authenticated) {
-			this.props.history.push('/profile')
-		}
+		await this.props.actions.sendPasswordResetEmail(this.state.email)
 	}
 	render() {
 		const { message } = this.props.user.error
-		return (
-			<FlexContainer>
-				<form onSubmit={this.onHandleSubmit}>
-					<h1>Login</h1>
-					<Input placeholder="Email" type="email" onInput={this.handleInputChange} />
-					<Input
-						placeholder="Password"
-						type="password"
-						onInput={this.handleInputChange}
-					/>
-					<Button>Login</Button>
-					<Link to="/forgot-password">I forgot my password.</Link>
-					{message && <Message>{message}</Message>}
-				</form>
-			</FlexContainer>
+		const { resetEmailSent } = this.props.user.data
+		const thankYou = (
+			<div>
+				<h1>Recover Password</h1>
+				<p>Thanks! Please check your email for reset instructions.</p>
+			</div>
 		)
+		const resetForm = (
+			<form onSubmit={this.onHandleSubmit}>
+				<h1>Recover Password</h1>
+				<p>Enter your email address and a password reset email will be sent to you.</p>
+				<Input placeholder="Email" type="email" onInput={this.handleInputChange} />
+
+				<Button>Submit</Button>
+				{message && <Message>{message}</Message>}
+			</form>
+		)
+		return <FlexContainer>{resetEmailSent ? thankYou : resetForm}</FlexContainer>
 	}
 }
 
@@ -68,4 +69,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword)

@@ -5,6 +5,7 @@ import About from './components/about/about'
 import Help from './components/help/help'
 import SignUp from './components/user/sign-up'
 import Login from './components/user/login'
+import ForgotPassword from './components/user/forgot-password'
 import Account from './components/user/account'
 import Profile from './components/user/profile'
 import NotFound from './components/not-found/not-found'
@@ -20,6 +21,7 @@ export default (
             <Route exact path="/help" component={Help} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/forgot-password" component={ForgotPassword} />
             <Route exact path="/account" component={Account} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="*" component={NotFound} />

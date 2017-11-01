@@ -16,8 +16,8 @@ function checkForUserFailed(user) {
 }
 
 export function checkForUser() {
-    return dispatch => {}
-        firebase.auth().onAuthStateChanged(user => {
+    return (dispatch) => {
+        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 const userData = {
                     authenticated: true,
@@ -39,6 +39,7 @@ export function checkForUser() {
                 dispatch(loadingStateChange(false))
             }
         })
+    }
 }
 
 function userSignUpSuccess(user) {
@@ -56,28 +57,27 @@ function userSignUpFailure(error) {
 }
 
 export function userSignUp(email, password) {
-    return async dispatch => {
-		try {
-			dispatch(loadingStateChange(true))
-			const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
-			const userData = {
-				authenticated: true,
-				email: user.email,
-				emailVerified: user.emailVerified,
-				displayName: user.displayName,
-				isAnonymous: user.isAnonymous,
-				phoneNumber: user.phoneNumber,
-				photoURL: user.photoURL,
-				refreshToken: user.refreshToken,
-				message: undefined
-			}
-			dispatch(userSignUpSuccess(userData))
-			dispatch(loadingStateChange(false))
-		}
-		catch (ex) {
-			dispatch(userSignUpFailure(ex))
-			dispatch(loadingStateChange(false))
-		}
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
+            const userData = {
+                authenticated: true,
+                email: user.email,
+                emailVerified: user.emailVerified,
+                displayName: user.displayName,
+                isAnonymous: user.isAnonymous,
+                phoneNumber: user.phoneNumber,
+                photoURL: user.photoURL,
+                refreshToken: user.refreshToken,
+                message: undefined
+            }
+            dispatch(userSignUpSuccess(userData))
+            dispatch(loadingStateChange(false))
+        } catch (ex) {
+            dispatch(userSignUpFailure(ex))
+            dispatch(loadingStateChange(false))
+        }
     }
 }
 
@@ -96,7 +96,7 @@ function userLoginFailure(error) {
 }
 
 export function userLogin(email, password) {
-    return async dispatch => {
+    return async (dispatch) => {
         try {
             dispatch(loadingStateChange(true))
             const user = await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -113,9 +113,7 @@ export function userLogin(email, password) {
             }
             dispatch(userLoginSuccess(userData))
             dispatch(loadingStateChange(false))
-
-        }
-        catch (ex) {
+        } catch (ex) {
             dispatch(userLoginFailure(ex))
             dispatch(loadingStateChange(false))
         }
@@ -137,16 +135,43 @@ function userLogoutFailure(error) {
 }
 
 export function userLogout() {
-    return async dispatch => {
+    return async (dispatch) => {
         try {
             await firebase.auth().signOut()
             const userData = {
                 authenticated: false
             }
             dispatch(userLogoutSuccess(userData))
-        }
-        catch (ex) {
+        } catch (ex) {
             dispatch(userLogoutFailure(ex))
+        }
+    }
+}
+
+function sendPasswordResetEmailSuccess(success) {
+    return {
+        type: types.SEND_PASSWORD_RESET_SUCCESS,
+        success
+    }
+}
+
+function sendPasswordResetEmailFailure(error) {
+    return {
+        type: types.SEND_PASSWORD_RESET_FAILURE,
+        error
+    }
+}
+
+export function sendPasswordResetEmail(email) {
+    return async (dispatch) => {
+        try {
+            await firebase.auth().sendPasswordResetEmail(email)
+            const success = {
+                resetEmailSent: true
+            }
+            dispatch(sendPasswordResetEmailSuccess(success))
+        } catch (ex) {
+            dispatch(sendPasswordResetEmailFailure(ex))
         }
     }
 }
