@@ -174,6 +174,7 @@ export function sendPasswordResetEmail(email) {
             dispatch(loadingStateChange(false))
         } catch (ex) {
             dispatch(sendPasswordResetEmailFailure(ex))
+            dispatch(loadingStateChange(false))
         }
     }
 }
