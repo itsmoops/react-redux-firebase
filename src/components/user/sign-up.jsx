@@ -10,7 +10,7 @@ class SignUp extends React.Component {
 	state = {
 		email: '',
 		password: '',
-		submittingUser: false
+		submitting: false
 	}
 	componentDidMount() {
 		document.title = 'Sign Up'
@@ -32,7 +32,7 @@ class SignUp extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		this.setState({ submittingUser: true })
+		this.setState({ submitting: true })
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
 		await this.props.actions.sendEmailVerification()
 	}
