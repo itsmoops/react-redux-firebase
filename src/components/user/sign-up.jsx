@@ -21,7 +21,7 @@ class SignUp extends React.Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.data.authenticated && !this.state.submittingUser) {
+		if (nextProps.user.data.authenticated && !this.state.submitting) {
 			this.props.history.push('/')
 		}
 	}
