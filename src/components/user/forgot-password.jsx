@@ -13,9 +13,6 @@ class ForgotPassword extends React.Component {
 	}
 	componentDidMount() {
 		document.title = 'Forgot Password'
-		if (this.props.user.data.authenticated) {
-			this.props.history.push('/')
-		}
 	}
 	componentWillUnmount() {
 		if (this.props.user.error.message) {
