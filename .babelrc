@@ -1,8 +1,4 @@
 {
 	"presets": ["env", "react", "stage-0"],
-	"plugins": [
-		"add-module-exports",
-		"transform-runtime",
-		"syntax-async-functions"
-	]
+	"plugins": ["add-module-exports", "transform-runtime", "syntax-async-functions"]
 }
