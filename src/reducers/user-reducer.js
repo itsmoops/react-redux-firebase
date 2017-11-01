@@ -10,31 +10,37 @@ const defaultState = {
 export default function userReducer(state = defaultState, action) {
     switch (action.type) {
         case types.CHECK_FOR_USER_SUCCESS:
-            return Object.assign({}, state, { data: action.user })
+            return { ...state, data: action.user }
         case types.CHECK_FOR_USER_FAILURE:
-            return Object.assign({}, state, { data: action.user })
+            return { ...state, data: action.user }
         case types.USER_SIGN_UP_SUCCESS:
-            return Object.assign({}, state, { data: action.user })
+            return { ...state, data: action.user }
         case types.USER_SIGN_UP_FAILURE:
-            return Object.assign({}, state, { error: action.error })
+            return { ...state, error: action.error }
         case types.USER_LOGIN_SUCCESS:
-            return Object.assign({}, state, { data: action.user })
+            return { ...state, data: action.user }
         case types.USER_LOGIN_FAILURE:
-            return Object.assign({}, state, { error: action.error })
+            return { ...state, error: action.error }
         case types.USER_LOGOUT_SUCCESS:
-            return Object.assign({}, state, { data: action.user })
+            return { ...state, data: action.user }
         case types.USER_LOGOUT_FAILURE:
-            return Object.assign({}, state, { error: action.error })
+            return { ...state, error: action.error }
         case types.SEND_EMAIL_VERIFICATION_SUCCESS:
-            return Object.assign({}, state, { data: action.success })
+            debugger
+            return { ...state, data: action.success }
         case types.SEND_EMAIL_VERIFICATION_FAILURE:
-            return Object.assign({}, state, { error: action.error })
+            return { ...state, error: action.error }
         case types.SEND_PASSWORD_RESET_SUCCESS:
-            return Object.assign({}, state, { data: action.success })
+            return { ...state, data: action.success }
         case types.SEND_PASSWORD_RESET_FAILURE:
-            return Object.assign({}, state, { error: action.error })
+            return { ...state, error: action.error }
+        case types.USER_UPDATE_PASSWORD_SUCCESS:
+            debugger
+            return { ...state, data: action.success }
+        case types.USER_UPDATE_PASSWORD_FAILURE:
+            return { ...state, error: action.error }
         case types.CLEAR_USER_ERROR_MESSAGE:
-            return Object.assign({}, state, { error: action.reset })
+            return { ...state, error: action.reset }
         default:
             return state
     }

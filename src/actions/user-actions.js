@@ -207,6 +207,37 @@ export function sendPasswordResetEmail(email) {
     }
 }
 
+function userUpdatePasswordSuccess(success) {
+    return {
+        type: types.USER_UPDATE_PASSWORD_SUCCESS,
+        success
+    }
+}
+
+function userUpdatePasswordFailure(error) {
+    return {
+        type: types.USER_UPDATE_PASSWORD_FAILURE,
+        error
+    }
+}
+
+export function userUpdatePassword(email) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            await firebase.auth().currentUser.updatePassword(email)
+            const success = {
+                passwordUpdated: true
+            }
+            dispatch(userUpdatePasswordSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (ex) {
+            dispatch(userUpdatePasswordFailure(ex))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
 export function clearUserErrorMessage() {
     const reset = { message: undefined, code: undefined }
     return {

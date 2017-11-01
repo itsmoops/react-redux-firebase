@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import FlexContainer from '../shared/flex-container'
 
 class Account extends React.Component {
@@ -23,6 +24,7 @@ class Account extends React.Component {
 					enjoy a pleasure that has no annoying consequences, or one who avoids a pain
 					that produces no resultant pleasure?
                 </div>
+                <Link to="/update-password">Update Password</Link>
             </FlexContainer>
         )
     }
