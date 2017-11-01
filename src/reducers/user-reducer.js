@@ -25,6 +25,10 @@ export default function userReducer(state = defaultState, action) {
             return Object.assign({}, state, { data: action.user })
         case types.USER_LOGOUT_FAILURE:
             return Object.assign({}, state, { error: action.error })
+        case types.SEND_EMAIL_VERIFICATION_SUCCESS:
+            return Object.assign({}, state, { data: action.success })
+        case types.SEND_EMAIL_VERIFICATION_FAILURE:
+            return Object.assign({}, state, { error: action.error })
         case types.SEND_PASSWORD_RESET_SUCCESS:
             return Object.assign({}, state, { data: action.success })
         case types.SEND_PASSWORD_RESET_FAILURE:

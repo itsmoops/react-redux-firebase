@@ -9,7 +9,8 @@ import Message from '../shared/message'
 class SignUp extends React.Component {
 	state = {
 		email: '',
-		password: ''
+		password: '',
+		submittingUser: false
 	}
 	componentDidMount() {
 		document.title = 'Sign Up'
@@ -20,7 +21,7 @@ class SignUp extends React.Component {
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.data.authenticated) {
+		if (nextProps.user.data.authenticated && !this.state.submittingUser) {
 			this.props.history.push('/')
 		}
 	}
@@ -31,34 +32,37 @@ class SignUp extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
+		this.setState({ submittingUser: true })
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
-		if (this.props.user.data.authenticated) {
-			this.props.history.push('/profile')
-		}
+		await this.props.actions.sendEmailVerification()
 	}
 	render() {
 		const { message } = this.props.user.error
-		return (
-			<FlexContainer>
-				<form onSubmit={this.onHandleSubmit}>
-					<h1 size="large">Sign Up</h1>
-					<Input
-						placeholder="Email"
-						type="email"
-						onInput={this.handleInputChange}
-						required
-					/>
-					<Input
-						placeholder="Password"
-						type="password"
-						onInput={this.handleInputChange}
-						required
-					/>
-					<Button>Sign Up</Button>
-					{message && <Message>{message}</Message>}
-				</form>
-			</FlexContainer>
+		const { emailSent } = this.props.user.data
+		const thankYou = (
+			<div>
+				<h1>Sign Up</h1>
+				<p>
+					Thanks! Please follow the instructions in the email we just sent you to verify
+					your account.
+				</p>
+			</div>
 		)
+		const signUpForm = (
+			<form onSubmit={this.onHandleSubmit}>
+				<h1 size="large">Sign Up</h1>
+				<Input placeholder="Email" type="email" onInput={this.handleInputChange} required />
+				<Input
+					placeholder="Password"
+					type="password"
+					onInput={this.handleInputChange}
+					required
+				/>
+				<Button>Sign Up</Button>
+				{message && <Message>{message}</Message>}
+			</form>
+		)
+		return <FlexContainer>{emailSent ? thankYou : signUpForm}</FlexContainer>
 	}
 }
 

@@ -38,7 +38,7 @@ class ForgotPassword extends React.Component {
 	}
 	render() {
 		const { message } = this.props.user.error
-		const { resetEmailSent } = this.props.user.data
+		const { emailSent } = this.props.user.data
 		const thankYou = (
 			<div>
 				<h1>Recover Password</h1>
@@ -55,7 +55,7 @@ class ForgotPassword extends React.Component {
 				{message && <Message>{message}</Message>}
 			</form>
 		)
-		return <FlexContainer>{resetEmailSent ? thankYou : resetForm}</FlexContainer>
+		return <FlexContainer>{emailSent ? thankYou : resetForm}</FlexContainer>
 	}
 }
 

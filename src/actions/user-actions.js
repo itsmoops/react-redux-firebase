@@ -148,6 +148,34 @@ export function userLogout() {
     }
 }
 
+function sendEmailVerificationSuccess(success) {
+    return {
+        type: types.SEND_EMAIL_VERIFICATION_SUCCESS,
+        success
+    }
+}
+
+function sendEmailVerificationFailure(error) {
+    return {
+        type: types.SEND_EMAIL_VERIFICATION_FAILURE,
+        error
+    }
+}
+
+export function sendEmailVerification() {
+    return async (dispatch) => {
+        try {
+            await firebase.auth().currentUser.sendEmailVerification()
+            const success = {
+                emailSent: true
+            }
+            dispatch(sendEmailVerificationSuccess(success))
+        } catch (ex) {
+            dispatch(sendEmailVerificationFailure(ex))
+        }
+    }
+}
+
 function sendPasswordResetEmailSuccess(success) {
     return {
         type: types.SEND_PASSWORD_RESET_SUCCESS,
@@ -168,7 +196,7 @@ export function sendPasswordResetEmail(email) {
             dispatch(loadingStateChange(true))
             await firebase.auth().sendPasswordResetEmail(email)
             const success = {
-                resetEmailSent: true
+                emailSent: true
             }
             dispatch(sendPasswordResetEmailSuccess(success))
             dispatch(loadingStateChange(false))
