@@ -165,11 +165,13 @@ function sendPasswordResetEmailFailure(error) {
 export function sendPasswordResetEmail(email) {
     return async (dispatch) => {
         try {
+            dispatch(loadingStateChange(true))
             await firebase.auth().sendPasswordResetEmail(email)
             const success = {
                 resetEmailSent: true
             }
             dispatch(sendPasswordResetEmailSuccess(success))
+            dispatch(loadingStateChange(false))
         } catch (ex) {
             dispatch(sendPasswordResetEmailFailure(ex))
         }
