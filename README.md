@@ -12,7 +12,7 @@ In the left nav of your database console, click "Authentication", and then click
 In the left nav of your database console, click "Database", and then click the "Get Started" button. The default rules require that a user be authenticated to read or write data. Info about security rules can be found [here](https://firebase.google.com/docs/database/security/quickstart?authuser=0).
 
 #### Enable Database Storage
-In the left nav of your database console, click "Storage", and then click the "Get Started" -> "Got It" buttons. This will enable your database to use file storage (can be used for profile pictures, etc.)
+In the left nav of your database console, click "Storage", and then click the "Get Started" -> "Got It" buttons. This will enable your database to use file storage (can be used for profile pictures, etc.).
 
 #### Add Database Config to Project
 In the left nav of your database console, click "Overview", and then click the "Add Firebase to your web app" button. This should launch a modal with your database config options.
@@ -44,10 +44,10 @@ Select the following options during the `firebase init` prompts:
 * What file should be used for Storage Rules?
 	* Default or named is fine
 
-Update your personal database settings under `./src/firebase-config.js`
+Update your personal database settings under `./src/firebase-config.js`.
 
 #### Environment Assumptions:
-This repository is set up to deploy to 3 different Firebase environments with the following aliases: `dev`, `staging` and `prod`
+This repository is set up to deploy to 3 different Firebase environments with the following aliases: `dev`, `staging` and `prod`.
 
 You can associate additional Firebase databases with your project from the firebase cli tools using `firebase use --add`, which will prompt you to select another project and give it an alias.
 
@@ -68,12 +68,13 @@ You can now switch databases by using one of the 3 aliases, ex: `firebase use pr
 
 ## Usage
 ### Develop
-Webpack dev server running at <http://localhost:8080>
+Webpack dev server running at <http://localhost:8080>.
 ````
 yarn start
 ````
 
 ### Build
+Outputs to `dist` folder.
 ````
 yarn build-dev
 yarn build-staging
