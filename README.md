@@ -2,10 +2,18 @@
 A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ## Setup
-#### Create a database
+#### Create a Database
 Log in to the [Firebase console](https://console.firebase.google.com) and create a new project if you don't already have one.
 
-#### Install dependencies
+#### Enable Database Storage
+In the left nav of your database console, click "Storage", and then click the "Get Started" -> "Got It" buttons. This will enable your database to use file storage (can be used for profile pictures, etc.)
+
+#### Add Database Config to Project
+In the left nav of your database console, click "Overview", and then click the "Add Firebase to your web app" button. This should launch a modal with your database config options.
+
+You will want to copy the config object and place it in the `./src/firebase-config.js` file under the appropriate environment key.
+
+#### Install Dependencies
 
 ````
 yarn global add firebase-tools
@@ -69,7 +77,7 @@ yarn deploy-prod
 ````
 
 ### Additional Resources:
-#### Firebase documentation:
+#### Firebase Documentation:
 <https://firebase.google.com/docs/>
 
 #### The Firebase YouTube channel has a ton of great videos for getting up to speed on Firebase:
