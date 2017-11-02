@@ -6,7 +6,8 @@
 	"scripts": {
 		"build": "webpack --config=webpack.prod.config",
 		"stage": "webpack --config=webpack.stage.config",
-		"start": "webpack-dev-server"
+		"start": "webpack-dev-server",
+		"postinstall": "firebase init"
 	},
 	"repository": {
 		"type": "git",
@@ -20,25 +21,8 @@
 	},
 	"homepage": "https://github.com/itsmoops/react-redux-webpack#readme",
 	"dependencies": {
-		"babel-core": "^6.24.1",
-		"babel-eslint": "^7.2.3",
-		"babel-loader": "^7.0.0",
-		"babel-plugin-add-module-exports": "^0.2.1",
-		"babel-plugin-syntax-async-functions": "^6.13.0",
-		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.0",
-		"babel-preset-react": "^6.24.1",
-		"babel-preset-stage-0": "^6.24.1",
-		"copy-webpack-plugin": "^4.2.0",
-		"css-loader": "^0.28.1",
-		"express": "^4.16.2",
-		"extract-text-webpack-plugin": "^2.1.0",
-		"file-loader": "^0.11.1",
 		"firebase": "^4.6.0",
-		"image-webpack-loader": "^3.3.1",
 		"less": "^2.7.2",
-		"less-loader": "^4.0.3",
 		"prop-types": "^15.5.10",
 		"react": "^15.5.4",
 		"react-dom": "^15.5.4",
@@ -52,10 +36,24 @@
 		"redux-thunk": "^2.2.0",
 		"style-loader": "^0.18.1",
 		"styled-components": "^2.2.3",
-		"uglifyjs-webpack-plugin": "^1.0.1",
 		"webpack": "^3.5.5"
 	},
 	"devDependencies": {
+		"babel-core": "^6.24.1",
+		"babel-eslint": "^7.2.3",
+		"babel-loader": "^7.0.0",
+		"babel-plugin-add-module-exports": "^0.2.1",
+		"babel-plugin-syntax-async-functions": "^6.13.0",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"copy-webpack-plugin": "^4.2.0",
+		"css-loader": "^0.28.1",
+		"extract-text-webpack-plugin": "^2.1.0",
+		"file-loader": "^0.11.1",
+		"image-webpack-loader": "^3.3.1",
 		"eslint": "^4.5.0",
 		"eslint-config-airbnb": "^15.1.0",
 		"eslint-config-standard": "^10.2.1",
@@ -66,6 +64,10 @@
 		"eslint-plugin-react": "^7.3.0",
 		"eslint-plugin-standard": "^3.0.1",
 		"eslint-plugin-styled-components-config": "0.0.2",
+		"less-loader": "^4.0.3",
+		"firebase-tools": "^3.14.0",
+		"style-loader": "^0.18.1",
+		"uglifyjs-webpack-plugin": "^1.0.1",
 		"webpack-dev-server": "^2.7.1"
 	}
 }
