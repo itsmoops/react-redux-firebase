@@ -11,7 +11,8 @@
 		"build-prod": "webpack --config=webpack.prod.config",
 		"deploy-dev": "firebase use dev && yarn build-dev && firebase deploy",
 		"deploy-staging": "firebase use staging && yarn build-staging && firebase deploy",
-		"deploy-prod": "firebase use prod && yarn build-prod && firebase deploy"
+		"deploy-prod": "firebase use prod && yarn build-prod && firebase deploy",
+		"deploy-all": "yarn deploy-dev && yarn deploy-staging && yarn deploy-prod"
 	},
 	"repository": {
 		"type": "git",

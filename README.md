@@ -87,6 +87,7 @@ Assuming you used the database aliases above, you now have simple yarn commands 
 yarn deploy-dev
 yarn deploy-staging
 yarn deploy-prod
+yarn deploy-all
 ````
 
 ### Additional Resources:
