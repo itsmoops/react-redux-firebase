@@ -2,7 +2,15 @@
 A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ## Setup
+#### Create a database
 Log in to the [Firebase console](https://console.firebase.google.com) and create a new project if you don't already have one.
+
+#### Install dependencies
+
+````
+yarn global add firebase-tools
+yarn install
+````
 
 `firebase login` and `firebase init` commands will run as a part of the `yarn install` postinstall.
 
@@ -22,16 +30,9 @@ Select the following options during the `firebase init` prompts:
 * What file should be used for Storage Rules?
 	* Default or named is fine
 
-## Usage
-### Develop
-````
-yarn global add firebase-tools
-yarn install
-yarn start
-````
-Update your personal database settings under ``./src/firebase-config.js`
+Update your personal database settings under `./src/firebase-config.js`
 
-###### Environment Assumptions:
+#### Environment Assumptions:
 This repository is set up to deploy to 3 different Firebase environments with the following aliases: `dev`, `staging` and `prod`
 
 You can associate your Firebase databases with your project from the firebase cli tools using `firebase use --add`, which will prompt you to select your database and give it an alias.
@@ -50,6 +51,13 @@ You will want to make sure that your generated `.firebaserc` file looks somethin
 ````
 
 You can now switch databases by using one of the 3 alias', ex: `firebase use prod`
+
+## Usage
+### Develop
+Webpack dev server running at <http://localhost:8080>
+````
+yarn start
+````
 
 ### Deploy
 Assuming you used the database aliases above, you now have simple yarn commands to deploy your app to your three environments.
