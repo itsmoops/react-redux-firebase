@@ -13,7 +13,13 @@
 		"type": "git",
 		"url": "git+https://github.com/itsmoops/react-redux-firebase.git"
 	},
-	"keywords": ["react", "redux", "firebase", "webpack", "boilerplate"],
+	"keywords": [
+		"react",
+		"redux",
+		"firebase",
+		"webpack",
+		"boilerplate"
+	],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {
