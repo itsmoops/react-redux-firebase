@@ -35,7 +35,7 @@ Update your personal database settings under `./src/firebase-config.js`
 #### Environment Assumptions:
 This repository is set up to deploy to 3 different Firebase environments with the following aliases: `dev`, `staging` and `prod`
 
-You can associate your Firebase databases with your project from the firebase cli tools using `firebase use --add`, which will prompt you to select your database and give it an alias.
+You can associate additional Firebase databases with your project from the firebase cli tools using `firebase use --add`, which will prompt you to select another project and give it an alias.
 
 You will want to make sure that your generated `.firebaserc` file looks something like this in order for deploys to work:
 
