@@ -83,8 +83,8 @@ yarn deploy-prod
 ````
 
 ### Additional Resources:
-#### Firebase Documentation:
-<https://firebase.google.com/docs/>
+#### Firebase Web Documentation:
+<https://firebase.google.com/docs/web/setup>
 
 #### The Firebase YouTube channel has a ton of great videos for getting up to speed on Firebase:
 
