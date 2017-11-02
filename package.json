@@ -6,12 +6,12 @@
 	"scripts": {
 		"postinstall": "firebase login && firebase init",
 		"start": "webpack-dev-server",
-		"dev": "webpack --config=webpack.config",
-		"staging": "webpack --config=webpack.staging.config",
-		"build": "webpack --config=webpack.prod.config",
-		"deploy-dev": "firebase use dev && yarn dev && firebase deploy",
-		"deploy-staging": "firebase use staging && yarn staging && firebase deploy",
-		"deploy-prod": "firebase use prod && yarn build && firebase deploy"
+		"build-dev": "webpack --config=webpack.config",
+		"build-staging": "webpack --config=webpack.staging.config",
+		"build-prod": "webpack --config=webpack.prod.config",
+		"deploy-dev": "firebase use dev && yarn build-dev && firebase deploy",
+		"deploy-staging": "firebase use staging && yarn build-staging && firebase deploy",
+		"deploy-prod": "firebase use prod && yarn build-prod && firebase deploy"
 	},
 	"repository": {
 		"type": "git",

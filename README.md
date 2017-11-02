@@ -73,6 +73,13 @@ Webpack dev server running at <http://localhost:8080>
 yarn start
 ````
 
+### Build
+````
+yarn build-dev
+yarn build-staging
+yarn build-prod
+````
+
 ### Deploy
 Assuming you used the database aliases above, you now have simple yarn commands to deploy your app to your three environments.
 
