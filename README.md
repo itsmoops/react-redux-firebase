@@ -50,7 +50,7 @@ You will want to make sure that your generated `.firebaserc` file looks somethin
 }
 ````
 
-You can now switch databases by using one of the 3 alias', ex: `firebase use prod`
+You can now switch databases by using one of the 3 aliases, ex: `firebase use prod`
 
 ## Usage
 ### Develop
