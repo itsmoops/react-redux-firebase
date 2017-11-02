@@ -3,9 +3,9 @@
 A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ### Setup
--Log in to https://console.firebase.google.com and create a new project if you don't already have one.
+Log in to https://console.firebase.google.com and create a new project if you don't already have one.
 
--Firebase login and init will run as a part of the post-install.
+Firebase login and init will run as a part of the post-install.
 
 Select the following options during the firebase init process:
 * Which Firebase CLI features do you want to setup for this folder?
