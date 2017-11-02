@@ -5,10 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"postinstall": "firebase login && firebase init",
-		"build": "webpack --config=webpack.prod.config",
-		"stage": "webpack --config=webpack.stage.config",
 		"start": "webpack-dev-server",
-		"deploy": "yarn build && firebase deploy"
+		"dev": "webpack --config=webpack.config",
+		"staging": "webpack --config=webpack.staging.config",
+		"build": "webpack --config=webpack.prod.config",
+		"deploy-dev": "firebase use dev && yarn dev && firebase deploy",
+		"deploy-staging": "firebase use staging && yarn staging && firebase deploy",
+		"deploy-prod": "firebase use prod && yarn build && firebase deploy"
 	},
 	"repository": {
 		"type": "git",
