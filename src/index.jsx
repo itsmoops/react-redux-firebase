@@ -9,10 +9,13 @@ import './app.less'
 // environment settings
 let store
 if (process.env.NODE_ENV === 'production') {
-	store = storeConfig.prod()
+    store = storeConfig.prod()
     firebase.initializeApp(firebaseConfig.prod)
+} else if (process.env.NODE_ENV === 'staging') {
+    store = storeConfig.dev()
+    firebase.initializeApp(firebaseConfig.staging)
 } else {
-	store = storeConfig.dev()
+    store = storeConfig.dev()
     firebase.initializeApp(firebaseConfig.dev)
 }
 

@@ -8,7 +8,7 @@ webpackConfig.plugins.splice(0, 1)
 webpackConfig.plugins = webpackConfig.plugins.concat([
     new webpack.DefinePlugin({
         'process.env': {
-            NODE_ENV: JSON.stringify('stage')
+            NODE_ENV: JSON.stringify('staging')
         }
     }),
     new UglifyJSPlugin()

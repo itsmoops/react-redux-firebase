@@ -3,11 +3,11 @@
 A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ### Setup
-Log in to https://console.firebase.google.com and create a new project if you don't already have one.
+Log in to <https://console.firebase.google.com> and create a new project if you don't already have one.
 
-Firebase login and init commands will run as a part of the `yarn install` post-install.
+Firebase login and init commands will run as a part of the `yarn install` postinstall.
 
-Select the following options during the firebase init process:
+Select the following options during the `firebase init` prompts:
 * Which Firebase CLI features do you want to setup for this folder?
 	* Select Database, Hosting and Storage
 * Select a default Firebase project for this directory:
@@ -34,3 +34,19 @@ yarn start
 ````
 yarn deploy
 ````
+
+### Additional Resources:
+#### Firebase documentation:
+<https://firebase.google.com/docs/>
+
+#### The Firebase YouTube channel has a ton of great videos for getting up to speed on Firebase:
+
+[Getting Started with the Firebase Realtime Database on the Web, Part 1 - Firecasts](https://www.youtube.com/watch?v=noB98K6A0TY)
+
+[Getting Started with the Firebase Realtime Database on the Web, Part 2 - Firecasts](https://www.youtube.com/watch?v=dBscwaqNPuk)
+
+[Getting Started with Firebase Hosting on the Web - Firecasts](https://www.youtube.com/watch?v=meofoNuK3vo)
+
+[Getting Started with Firebase Storage on the Web - Firecasts](https://www.youtube.com/watch?v=SpxHVrpfGgU)
+
+[Node.js apps on Firebase Hosting Crash Course - Firecasts](https://www.youtube.com/watch?v=LOeioOKUKI8)
