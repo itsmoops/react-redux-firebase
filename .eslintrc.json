@@ -4,7 +4,6 @@
 	1 - warn
 	2 - error
  	*/
-
 	"extends": "airbnb",
 	"plugins": ["react"],
 	"env": {
