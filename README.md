@@ -32,6 +32,5 @@ yarn start
 
 #### Deploy
 ````
-yarn run build
-firebase deploy
+yarn deploy
 ````

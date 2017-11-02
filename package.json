@@ -4,22 +4,17 @@
 	"description": "React Redux Firebase",
 	"main": "index.js",
 	"scripts": {
+		"postinstall": "firebase login && firebase init",
 		"build": "webpack --config=webpack.prod.config",
 		"stage": "webpack --config=webpack.stage.config",
 		"start": "webpack-dev-server",
-		"postinstall": "firebase login && firebase init"
+		"deploy": "yarn build && firebase deploy"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/itsmoops/react-redux-firebase.git"
 	},
-	"keywords": [
-		"react",
-		"redux",
-		"firebase",
-		"webpack",
-		"boilerplate"
-	],
+	"keywords": ["react", "redux", "firebase", "webpack", "boilerplate"],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {
