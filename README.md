@@ -1,9 +1,9 @@
-# react-redux-webpack
+# react-redux-firebase
 ## Work in Progress
-Intended to be a simple, stripped-down react-redux boilerplate with as few dependencies as possible (lol).
+A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ### Usage
 ````
 npm i
-npm run dev
+npm start
 ````

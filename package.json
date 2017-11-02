@@ -1,25 +1,25 @@
 {
-	"name": "react-redux-webpack",
+	"name": "react-redux-firebase",
 	"version": "1.0.0",
-	"description": "React Redux Webpack",
+	"description": "React Redux Firebase",
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --config=webpack.prod.config",
 		"stage": "webpack --config=webpack.stage.config",
 		"start": "webpack-dev-server",
-		"postinstall": "firebase init"
+		"postinstall": "firebase login && firebase init"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/itsmoops/react-redux-webpack.git"
+		"url": "git+https://github.com/itsmoops/react-redux-firebase.git"
 	},
-	"keywords": ["react", "redux", "webpack", "boilerplate"],
+	"keywords": ["react", "redux", "firebase", "webpack", "boilerplate"],
 	"author": "Eric Moore",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/itsmoops/react-redux-webpack/issues"
+		"url": "https://github.com/itsmoops/react-redux-firebase/issues"
 	},
-	"homepage": "https://github.com/itsmoops/react-redux-webpack#readme",
+	"homepage": "https://github.com/itsmoops/react-redux-firebase#readme",
 	"dependencies": {
 		"firebase": "^4.6.0",
 		"less": "^2.7.2",
