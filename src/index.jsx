@@ -11,15 +11,12 @@ let store
 if (process.env.NODE_ENV === 'production') {
     store = storeConfig.prod()
     firebase.initializeApp(firebaseConfig.prod)
-    console.log('prod')
 } else if (process.env.NODE_ENV === 'staging') {
     store = storeConfig.dev()
     firebase.initializeApp(firebaseConfig.staging)
-    console.log('staging')
 } else {
     store = storeConfig.dev()
     firebase.initializeApp(firebaseConfig.dev)
-    console.log('dev')
 }
 
 ReactDOM.render(
