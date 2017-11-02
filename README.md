@@ -30,7 +30,7 @@ yarn global add firebase-tools
 yarn install
 yarn start
 ````
-Update your personal database settings under ./src/firebase-config.js
+Update your personal database settings under ``./src/firebase-config.js`
 
 ###### Environment Assumptions:
 This repository is set up to deploy to 3 different Firebase environments with the following aliases: `dev`, `staging` and `prod`
