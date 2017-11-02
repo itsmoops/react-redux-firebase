@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "boilerplate-18625"
+    "development": "boilerplate-18625",
+    "production": "boilerplate-prod-b5875"
   }
 }
