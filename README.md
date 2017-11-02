@@ -2,9 +2,9 @@
 A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 
 ## Setup
-Log in to <https://console.firebase.google.com> and create a new project if you don't already have one.
+Log in to the [Firebase console](https://console.firebase.google.com) and create a new project if you don't already have one.
 
-Firebase login and init commands will run as a part of the `yarn install` postinstall.
+`firebase login` and `firebase init` commands will run as a part of the `yarn install` postinstall.
 
 Select the following options during the `firebase init` prompts:
 * Which Firebase CLI features do you want to setup for this folder?
