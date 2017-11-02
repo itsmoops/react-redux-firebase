@@ -10,6 +10,8 @@ Firebase login and init commands will run as a part of the `yarn install` post-i
 Select the following options during the firebase init process:
 * Which Firebase CLI features do you want to setup for this folder?
 	* Select Database, Hosting and Storage
+* Select a default Firebase project for this directory:
+	* Select the project you just created
 * What file should be used for Database Rules?
 	* Default or named is fine
 * What do you want to use as your public directory?
