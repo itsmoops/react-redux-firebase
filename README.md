@@ -5,6 +5,12 @@ A React, Redux and Firebase boilerplate with user Authentication 99% set up.
 #### Create a Database
 Log in to the [Firebase console](https://console.firebase.google.com) and create a new project if you don't already have one.
 
+#### Enable Authentication
+In the left nav of your database console, click "Authentication", and then click the "Set Up Sign-In Method" button. This project requires that Email/Password is enabled. Enable any other auth providers you might want to use.
+
+#### Enable Realtime Database
+In the left nav of your database console, click "Database", and then click the "Get Started" button. The default rules require that a user be authenticated to read or write data. Info about security rules can be found [here](https://firebase.google.com/docs/database/security/quickstart?authuser=0).
+
 #### Enable Database Storage
 In the left nav of your database console, click "Storage", and then click the "Get Started" -> "Got It" buttons. This will enable your database to use file storage (can be used for profile pictures, etc.)
 
