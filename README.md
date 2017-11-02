@@ -41,11 +41,11 @@ You will want to make sure that your generated `.firebaserc` file looks somethin
 
 ````
 {
-	// use your own db names
+  // use your own db names
   "projects": {
-		"dev": "boilerplate",
-		"staging": "boilerplate-staging",
-		"prod": "boilerplate-prod"
+	"dev": "boilerplate",
+	"staging": "boilerplate-staging",
+	"prod": "boilerplate-prod"
   }
 }
 ````
