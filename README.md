@@ -27,6 +27,7 @@ Select the following options during the `firebase init` prompts:
 #### Develop
 Update your personal database settings under ./src/firebase-config.js
 ````
+yarn global add firebase-tools
 yarn install
 yarn start
 ````
