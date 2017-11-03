@@ -30,7 +30,7 @@ class ForgotPassword extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		await this.props.actions.sendPasswordResetEmail(this.state.email)
+		this.props.actions.sendPasswordResetEmail(this.state.email)
 	}
 	render() {
 		const { message } = this.props.user.error

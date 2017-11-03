@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import ReactResponsiveText from 'react-responsive-type'
 import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 
@@ -43,4 +44,9 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(
+    ReactResponsiveText(Profile, {
+        minimum: 500,
+        maximum: 1200
+    })
+)

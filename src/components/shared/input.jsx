@@ -20,7 +20,7 @@ class Input extends React.Component {
 		}
 		let icon
 		if (this.props.toggleHiddenText) {
-			if (this.state.showText) {
+			if (!this.state.showText) {
 				icon = <Icon className="eye" icon={eye} size={20} onClick={this.handleIconClick} />
 			} else {
 				icon = (

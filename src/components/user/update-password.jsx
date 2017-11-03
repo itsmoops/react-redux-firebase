@@ -25,10 +25,7 @@ class UpdatePassword extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		await this.props.actions.userUpdatePassword(
-			this.state.currentPassword,
-			this.state.newPassword
-		)
+		this.props.actions.userUpdatePassword(this.state.currentPassword, this.state.newPassword)
 	}
 	render() {
 		const { message } = this.props.user.error

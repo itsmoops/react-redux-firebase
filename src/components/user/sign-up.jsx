@@ -33,7 +33,7 @@ class SignUp extends React.Component {
 		e.preventDefault()
 		this.setState({ submitting: true })
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
-		await this.props.actions.sendEmailVerification()
+		this.props.actions.sendEmailVerification()
 	}
 	render() {
 		const { message } = this.props.user.error

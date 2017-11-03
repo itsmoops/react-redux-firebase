@@ -24,9 +24,10 @@ You will want to copy the config object and place it in the `./src/firebase-conf
 ````
 yarn global add firebase-tools
 yarn install
+yarn firebase-init
 ````
 
-`firebase login` and `firebase init` commands will run as a part of the `yarn install` postinstall.
+The `firebase-init` command will log you in to your Firebase account and walk you through a command prompt to get set up.
 
 Select the following options during the `firebase init` prompts:
 * Which Firebase CLI features do you want to setup for this folder?
