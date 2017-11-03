@@ -37,7 +37,9 @@ export default function userReducer(state = defaultState, action) {
             return { ...state, data: { ...state.data, ...action.success } }
         case types.USER_UPDATE_PASSWORD_FAILURE:
             return { ...state, error: { ...state.error, ...action.error } }
-        case types.CLEAR_USER_ERROR_MESSAGE:
+        case types.SANITIZE_USER_STATE:
+            return { ...state, data: { ...state.data, ...action.reset } }
+        case types.SANITIZE_USER_ERROR_STATE:
             return { ...state, error: action.reset }
         default:
             return state

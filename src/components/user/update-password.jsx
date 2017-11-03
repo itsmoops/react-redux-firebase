@@ -8,24 +8,27 @@ import Message from '../shared/message'
 
 class UpdatePassword extends React.Component {
 	state = {
-		password: ''
+		currentPassword: '',
+		newPassword: ''
 	}
 	componentDidMount() {
 		document.title = 'Update Password'
 	}
 	componentWillUnmount() {
-		if (this.props.user.error.message) {
-			this.props.actions.clearUserErrorMessage()
-		}
+		this.props.actions.sanitizeUserState()
+		this.props.actions.sanitizeUserErrorState()
 	}
 	handleInputChange = e => {
-		const type = e.target.type
+		const name = e.target.name
 		const value = e.target.value
-		this.setState({ [type]: value })
+		this.setState({ [name]: value })
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		await this.props.actions.userUpdatePassword(this.state.password)
+		await this.props.actions.userUpdatePassword(
+			this.state.currentPassword,
+			this.state.newPassword
+		)
 	}
 	render() {
 		const { message } = this.props.user.error
@@ -40,9 +43,17 @@ class UpdatePassword extends React.Component {
 			<form onSubmit={this.onHandleSubmit}>
 				<h1 size="large">Update Password</h1>
 				<Input
+					placeholder="Current Password"
+					type="password"
+					name="currentPassword"
+					onChange={this.handleInputChange}
+					required
+				/>
+				<Input
 					placeholder="New Password"
 					type="password"
-					onInput={this.handleInputChange}
+					name="newPassword"
+					onChange={this.handleInputChange}
 					required
 					toggleHiddenText
 				/>

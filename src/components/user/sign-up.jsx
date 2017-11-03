@@ -16,9 +16,8 @@ class SignUp extends React.Component {
 		document.title = 'Sign Up'
 	}
 	componentWillUnmount() {
-		if (this.props.user.error.message) {
-			this.props.actions.clearUserErrorMessage()
-		}
+		this.props.actions.sanitizeUserState()
+		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user.data.authenticated && !this.state.submitting) {
@@ -51,11 +50,16 @@ class SignUp extends React.Component {
 		const signUpForm = (
 			<form onSubmit={this.onHandleSubmit}>
 				<h1 size="large">Sign Up</h1>
-				<Input placeholder="Email" type="email" onInput={this.handleInputChange} required />
+				<Input
+					placeholder="Email"
+					type="email"
+					onChange={this.handleInputChange}
+					required
+				/>
 				<Input
 					placeholder="Password"
 					type="password"
-					onInput={this.handleInputChange}
+					onChange={this.handleInputChange}
 					required
 				/>
 				<Button>Sign Up</Button>

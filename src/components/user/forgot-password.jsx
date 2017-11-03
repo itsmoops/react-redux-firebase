@@ -15,9 +15,8 @@ class ForgotPassword extends React.Component {
 		document.title = 'Forgot Password'
 	}
 	componentWillUnmount() {
-		if (this.props.user.error.message) {
-			this.props.actions.clearUserErrorMessage()
-		}
+		this.props.actions.sanitizeUserState()
+		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user.data.authenticated) {
@@ -46,7 +45,12 @@ class ForgotPassword extends React.Component {
 			<form onSubmit={this.onHandleSubmit}>
 				<h1>Recover Password</h1>
 				<p>Enter your email address and a password reset email will be sent to you.</p>
-				<Input placeholder="Email" type="email" onInput={this.handleInputChange} required />
+				<Input
+					placeholder="Email"
+					type="email"
+					onChange={this.handleInputChange}
+					required
+				/>
 
 				<Button>Submit</Button>
 				{message && <Message>{message}</Message>}

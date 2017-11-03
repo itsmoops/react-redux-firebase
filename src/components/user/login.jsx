@@ -16,9 +16,8 @@ class Login extends React.Component {
 		document.title = 'Login'
 	}
 	componentWillUnmount() {
-		if (this.props.user.error.message) {
-			this.props.actions.clearUserErrorMessage()
-		}
+		this.props.actions.sanitizeUserState()
+		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user.data.authenticated) {
@@ -46,13 +45,13 @@ class Login extends React.Component {
 					<Input
 						placeholder="Email"
 						type="email"
-						onInput={this.handleInputChange}
+						onChange={this.handleInputChange}
 						required
 					/>
 					<Input
 						placeholder="Password"
 						type="password"
-						onInput={this.handleInputChange}
+						onChange={this.handleInputChange}
 						required
 					/>
 					<Button>Login</Button>

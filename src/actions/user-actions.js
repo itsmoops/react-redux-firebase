@@ -221,11 +221,17 @@ function userUpdatePasswordFailure(error) {
     }
 }
 
-export function userUpdatePassword(email) {
+export function userUpdatePassword(currentPassword, newPassword) {
     return async (dispatch) => {
         try {
             dispatch(loadingStateChange(true))
-            await firebase.auth().currentUser.updatePassword(email)
+            const user = await firebase.auth().currentUser
+            const credential = firebase.auth.EmailAuthProvider.credential(
+                user.email,
+                currentPassword
+            )
+            await user.reauthenticateWithCredential(credential)
+            await user.updatePassword(newPassword)
             const success = {
                 passwordUpdated: true
             }
@@ -238,10 +244,24 @@ export function userUpdatePassword(email) {
     }
 }
 
-export function clearUserErrorMessage() {
-    const reset = { message: undefined, code: undefined }
+export function sanitizeUserState() {
+    const reset = {
+        emailSent: undefined,
+        passwordUpdated: undefined
+    }
     return {
-        type: types.CLEAR_USER_ERROR_MESSAGE,
+        type: types.SANITIZE_USER_STATE,
+        reset
+    }
+}
+
+export function sanitizeUserErrorState() {
+    const reset = {
+        message: undefined,
+        code: undefined
+    }
+    return {
+        type: types.SANITIZE_USER_ERROR_STATE,
         reset
     }
 }

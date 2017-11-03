@@ -39,7 +39,8 @@ class Input extends React.Component {
 					className={classes}
 					placeholder={this.props.placeholder}
 					type={this.state.inputType}
-					onInput={this.props.onInput}
+					name={this.props.name}
+					onChange={this.props.onChange}
 					required={this.props.required}
 				/>
 				{icon}
