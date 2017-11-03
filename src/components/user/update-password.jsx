@@ -44,6 +44,7 @@ class UpdatePassword extends React.Component {
 					type="password"
 					onInput={this.handleInputChange}
 					required
+					toggleHiddenText
 				/>
 				<Button>Submit</Button>
 				{message && <Message>{message}</Message>}

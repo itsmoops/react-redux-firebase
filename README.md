@@ -93,7 +93,7 @@ yarn deploy-all
 
 ### Additional Resources:
 #### Firebase Web Documentation:
-<https://firebase.google.com/docs/web/setup>
+<https://firebase.google.com/docs/reference/js/>
 
 #### The Firebase YouTube channel has a ton of great videos for getting up to speed on Firebase:
 
