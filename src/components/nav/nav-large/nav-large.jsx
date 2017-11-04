@@ -58,7 +58,6 @@ class NavLarge extends React.Component {
 						align="left"
 						icon={gear}
 					/>
-					<hr />
 					<DropdownItem
 						value="Help"
 						linkTo="/help"
@@ -66,7 +65,6 @@ class NavLarge extends React.Component {
 						align="left"
 						icon={question}
 					/>
-					<hr />
 					<DropdownItem
 						value="Logout"
 						align="left"

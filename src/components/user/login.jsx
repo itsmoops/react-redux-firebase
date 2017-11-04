@@ -25,9 +25,9 @@ class Login extends React.Component {
 		}
 	}
 	handleInputChange = e => {
-		const type = e.target.type
+		const name = e.target.name
 		const value = e.target.value
-		this.setState({ [type]: value })
+		this.setState({ [name]: value })
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
@@ -45,12 +45,14 @@ class Login extends React.Component {
 					<Input
 						placeholder="Email"
 						type="email"
+						name="email"
 						onChange={this.handleInputChange}
 						required
 					/>
 					<Input
 						placeholder="Password"
 						type="password"
+						name="password"
 						onChange={this.handleInputChange}
 						required
 					/>

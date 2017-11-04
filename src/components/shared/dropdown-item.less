@@ -2,10 +2,12 @@
 
 /* Links inside the dropdown */
 .dropdown-item {
+	position: relative;
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
+	// border-bottom: 1px solid @background;
 }
 
 /* Change color of dropdown links on hover */
@@ -13,10 +15,20 @@
 .dropdown-active {
 	cursor: pointer;
 	color: black;
-	background-color: @background-dark;
+	// background-color: @background-dark;
 }
 
 .dropdown-item:focus {
 	color: black;
 	outline: none;
+}
+
+.dropdown-item:hover:after,
+.dropdown-active:after {
+	width: 172;
+	right: 20px;
+	bottom: 0;
+	position: absolute;
+	border-bottom: 1px solid black;
+	content: '';
 }
