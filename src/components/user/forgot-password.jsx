@@ -56,7 +56,7 @@ class ForgotPassword extends React.Component {
 				{message && <Message>{message}</Message>}
 			</form>
 		)
-		return <FlexContainer>{emailSent ? thankYou : resetForm}</FlexContainer>
+		return <FlexContainer centered>{emailSent ? thankYou : resetForm}</FlexContainer>
 	}
 }
 

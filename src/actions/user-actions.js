@@ -32,7 +32,7 @@ export function checkForUser() {
                 dispatch(checkForUserSuccess(userData))
                 dispatch(loadingStateChange(false))
             } else {
-                const user = {
+                user = {
                     authenticated: false
                 }
                 dispatch(checkForUserFailed(user))

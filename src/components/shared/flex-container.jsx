@@ -4,8 +4,12 @@ import './flex-container.less'
  */
 class FlexContainer extends React.PureComponent {
     render() {
+        let classes = 'flex-container'
+        if (this.props.centered) {
+            classes = `${classes} centered`
+        }
         return (
-            <div className="flex-container">
+            <div className={`${classes}`}>
                 <div className={`${this.props.desktop} ${this.props.tablet} ${this.props.mobile}`}>
                     {this.props.children}
                 </div>

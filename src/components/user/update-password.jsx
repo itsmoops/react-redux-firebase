@@ -54,11 +54,11 @@ class UpdatePassword extends React.Component {
 					required
 					toggleHiddenText
 				/>
-				<Button>Submit</Button>
+				<Button classes="float-right">Reset</Button>
 				{message && <Message>{message}</Message>}
 			</form>
 		)
-		return <FlexContainer>{passwordUpdated ? success : updateForm}</FlexContainer>
+		return <FlexContainer centered>{passwordUpdated ? success : updateForm}</FlexContainer>
 	}
 }
 

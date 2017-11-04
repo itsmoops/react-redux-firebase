@@ -55,7 +55,9 @@ class Login extends React.Component {
 						required
 					/>
 					<Button>Login</Button>
-					<Link to="/forgot-password">I forgot my password.</Link>
+					<Link className="float-right" to="/forgot-password">
+						I forgot my password.
+					</Link>
 					{message && <Message>{message}</Message>}
 				</form>
 			</FlexContainer>
