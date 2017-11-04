@@ -10,7 +10,9 @@ class FlexContainer extends React.PureComponent {
         }
         return (
             <div className={`${classes}`}>
-                <div className={`${this.props.desktop} ${this.props.tablet} ${this.props.mobile}`}>
+                <div
+                    className={`${this.props.large} ${this.props.medium} ${this.props.small} ${this
+                        .props.xsmall}`}>
                     {this.props.children}
                 </div>
             </div>
@@ -20,15 +22,17 @@ class FlexContainer extends React.PureComponent {
 
 // default responsive column widths
 FlexContainer.defaultProps = {
-    desktop: 'flex-lg',
-    tablet: 'flex-md',
-    mobile: 'flex-sm'
+    large: 'flex-lg',
+    medium: 'flex-md',
+    small: 'flex-sm',
+    xsmall: 'flex-x-sm'
 }
 
 FlexContainer.propTypes = {
-    desktop: PropTypes.string,
-    tablet: PropTypes.string,
-    mobile: PropTypes.string
+    large: PropTypes.string,
+    medium: PropTypes.string,
+    small: PropTypes.string,
+    xsmall: PropTypes.string
 }
 
 export default FlexContainer
