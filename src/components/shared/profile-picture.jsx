@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { userCircle } from 'react-icons-kit/fa/userCircle'
 import './profile-picture.less'
 
 const ProfilePicture = (props) => {
@@ -26,15 +27,19 @@ const ProfilePicture = (props) => {
         width = 200
         height = 200
     }
-    return (
-        <span className={classes}>
+    let icon
+    if (props.user.data.photoURL) {
+        icon = (
             <img
                 width={width}
                 height={height}
                 alt={props.user.data.displayName || props.user.data.email}
                 src={props.user.data.photoURL} />
-        </span>
-    )
+        )
+    } else {
+        icon = <Icon icon={userCircle} size={width} />
+    }
+    return <span className={classes}>{icon}</span>
 }
 
 ProfilePicture.defaultProps = {

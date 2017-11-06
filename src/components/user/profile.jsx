@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AvatarEditor from 'react-avatar-editor'
+import { userCircle } from 'react-icons-kit/fa/userCircle'
 import * as userActions from '../../actions/user-actions'
 import * as globalActions from '../../actions/global-actions'
 import FlexContainer from '../shared/flex-container'
@@ -89,25 +90,29 @@ class Profile extends React.Component {
 				<h1 size="large">{userName || 'Profile'}</h1>
 				<h4>Profile Photo</h4>
 				<div>
-					<div className="avatar-flex-container">
-						<AvatarEditor
-							ref={this.setEditorRef}
-							border={5}
-							width={300}
-							height={300}
-							borderRadius={999}
-							color={[255, 255, 255, 0.6]}
-							scale={this.state.pictureScale}
-							image={this.state.profilePicture || user.photoURL}
-						/>
-					</div>
-					<Slider
-						min="1"
-						max="2"
-						step=".01"
-						value={this.state.pictureScale}
-						onChange={this.handlePictureScale}
-					/>
+					{this.state.profilePicture && (
+						<div>
+							<div className="avatar-flex-container">
+								<AvatarEditor
+									ref={this.setEditorRef}
+									border={5}
+									width={300}
+									height={300}
+									borderRadius={999}
+									color={[255, 255, 255, 0.6]}
+									scale={this.state.pictureScale}
+									image={this.state.profilePicture || user.photoURL}
+								/>
+							</div>
+							<Slider
+								min="1"
+								max="2"
+								step=".01"
+								value={this.state.pictureScale}
+								onChange={this.handlePictureScale}
+							/>
+						</div>
+					)}
 					{this.state.profilePicture ? (
 						<Button onClick={this.handleSaveClick}>Save your photo</Button>
 					) : (
