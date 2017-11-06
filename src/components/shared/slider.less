@@ -29,6 +29,12 @@
 	border-radius: 50%;
 	background: @background-accent-1;
 	cursor: pointer;
+	&:hover {
+		cursor: -webkit-grab;
+	}
+	&:active {
+		cursor: -webkit-grabbing;
+	}
 }
 
 .slider::-moz-range-thumb {
