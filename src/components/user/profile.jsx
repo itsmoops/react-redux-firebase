@@ -8,16 +8,23 @@ import FlexContainer from '../shared/flex-container'
 import Button from '../shared/button'
 import Input from '../shared/input'
 import Slider from '../shared/slider'
+import Message from '../shared/message'
 import './profile.less'
 
 class Profile extends React.Component {
 	state = {
 		profilePicture: undefined,
-		pictureScale: 1
+		pictureScale: 1,
+		errorMessage: 'get fucked lol'
 	}
 	componentDidMount() {
 		document.title = 'Profile'
 		this.handleUploadListener()
+	}
+	componentWillReceiveProps(nextProps) {
+		if (!nextProps.user.data.authenticated) {
+			this.props.history.push('/')
+		}
 	}
 	handleUploadListener = () => {
 		document.getElementById('upload').addEventListener('change', e => {
@@ -31,42 +38,41 @@ class Profile extends React.Component {
 		document.getElementById('upload').click()
 	}
 	handleSaveClick = () => {
-		try {
-			if (this.editor) {
-				this.props.globalActions.loadingStateChange(true)
-				const canvas = this.editor.getImage()
-				canvas.toBlob(blob => {
-					const storageRef = firebase
-						.storage()
-						.ref(
-							`/profile_pictures/${this.props.user.data.uid}/${this.state
-								.profilePicture.name}`
-						)
-					const task = storageRef.put(blob)
-					task.on(
-						'state_changed',
-						snapshot => {
-							// can use this if a progress bad is needed
-						},
-						err => {
-							throw err
-						},
-						async () => {
-							// photo successfully uploaded
-							const photoURL = await storageRef.getDownloadURL()
-							await this.props.userActions.saveUserProfilePicture(photoURL)
-							await this.props.userActions.checkForUser()
-							this.setState({
-								profilePicture: undefined,
-								pictureScale: 1
-							})
-							this.props.globalActions.loadingStateChange(false)
-						}
+		if (this.editor) {
+			this.props.globalActions.loadingStateChange(true)
+			const canvas = this.editor.getImage()
+			canvas.toBlob(blob => {
+				const storageRef = firebase
+					.storage()
+					.ref(
+						`/profile_pictures/${this.props.user.data.uid}/${this.state.profilePicture
+							.name}`
 					)
-				})
-			}
-		} catch (ex) {
-			this.props.globalActions.loadingStateChange(false)
+				const task = storageRef.put(blob)
+				task.on(
+					'state_changed',
+					snapshot => {
+						// can use this if a progress bad is needed
+					},
+					err => {
+						this.setState({
+							errorMessage: err.message
+						})
+						this.props.globalActions.loadingStateChange(false)
+					},
+					async () => {
+						// photo successfully uploaded
+						const photoURL = await storageRef.getDownloadURL()
+						await this.props.userActions.saveUserProfilePicture(photoURL)
+						await this.props.userActions.checkForUser()
+						this.setState({
+							profilePicture: undefined,
+							pictureScale: 1
+						})
+						this.props.globalActions.loadingStateChange(false)
+					}
+				)
+			})
 		}
 	}
 	handlePictureScale = e => {
@@ -112,7 +118,7 @@ class Profile extends React.Component {
 					) : (
 						<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
 					)}
-
+					<Message>{this.state.errorMessage}</Message>
 					<Input id="upload" type="file" hidden />
 				</div>
 			</FlexContainer>

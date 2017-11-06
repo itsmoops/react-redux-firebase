@@ -33,7 +33,7 @@ class Login extends React.Component {
 		e.preventDefault()
 		await this.props.actions.userLogin(this.state.email, this.state.password)
 		if (this.props.user.data.authenticated) {
-			this.props.history.push('/profile')
+			this.props.history.push('/account')
 		}
 	}
 	render() {
