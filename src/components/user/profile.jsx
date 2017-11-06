@@ -90,29 +90,29 @@ class Profile extends React.Component {
 				<h1 size="large">{userName || 'Profile'}</h1>
 				<h4>Profile Photo</h4>
 				<div>
-					{this.state.profilePicture && (
-						<div>
-							<div className="avatar-flex-container">
-								<AvatarEditor
-									ref={this.setEditorRef}
-									border={5}
-									width={300}
-									height={300}
-									borderRadius={999}
-									color={[255, 255, 255, 0.6]}
-									scale={this.state.pictureScale}
-									image={this.state.profilePicture || user.photoURL}
+					{(this.state.profilePicture || user.photoURL) && (
+							<div>
+								<div className="avatar-flex-container">
+									<AvatarEditor
+										ref={this.setEditorRef}
+										border={5}
+										width={300}
+										height={300}
+										borderRadius={999}
+										color={[255, 255, 255, 0.6]}
+										scale={this.state.pictureScale}
+										image={this.state.profilePicture || user.photoURL}
+									/>
+								</div>
+								<Slider
+									min="1"
+									max="2"
+									step=".01"
+									value={this.state.pictureScale}
+									onChange={this.handlePictureScale}
 								/>
 							</div>
-							<Slider
-								min="1"
-								max="2"
-								step=".01"
-								value={this.state.pictureScale}
-								onChange={this.handlePictureScale}
-							/>
-						</div>
-					)}
+						)}
 					{this.state.profilePicture ? (
 						<Button onClick={this.handleSaveClick}>Save your photo</Button>
 					) : (
