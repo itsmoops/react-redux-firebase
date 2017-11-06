@@ -66,7 +66,8 @@ class Profile extends React.Component {
 						await this.props.userActions.checkForUser()
 						this.setState({
 							profilePicture: undefined,
-							pictureScale: 1
+							pictureScale: 1,
+							errorMessage: undefined
 						})
 						this.props.globalActions.loadingStateChange(false)
 					}
@@ -117,7 +118,7 @@ class Profile extends React.Component {
 					) : (
 						<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
 					)}
-					<Message>{this.state.errorMessage}</Message>
+					{this.state.errorMessage && <Message>{this.state.errorMessage}</Message>}
 					<Input id="upload" type="file" hidden />
 				</div>
 			</FlexContainer>
