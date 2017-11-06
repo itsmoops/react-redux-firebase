@@ -15,15 +15,16 @@
 @animation-time: 0.5s;
 
 .loader {
-	border: 5px solid @background;
+	font-family: Helvetica;
+	// border: 5px solid @background;
 	-webkit-animation: spin @animation-time linear infinite;
 	animation: spin @animation-time linear infinite;
-	border-top: 5px solid @background-accent-1;
+	border-top: 5px solid @loading-spinner;
 	border-radius: 50%;
 	position: fixed;
 	z-index: 999;
-	height: 2em;
-	width: 2em;
+	height: 4em;
+	width: 4em;
 	margin: auto;
 	top: 0;
 	left: 0;
