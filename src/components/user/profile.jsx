@@ -14,8 +14,7 @@ import './profile.less'
 class Profile extends React.Component {
 	state = {
 		profilePicture: undefined,
-		pictureScale: 1,
-		errorMessage: 'get fucked lol'
+		pictureScale: 1
 	}
 	componentDidMount() {
 		document.title = 'Profile'
