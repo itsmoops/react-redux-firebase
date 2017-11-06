@@ -21,19 +21,10 @@ class Profile extends React.Component {
 	}
 	handleUploadListener = () => {
 		document.getElementById('upload').addEventListener('change', e => {
-			try {
-				this.props.globalActions.loadingStateChange(true)
-
-				const file = e.target.files[0]
-
-				this.setState({
-					profilePicture: file
-				})
-
-				this.props.globalActions.loadingStateChange(false)
-			} catch (ex) {
-				this.props.globalActions.loadingStateChange(false)
-			}
+			const file = e.target.files[0]
+			this.setState({
+				profilePicture: file
+			})
 		})
 	}
 	handleUploadClick = () => {
@@ -54,11 +45,14 @@ class Profile extends React.Component {
 					const task = storageRef.put(blob)
 					task.on(
 						'state_changed',
-						snapshot => {},
+						snapshot => {
+							// can use this if a progress bad is needed
+						},
 						err => {
 							throw err
 						},
 						async () => {
+							// photo successfully uploaded
 							const photoURL = await storageRef.getDownloadURL()
 							await this.props.userActions.saveUserProfilePicture(photoURL)
 							await this.props.userActions.checkForUser()
