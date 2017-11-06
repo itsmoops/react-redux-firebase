@@ -36,12 +36,14 @@ class Input extends React.Component {
 		return (
 			<div>
 				<input
+					id={this.props.id}
 					className={classes}
 					placeholder={this.props.placeholder}
 					type={this.state.inputType}
 					name={this.props.name}
 					onChange={this.props.onChange}
 					required={this.props.required}
+					hidden={this.props.hidden}
 				/>
 				{icon}
 			</div>

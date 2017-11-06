@@ -1,0 +1,41 @@
+@import '../../styles/palette';
+
+.slide-container {
+	width: 100%;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	min-height: unset;
+	height: 15px;
+	border-radius: 5px;
+	background: @background-dark;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+	overflow: initial;
+}
+
+.slider:focus {
+	border-bottom: none;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: @background-accent-1;
+	cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: @background-accent-1;
+	cursor: pointer;
+}

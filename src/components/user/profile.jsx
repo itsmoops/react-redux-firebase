@@ -1,46 +1,135 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import AvatarEditor from 'react-avatar-editor'
 import * as userActions from '../../actions/user-actions'
+import * as globalActions from '../../actions/global-actions'
 import FlexContainer from '../shared/flex-container'
+import Button from '../shared/button'
+import Input from '../shared/input'
+import Slider from '../shared/slider'
+import './profile.less'
 
 class Profile extends React.Component {
-    componentDidMount() {
-        document.title = 'Profile'
-    }
-    render() {
-        const user = this.props.user.data
-        const userName = user.displayName || user.email
-        return (
-            <FlexContainer>
-                <h1 size="large">{userName || 'Profile'}</h1>
-                <div>
-					But I must explain to you how all this mistaken idea of denouncing pleasure and
-					praising pain was born and I will give you a complete account of the system, and
-					expound the actual teachings of the great explorer of the truth, the
-					master-builder of human happiness. No one rejects, dislikes, or avoids pleasure
-					itself, because it is pleasure, but because those who do not know how to pursue
-					pleasure rationally encounter consequences that are extremely painful. Nor again
-					is there anyone who loves or pursues or desires to obtain pain of itself,
-					because it is pain, but because occasionally circumstances occur in which toil
-					and pain can procure him some great pleasure. To take a trivial example, which
-					of us ever undertakes laborious physical exercise, except to obtain some
-					advantage from it? But who has any right to find fault with a man who chooses to
-					enjoy a pleasure that has no annoying consequences, or one who avoids a pain
-					that produces no resultant pleasure?
-                </div>
-            </FlexContainer>
-        )
-    }
+	state = {
+		profilePicture: undefined,
+		pictureScale: 1
+	}
+	componentDidMount() {
+		document.title = 'Profile'
+		this.handleUploadListener()
+	}
+	handleUploadListener = () => {
+		document.getElementById('upload').addEventListener('change', e => {
+			try {
+				this.props.globalActions.loadingStateChange(true)
+
+				const file = e.target.files[0]
+
+				this.setState({
+					profilePicture: file
+				})
+
+				this.props.globalActions.loadingStateChange(false)
+			} catch (ex) {
+				this.props.globalActions.loadingStateChange(false)
+			}
+		})
+	}
+	handleUploadClick = () => {
+		document.getElementById('upload').click()
+	}
+	handleSaveClick = () => {
+		try {
+			if (this.editor) {
+				this.props.globalActions.loadingStateChange(true)
+				const canvas = this.editor.getImage()
+				canvas.toBlob(blob => {
+					const storageRef = firebase
+						.storage()
+						.ref(
+							`/profile_pictures/${this.props.user.data.uid}/${this.state
+								.profilePicture.name}`
+						)
+					const task = storageRef.put(blob)
+					task.on(
+						'state_changed',
+						snapshot => {},
+						err => {
+							throw err
+						},
+						async () => {
+							const photoURL = await storageRef.getDownloadURL()
+							await this.props.userActions.saveUserProfilePicture(photoURL)
+							await this.props.userActions.checkForUser()
+							this.setState({
+								profilePicture: undefined,
+								pictureScale: 1
+							})
+							this.props.globalActions.loadingStateChange(false)
+						}
+					)
+				})
+			}
+		} catch (ex) {
+			this.props.globalActions.loadingStateChange(false)
+		}
+	}
+	handlePictureScale = e => {
+		const pictureScale = parseFloat(e.target.value)
+		this.setState({
+			pictureScale
+		})
+	}
+	setEditorRef = editor => (this.editor = editor)
+	render() {
+		const user = this.props.user.data
+		const userName = user.displayName || user.email
+		return (
+			<FlexContainer>
+				<h1 size="large">{userName || 'Profile'}</h1>
+				<h4>Profile Photo</h4>
+				<div>
+					<div className="avatar-flex-container">
+						<AvatarEditor
+							ref={this.setEditorRef}
+							border={5}
+							width={300}
+							height={300}
+							borderRadius={999}
+							color={[255, 255, 255, 0.6]}
+							scale={this.state.pictureScale}
+							image={this.state.profilePicture || user.photoURL}
+						/>
+					</div>
+					<Slider
+						min="1"
+						max="2"
+						step=".01"
+						value={this.state.pictureScale}
+						onChange={this.handlePictureScale}
+					/>
+					{this.state.profilePicture ? (
+						<Button onClick={this.handleSaveClick}>Save your photo</Button>
+					) : (
+						<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
+					)}
+
+					<Input id="upload" type="file" hidden />
+				</div>
+			</FlexContainer>
+		)
+	}
 }
 
 function mapStateToProps(state) {
-    return { user: state.user }
+	return { user: state.user }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(userActions, dispatch)
-    }
+	return {
+		userActions: bindActionCreators(userActions, dispatch),
+		globalActions: bindActionCreators(globalActions, dispatch)
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

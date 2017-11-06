@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import onClickOutside from 'react-onclickoutside'
 import * as globalActions from '../../actions/global-actions'
+import ProfilePicture from './profile-picture'
 import { caretDown } from 'react-icons-kit/fa/caretDown'
 import './dropdown.less'
 
@@ -27,11 +28,10 @@ class Dropdown extends React.PureComponent {
 		return (
 			<div className="dropdown">
 				<DropdownHeader>
-					{this.props.value} <Icon icon={caretDown} />
+					<ProfilePicture tiny />
+					<Icon icon={caretDown} />
 				</DropdownHeader>
-				<div className={classes}>
-					{this.props.children}
-				</div>
+				<div className={classes}>{this.props.children}</div>
 			</div>
 		)
 	}
@@ -46,7 +46,10 @@ Dropdown.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
-	return { global: state.global }
+	return {
+		global: state.global,
+		user: state.user
+	}
 }
 
 function mapDispatchToProps(dispatch) {

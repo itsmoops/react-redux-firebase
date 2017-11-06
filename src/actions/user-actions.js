@@ -27,7 +27,8 @@ export function checkForUser() {
                     isAnonymous: user.isAnonymous,
                     phoneNumber: user.phoneNumber,
                     photoURL: user.photoURL,
-                    refreshToken: user.refreshToken
+                    refreshToken: user.refreshToken,
+                    uid: user.uid
                 }
                 dispatch(checkForUserSuccess(userData))
                 dispatch(loadingStateChange(false))
@@ -108,8 +109,7 @@ export function userLogin(email, password) {
                 isAnonymous: user.isAnonymous,
                 phoneNumber: user.phoneNumber,
                 photoURL: user.photoURL,
-                refreshToken: user.refreshToken,
-                message: undefined
+                refreshToken: user.refreshToken
             }
             dispatch(userLoginSuccess(userData))
             dispatch(loadingStateChange(false))
@@ -239,6 +239,40 @@ export function userUpdatePassword(currentPassword, newPassword) {
             dispatch(loadingStateChange(false))
         } catch (ex) {
             dispatch(userUpdatePasswordFailure(ex))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
+export function saveUserProfilePictureSuccess(success) {
+    return {
+        type: types.UPLOAD_PROFILE_PICTURE_SUCCESS,
+        success
+    }
+}
+
+export function saveUserProfilePictureFailure(error) {
+    return {
+        type: types.UPLOAD_PROFILE_PICTURE_FAILURE,
+        error
+    }
+}
+
+export function saveUserProfilePicture(photoURL) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            const user = firebase.auth().currentUser
+            await user.updateProfile({
+                photoURL
+            })
+            const success = {
+                profilePhotoSaved: true
+            }
+            dispatch(saveUserProfilePictureSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (ex) {
+            dispatch(saveUserProfilePictureFailure(ex))
             dispatch(loadingStateChange(false))
         }
     }

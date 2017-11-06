@@ -13,7 +13,10 @@ class Button extends React.PureComponent {
             classes = `${classes} disabled`
         }
         return (
-            <button type={this.props.type || 'submit'} className={classes}>
+            <button
+                type={this.props.type || 'submit'}
+                className={classes}
+                onClick={this.props.onClick}>
                 {this.props.children}
             </button>
         )
