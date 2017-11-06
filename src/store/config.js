@@ -8,16 +8,29 @@ import rootReducer from '../reducers'
 // our exported functions which returns the store
 // will be called at our app's root and provided to the redux Provider
 const storeConfig = {
-    // redux functions that actually create the store
-
     dev(initialState) {
+        if (window.location.hostname === 'localhost') {
+            return createStore(
+                rootReducer,
+                initialState,
+                compose(
+                    applyMiddleware(thunk, reduxImmutableStateInvariant()),
+                    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+                )
+            )
+        }
         return createStore(
             rootReducer,
             initialState,
-            compose(
-                applyMiddleware(thunk, reduxImmutableStateInvariant()),
-        		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-            )
+            compose(applyMiddleware(thunk, reduxImmutableStateInvariant()))
+        )
+    },
+
+    staging(initialState) {
+        return createStore(
+            rootReducer,
+            initialState,
+            compose(applyMiddleware(thunk, reduxImmutableStateInvariant()))
         )
     },
 
@@ -25,9 +38,7 @@ const storeConfig = {
         return createStore(
             rootReducer,
             initialState,
-            compose(
-                applyMiddleware(thunk, reduxImmutableStateInvariant())
-            )
+            compose(applyMiddleware(thunk, reduxImmutableStateInvariant()))
         )
     }
 }

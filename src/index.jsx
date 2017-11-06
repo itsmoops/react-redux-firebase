@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     store = storeConfig.prod()
     firebase.initializeApp(firebaseConfig.prod)
 } else if (process.env.NODE_ENV === 'staging') {
-    store = storeConfig.dev()
+    store = storeConfig.staging()
     firebase.initializeApp(firebaseConfig.staging)
 } else {
     store = storeConfig.dev()
