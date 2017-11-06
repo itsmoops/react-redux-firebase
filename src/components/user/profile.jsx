@@ -51,7 +51,7 @@ class Profile extends React.Component {
 				task.on(
 					'state_changed',
 					snapshot => {
-						// can use this if a progress bad is needed
+						// can use this if a progress bar is needed
 					},
 					err => {
 						this.setState({
