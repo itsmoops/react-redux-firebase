@@ -9,7 +9,8 @@ import rootReducer from '../reducers'
 // will be called at our app's root and provided to the redux Provider
 const storeConfig = {
     dev(initialState) {
-        if (window.location.hostname === 'localhost') {
+        if (window.location.hostname === 'localhost' &&
+			window.navigator.userAgent.includes('Chrome')) {
             return createStore(
                 rootReducer,
                 initialState,
