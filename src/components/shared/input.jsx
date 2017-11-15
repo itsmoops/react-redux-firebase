@@ -1,6 +1,31 @@
+import styled from 'styled-components'
 import { eye } from 'react-icons-kit/fa/eye'
 import { eyeSlash } from 'react-icons-kit/fa/eyeSlash'
-import './input.less'
+
+const StyledInput = styled.input`
+	width: 100%;
+	min-height: 35px;
+	font-size: 1.1em;
+	font-weight: 300;
+	padding: 5;
+	margin: 10 0 10 0;
+	border: none;
+	border-bottom: 2px solid ${colors.background.darken(0.2)};
+	outline: none;
+	overflow: auto;
+	box-shadow: none;
+	&:focus {
+		border-bottom: 2px solid ${colors.accent1};
+	}
+`
+
+const StyledIcon = styled(Icon)`
+	float: right;
+	margin-right: 10px;
+	margin-top: -45px;
+	cursor: pointer;
+	overflow: scroll;
+`
 
 class Input extends React.Component {
 	state = {
@@ -14,30 +39,18 @@ class Input extends React.Component {
 		})
 	}
 	render() {
-		let classes = 'input'
-		if (this.props.disabled) {
-			classes = `${classes} input-disabled`
-		}
 		let icon
 		if (this.props.toggleHiddenText) {
 			if (!this.state.showText) {
-				icon = <Icon className="eye" icon={eye} size={20} onClick={this.handleIconClick} />
+				icon = <StyledIcon icon={eye} size={20} onClick={this.handleIconClick} />
 			} else {
-				icon = (
-					<Icon
-						className="eye"
-						icon={eyeSlash}
-						size={20}
-						onClick={this.handleIconClick}
-					/>
-				)
+				icon = <StyledIcon icon={eyeSlash} size={20} onClick={this.handleIconClick} />
 			}
 		}
 		return (
 			<div>
-				<input
+				<StyledInput
 					id={this.props.id}
-					className={classes}
 					placeholder={this.props.placeholder}
 					type={this.state.inputType}
 					name={this.props.name}
