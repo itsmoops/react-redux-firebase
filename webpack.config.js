@@ -49,12 +49,16 @@ module.exports = {
             PropTypes: 'prop-types',
             Icon: ['react-icons-kit', 'Icon'],
             horizontalCenter: ['react-icons-kit', 'horizontalCenter'],
-            firebase: 'firebase'
+            firebase: 'firebase',
+            colors: 'colors'
         }),
         new ExtractTextPlugin('[name].css'),
         new CopyWebpackPlugin([{ from: './src/index.html', to: 'index.html' }])
     ],
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            colors: path.resolve(__dirname, './src/styles/theme')
+        }
     }
 }
