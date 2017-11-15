@@ -1,38 +1,58 @@
-import './flex-container.less'
+import styled from 'styled-components'
+
 /**
  * FlexContainer - Wrapper that builds a responsive flexbox
  */
+const StyledFlexContainer = styled.div`
+	height: 100%;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+	top: 0px;
+	bottom: 0px;
+	padding: 0 15 0 15;
+	overflow: scroll;
+	text-align: ${(props) => {
+        if (props.right) {
+            return 'right;'
+        } else if (props.centered) {
+            return 'center;'
+        }
+        return 'left;'
+    }}
+		${props => props.theme.screen.xSmall} {
+		align-items: inherit;
+		-webkit-align-items: end;
+	}
+`
+
+const StyledFlex = styled.div`
+	${props => props.theme.screen.large} {
+		width: 40%;
+	}
+	${props => props.theme.screen.medium} {
+		width: 55%;
+	}
+	${props => props.theme.screen.small} {
+		width: 80%;
+	}
+	${props => props.theme.screen.xSmall} {
+		margin-top: ${props => props.theme.navBarHeight};
+		width: 95%;
+	}
+`
+
 class FlexContainer extends React.PureComponent {
     render() {
-        let classes = 'flex-container'
-        if (this.props.centered) {
-            classes = `${classes} centered`
-        }
         return (
-            <div className={`${classes}`}>
-                <div
-                    className={`${this.props.large} ${this.props.medium} ${this.props.small} ${this
-                        .props.xsmall}`}>
-                    {this.props.children}
-                </div>
-            </div>
+            <StyledFlexContainer centered={this.props.centered} right={this.props.right}>
+                <StyledFlex>{this.props.children}</StyledFlex>
+            </StyledFlexContainer>
         )
     }
-}
-
-// default responsive column widths
-FlexContainer.defaultProps = {
-    large: 'flex-lg',
-    medium: 'flex-md',
-    small: 'flex-sm',
-    xsmall: 'flex-x-sm'
-}
-
-FlexContainer.propTypes = {
-    large: PropTypes.string,
-    medium: PropTypes.string,
-    small: PropTypes.string,
-    xsmall: PropTypes.string
 }
 
 export default FlexContainer

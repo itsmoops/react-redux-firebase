@@ -19,7 +19,8 @@
 		"state": true,
 		"firebase": true,
 		"Icon": true,
-		"horizontalCenter": true
+		"horizontalCenter": true,
+		"colors": true
 	},
 	"rules": {
 		"semi": [2, "never"],
