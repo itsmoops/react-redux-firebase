@@ -41,12 +41,11 @@ class Profile extends React.Component {
 			this.props.globalActions.loadingStateChange(true)
 			const canvas = this.editor.getImage()
 			canvas.toBlob(blob => {
+				const uniqueId = this.props.user.data.uid
+				const photoName = this.state.profilePicture.name
 				const storageRef = firebase
 					.storage()
-					.ref(
-						`/profile_pictures/${this.props.user.data.uid}/${this.state.profilePicture
-							.name}`
-					)
+					.ref(`/profile_pictures/${uniqueId}/${photoName}`)
 				const task = storageRef.put(blob)
 				task.on(
 					'state_changed',
