@@ -44,6 +44,7 @@ module.exports = {
             }
         }),
         new webpack.ProvidePlugin({
+            styled: 'styled-components',
             React: 'react',
             ReactDOM: 'react-dom',
             PropTypes: 'prop-types',

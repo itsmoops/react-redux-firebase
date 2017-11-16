@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AvatarEditor from 'react-avatar-editor'
+import styled from 'styled-components'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import * as userActions from '../../actions/user-actions'
 import * as globalActions from '../../actions/global-actions'
@@ -9,7 +10,19 @@ import Button from '../shared/button'
 import Input from '../shared/input'
 import Slider from '../shared/slider'
 import Message from '../shared/message'
-import './profile.less'
+
+const StyledDiv = styled.div`
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+	padding: 20 0 20 0;
+	&:hover {
+		cursor: move;
+	}
+`
 
 class Profile extends React.Component {
 	state = {
@@ -91,7 +104,7 @@ class Profile extends React.Component {
 				<div>
 					{(this.state.profilePicture || user.photoURL) && (
 							<div>
-								<div className="avatar-flex-container">
+								<StyledDiv>
 									<AvatarEditor
 										ref={this.setEditorRef}
 										border={5}
@@ -102,7 +115,7 @@ class Profile extends React.Component {
 										scale={this.state.pictureScale}
 										image={this.state.profilePicture || user.photoURL}
 									/>
-								</div>
+								</StyledDiv>
 								<Slider
 									min="1"
 									max="2"
