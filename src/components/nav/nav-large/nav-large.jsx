@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
+import styled from 'styled-components'
 import NavItem from './nav-item-large'
 import Dropdown from '../../shared/dropdown'
 import DropdownItem from '../../shared/dropdown-item'
@@ -9,7 +10,15 @@ import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { gear } from 'react-icons-kit/fa/gear'
 import { question } from 'react-icons-kit/fa/question'
 import { signOut } from 'react-icons-kit/fa/signOut'
-import './nav-large.less'
+
+const StyledNavContainer = styled.div`
+	background: ${colors.background};
+	position: fixed;
+	width: 100%;
+	height: ${props => props.theme.navBarHeight};
+	z-index: 1;
+	box-shadow: inset 0 -2px 0 ${colors.background.darken(0.2)};
+`
 
 class NavLarge extends React.Component {
 	handleLogout = () => {
@@ -76,11 +85,11 @@ class NavLarge extends React.Component {
 		)
 
 		return (
-			<div className="nav-bar nav-large">
+			<StyledNavContainer>
 				<NavItem linkTo="/" value="Home" active={this.props.active === ''} />
 				<NavItem linkTo="/about" value="About" active={this.props.active === 'about'} />
 				{user.authenticated ? userMenu : guestMenu}
-			</div>
+			</StyledNavContainer>
 		)
 	}
 }

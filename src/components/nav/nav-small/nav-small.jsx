@@ -1,13 +1,116 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import NavItem from './nav-item-small'
+import styled, { css, keyframes } from 'styled-components'
 import * as globalActions from '../../../actions/global-actions'
 import * as userActions from '../../../actions/user-actions'
 import { thinDown } from 'react-icons-kit/entypo/thinDown'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { gear } from 'react-icons-kit/fa/gear'
 import { signOut } from 'react-icons-kit/fa/signOut'
-import './nav-small.less'
+
+const animationTime = '0.3s'
+const menuMarginTop = '-250%'
+
+const StyledNavContainer = styled.div`
+	background: ${colors.background};
+	position: fixed;
+	width: 100%;
+	height: ${props => props.theme.navBarHeight};
+	z-index: 1;
+`
+
+const StyledChevron = styled.button`
+	background: ${colors.background};
+	padding: 20 20 10 20;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+`
+
+const iconRotateUp = keyframes`
+	from {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+`
+
+const iconRotateDown = keyframes`
+	from {
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	to {
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+`
+
+const StyledIcon = styled(Icon)`
+	${(props) => {
+		if (props.open) {
+			return css`
+				animation: ${iconRotateUp} ${animationTime} forwards;
+			`
+		} else if (props.open !== undefined) {
+			return css`
+				animation: ${iconRotateDown} ${animationTime} forwards;
+			`
+		}
+	}}
+`
+
+const menuSlideUp = keyframes`
+	from {
+		margin-top: 0%;
+	}
+	to {
+		margin-top: ${menuMarginTop};
+	}
+`
+
+const menuSlideDown = keyframes`
+	from {
+		margin-top: ${menuMarginTop};
+	}
+	to {
+		margin-top: 0%;
+	}
+`
+
+const StyledMenu = styled.div`
+	margin-top: ${menuMarginTop};
+	padding-top: ${props => props.theme.navBarHeight};
+	background-color: ${colors.background};
+	position: absolute;
+	height: calc(100% - ${props => props.theme.navBarHeight});
+	width: 100%;
+	${(props) => {
+		if (props.open) {
+			return css`
+				animation: ${menuSlideDown} ${animationTime} forwards;
+			`
+		} else if (props.open !== undefined) {
+			return css`
+				animation: ${menuSlideUp} ${animationTime} forwards;
+			`
+		}
+	}}
+`
 
 class NavSmall extends React.Component {
 	handleIconClick = () => {
@@ -21,14 +124,6 @@ class NavSmall extends React.Component {
 		this.handleItemClick()
 	}
 	render() {
-		let iconClasses = ''
-		let menuClasses = ''
-		if (this.props.global.menuOpen !== undefined) {
-			// apply menu animation classes
-			iconClasses = this.props.global.menuOpen ? 'nav-bar-icon-up' : 'nav-bar-icon-down'
-			menuClasses = this.props.global.menuOpen ? 'menu-small-down' : 'menu-small-up'
-		}
-
 		const user = this.props.user.data
 		const userName = user.displayName || user.email
 
@@ -70,12 +165,12 @@ class NavSmall extends React.Component {
 
 		return (
 			<div>
-				<div className="nav-bar">
-					<button className="chevron" onClick={this.handleIconClick}>
-						<Icon className={iconClasses} icon={thinDown} />
-					</button>
-				</div>
-				<div className={`menu-small ${menuClasses}`}>
+				<StyledNavContainer>
+					<StyledChevron onClick={this.handleIconClick}>
+						<StyledIcon open={this.props.global.menuOpen} icon={thinDown} />
+					</StyledChevron>
+				</StyledNavContainer>
+				<StyledMenu open={this.props.global.menuOpen}>
 					<NavItem
 						linkTo="/"
 						value="Home"
@@ -97,7 +192,7 @@ class NavSmall extends React.Component {
 						active={this.props.active === 'help'}
 						onClick={this.handleItemClick}
 					/>
-				</div>
+				</StyledMenu>
 			</div>
 		)
 	}

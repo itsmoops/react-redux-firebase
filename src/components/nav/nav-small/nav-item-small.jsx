@@ -1,5 +1,30 @@
 import { withRouter } from 'react-router'
-import './nav-item-small.less'
+import styled from 'styled-components'
+
+const StyledItemContainer = styled.div`
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	font-size: 1.5em;
+	font-weight: ${props => props.active ? 'bold' : 'normal'};
+`
+
+const StyledItem = styled.div`
+	padding-left: 20px;
+	display: block;
+	margin: 1em 0em 1em 0em;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	& > div {
+		display: flex !important;
+		justify-content: space-between !important;
+		padding-right: 20px;
+	}
+`
+
 
 class NavItemSmall extends React.PureComponent {
 	handleClick = () => {
@@ -19,15 +44,15 @@ class NavItemSmall extends React.PureComponent {
 			undefined
 		)
 		const Item = horizontalCenter(props => (
-			<div
-				className={classes}
+			<StyledItemContainer
+				active={this.props.active}
 				onClick={() => {
 					this.props.onClick()
 					this.handleClick()
 				}}
 			>
-				<div className="nav-item-padding-left">{props.children}</div>
-			</div>
+				<StyledItem>{props.children}</StyledItem>
+			</StyledItemContainer>
 		))
 		return (
 			<Item>

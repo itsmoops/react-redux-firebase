@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledDiv = styled.div`
 	display: inline-block;
@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
 	padding: 0 20px;
 	text-align: center;
 	cursor: pointer;
-	${props => props.active && 'box-shadow: inset 0 -2px 0;'};
+	${props => props.active && css`box-shadow: inset 0 -2px 0 ${colors.accent1};`};
 	${props => (props.align === 'right' ? 'float: right;' : 'float: left;')};
 `
 
