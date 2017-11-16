@@ -1,4 +1,45 @@
-import './slider.less'
+import styled from 'styled-components'
+
+const StyledSlider = styled.input`
+	-webkit-appearance: none;
+	width: 100%;
+	min-height: unset;
+	height: 15px;
+	border-radius: 5px;
+	background: ${colors.background.darken(0.2)};
+	outline: none;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+	overflow: initial;
+
+	&:focus {
+		border-bottom: 2px solid ${colors.background.darken(0.2)};
+	}
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: ${colors.accent1};
+		cursor: pointer;
+		&:hover {
+			cursor: -webkit-grab;
+		}
+		&:active {
+			cursor: -webkit-grabbing;
+		}
+	}
+
+	&::-moz-range-thumb {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: ${colors.accent1};
+		cursor: pointer;
+	}
+`
 
 class Slider extends React.Component {
 	state = {
@@ -11,11 +52,10 @@ class Slider extends React.Component {
 	}
 	render() {
 		return (
-			<div className="slide-container">
-				<input
+			<div>
+				<StyledSlider
 					type="range"
 					step={this.props.step}
-					className="slider"
 					min={this.props.min}
 					max={this.props.max}
 					value={this.props.value}
