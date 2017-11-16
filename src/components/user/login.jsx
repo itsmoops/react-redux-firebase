@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as userActions from '../../actions/user-actions'
 import FlexContainer from '../shared/flex-container'
 import Input from '../shared/input'
 import Button from '../shared/button'
 import Message from '../shared/message'
+import Link from '../shared/link'
 
 class Login extends React.Component {
 	state = {
@@ -60,7 +61,7 @@ class Login extends React.Component {
 					<Link className="float-right" to="/forgot-password">
 						I forgot my password
 					</Link>
-					<div>{message && <Message>{message}</Message>}</div>
+					{message && <Message>{message}</Message>}
 				</form>
 			</FlexContainer>
 		)

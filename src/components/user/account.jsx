@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import FlexContainer from '../shared/flex-container'
+import Link from '../shared/link'
 
 class Account extends React.Component {
     componentDidMount() {
