@@ -1,29 +1,56 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
 import * as globalActions from '../../actions/global-actions'
 import { withRouter } from 'react-router'
-import './dropdown-item.less'
+
+const StyledDropdownLink = styled.a`
+	position: relative;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+
+	&:hover {
+		cursor: pointer;
+		color: ${colors.accent1};
+	}
+
+	&:focus {
+		color: ${colors.accent1};
+		outline: none;
+	}
+
+	&:after {
+		width: 172;
+		right: 20px;
+		bottom: 0;
+		position: absolute;
+		border-bottom: 1px solid
+			${props => (props.active ? colors.accent1 : colors.background.darken(0.2))};
+		content: '';
+	}
+
+	&:hover:after {
+		width: 172;
+		right: 20px;
+		bottom: 0;
+		position: absolute;
+		border-bottom: 1px solid ${colors.accent1};
+		content: '';
+	}
+`
 
 class DropdownItem extends React.PureComponent {
 	toggleMenu = () => {
 		this.props.actions.toggleMenuDropdown(!this.props.global.menuOpen)
 	}
 	render() {
-		let classes = 'dropdown-item'
-		if (this.props.align === 'left') {
-			classes = `${classes} align-left`
-		} else if (this.props.align === 'right') {
-			classes = `${classes} align-right`
-		}
-		if (this.props.active) {
-			classes = `${classes} dropdown-active`
-		}
-
 		const icon = this.props.icon ? <Icon icon={this.props.icon} /> : undefined
 
 		const Item = horizontalCenter(props => (
-			<a
-				className={classes}
+			<StyledDropdownLink
+				active={this.props.active}
 				onClick={() => {
 					this.props.linkTo && this.props.history.push(this.props.linkTo)
 					this.props.onClick && this.props.onClick()
@@ -33,7 +60,7 @@ class DropdownItem extends React.PureComponent {
 				tabIndex="0"
 			>
 				{props.children}
-			</a>
+			</StyledDropdownLink>
 		))
 		return (
 			<Item>

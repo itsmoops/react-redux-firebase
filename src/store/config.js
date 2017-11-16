@@ -10,8 +10,8 @@ import rootReducer from '../reducers'
 const storeConfig = {
     dev(initialState) {
         if (window.location.hostname === 'localhost' &&
-			window.navigator.userAgent.includes('Chrome') ||
-			window.navigator.userAgent.includes('Firefox') ) {
+			(window.navigator.userAgent.includes('Chrome') ||
+			window.navigator.userAgent.includes('Firefox'))) {
             return createStore(
                 rootReducer,
                 initialState,
