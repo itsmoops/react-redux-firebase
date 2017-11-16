@@ -22,7 +22,7 @@ const StyledNavContainer = styled.div`
 
 const StyledChevron = styled.button`
 	background: ${colors.background};
-	padding: 20 20 10 20;
+	padding: 24 20 20 20;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 `
 

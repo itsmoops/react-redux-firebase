@@ -20,6 +20,10 @@ const StyledNavContainer = styled.div`
 	box-shadow: inset 0 -2px 0 ${colors.background.darken(0.2)};
 `
 
+const StyledDropdownContainer = styled.div`
+	float: right;
+`
+
 class NavLarge extends React.Component {
 	handleLogout = () => {
 		this.props.actions.userLogout()
@@ -51,7 +55,7 @@ class NavLarge extends React.Component {
 			</div>
 		)
 		const userMenu = (
-			<div className="nav-item-large nav-item-right">
+			<StyledDropdownContainer>
 				<Dropdown value={userName}>
 					<DropdownItem
 						value="Edit Profile"
@@ -81,7 +85,7 @@ class NavLarge extends React.Component {
 						icon={signOut}
 					/>
 				</Dropdown>
-			</div>
+			</StyledDropdownContainer>
 		)
 
 		return (

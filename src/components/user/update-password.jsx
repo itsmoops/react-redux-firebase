@@ -54,7 +54,7 @@ class UpdatePassword extends React.Component {
 					required
 					toggleHiddenText
 				/>
-				<Button classes="float-right">Reset</Button>
+				<Button>Reset</Button>
 				{message && <Message>{message}</Message>}
 			</form>
 		)

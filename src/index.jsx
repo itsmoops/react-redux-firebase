@@ -2,12 +2,12 @@ import * as firebase from 'firebase'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
-import globals from './styles/globals'
+import common from './styles/common'
 import colors from './styles/colors'
 import routes from './routes'
 import storeConfig from './store/config'
 import firebaseConfig from './firebase-config'
-import './app.less'
+import './styles/global'
 
 // environment settings
 let store
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // merge styles for theme
-const theme = Object.assign({}, globals, colors)
+const theme = Object.assign({}, common, colors)
 
 ReactDOM.render(
     <Provider store={store}>

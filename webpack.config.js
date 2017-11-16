@@ -25,13 +25,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.(css|less)$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'less-loader']
-                })
-            },
-            {
                 test: /.jpe?g$|.gif$|.png$|.svg$|.woff2?$|.ttf$|.eot$|.wav$|.mp3$|.html$/,
                 loader: `${require.resolve('file-loader')}?name=[path][name].[ext]`
             }

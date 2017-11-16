@@ -7,7 +7,7 @@ const StyledItemContainer = styled.div`
 	text-align: left;
 	cursor: pointer;
 	font-size: 1.5em;
-	font-weight: ${props => props.active ? 'bold' : 'normal'};
+	font-weight: ${props => (props.active ? 'bold' : 'normal')};
 `
 
 const StyledItem = styled.div`
@@ -25,17 +25,11 @@ const StyledItem = styled.div`
 	}
 `
 
-
 class NavItemSmall extends React.PureComponent {
 	handleClick = () => {
 		this.props.history.push(this.props.linkTo)
 	}
 	render() {
-		let classes = 'nav-item-small'
-		if (this.props.active) {
-			classes = `${classes} nav-item-active`
-		}
-
 		const icon = this.props.icon ? (
 			<div>
 				<Icon icon={this.props.icon} size={this.props.iconSize} />

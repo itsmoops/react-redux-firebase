@@ -24,7 +24,7 @@ class Account extends React.Component {
 					enjoy a pleasure that has no annoying consequences, or one who avoids a pain
 					that produces no resultant pleasure?
                 </div>
-                <Link className="float-right" to="/update-password">
+                <Link to="/update-password" right>
 					Update Password
                 </Link>
             </FlexContainer>
