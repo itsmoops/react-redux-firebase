@@ -21,9 +21,12 @@ const StyledNavContainer = styled.div`
 `
 
 const StyledChevron = styled.button`
+	border: none;
+	outline: none;
+	cursor: pointer;
 	background: ${colors.background};
 	padding: 24 20 20 20;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `
 
 const iconRotateUp = keyframes`
@@ -61,7 +64,7 @@ const iconRotateDown = keyframes`
 `
 
 const StyledIcon = styled(Icon)`
-	${(props) => {
+	${props => {
 		if (props.open) {
 			return css`
 				animation: ${iconRotateUp} ${animationTime} forwards;
@@ -71,7 +74,7 @@ const StyledIcon = styled(Icon)`
 				animation: ${iconRotateDown} ${animationTime} forwards;
 			`
 		}
-	}}
+	}};
 `
 
 const menuSlideUp = keyframes`
@@ -99,7 +102,7 @@ const StyledMenu = styled.div`
 	position: absolute;
 	height: calc(100% - ${props => props.theme.navBarHeight});
 	width: 100%;
-	${(props) => {
+	${props => {
 		if (props.open) {
 			return css`
 				animation: ${menuSlideDown} ${animationTime} forwards;
@@ -109,7 +112,7 @@ const StyledMenu = styled.div`
 				animation: ${menuSlideUp} ${animationTime} forwards;
 			`
 		}
-	}}
+	}};
 `
 
 class NavSmall extends React.Component {
@@ -184,7 +187,7 @@ class NavSmall extends React.Component {
 						onClick={this.handleItemClick}
 					/>
 					<hr />
-					{ user.authenticated ? userMenu : guestMenu }
+					{user.authenticated ? userMenu : guestMenu}
 					<hr />
 					<NavItem
 						linkTo="/help"

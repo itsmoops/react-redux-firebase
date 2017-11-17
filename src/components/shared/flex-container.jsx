@@ -1,16 +1,10 @@
 import styled from 'styled-components'
 
-/**
- * FlexContainer - Wrapper that builds a responsive flexbox
- */
 const StyledFlexContainer = styled.div`
 	height: 100%;
 	display: flex;
-	display: -webkit-flex;
 	align-items: center;
-	-webkit-align-items: center;
 	justify-content: center;
-	-webkit-justify-content: center;
 	top: 0px;
 	bottom: 0px;
 	padding: 0 15 0 15;
@@ -25,7 +19,6 @@ const StyledFlexContainer = styled.div`
     }}
 		${props => props.theme.screen.xSmall} {
 		align-items: inherit;
-		-webkit-align-items: end;
 	}
 `
 

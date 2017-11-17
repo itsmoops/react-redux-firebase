@@ -21,6 +21,9 @@ const StyledNavContainer = styled.div`
 `
 
 const StyledDropdownContainer = styled.div`
+	height: 100%;
+	display: flex;
+	align-items: center;
 	float: right;
 `
 

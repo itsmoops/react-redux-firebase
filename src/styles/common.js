@@ -1,4 +1,5 @@
 const common = {
+    buffer: '10px',
     bufferTop: '10px',
     bufferBottom: '10px',
     borderRadius: '6px',

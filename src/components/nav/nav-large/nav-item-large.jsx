@@ -2,8 +2,9 @@ import { withRouter } from 'react-router'
 import styled, { css } from 'styled-components'
 
 const StyledDiv = styled.div`
-	display: inline-block;
 	height: 100%;
+	display: flex;
+	align-items: center;
 	padding: 0 20px;
 	text-align: center;
 	cursor: pointer;

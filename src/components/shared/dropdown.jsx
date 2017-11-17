@@ -6,18 +6,8 @@ import * as globalActions from '../../actions/global-actions'
 import ProfilePicture from './profile-picture'
 import { caretDown } from 'react-icons-kit/fa/caretDown'
 
-const StyledDropdown = styled.div`
-	position: relative;
-	display: inline-block;
-	display: block;
-	margin-top: 14px;
-	-webkit-margin-before: 0.75em;
-	-webkit-margin-after: 0.75em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-`
-
 const StyledDropdownButton = styled.button`
+	outline: none;
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -30,11 +20,13 @@ const StyledDropdownContent = styled.div`
 	position: absolute;
 	background-color: ${colors.background};
 	z-index: 1;
-	margin-top: 12px;
+	top: 59px;
 	right: 0;
 	display: ${props => (props.open ? 'block' : 'none')};
 `
-const StyledIcon = styled(Icon)`padding-left: 5px;`
+const StyledIcon = styled(Icon)`
+	padding-left: 5px;
+`
 
 const DropdownHeader = horizontalCenter(props => (
 	<StyledDropdownButton onClick={props.onClick}>{props.children}</StyledDropdownButton>
@@ -51,7 +43,7 @@ class Dropdown extends React.PureComponent {
 
 	render() {
 		return (
-			<StyledDropdown>
+			<div>
 				<DropdownHeader onClick={this.toggleDropDown}>
 					<ProfilePicture tiny />
 					<StyledIcon icon={caretDown} />
@@ -59,7 +51,7 @@ class Dropdown extends React.PureComponent {
 				<StyledDropdownContent open={this.props.global.menuOpen}>
 					{this.props.children}
 				</StyledDropdownContent>
-			</StyledDropdown>
+			</div>
 		)
 	}
 }

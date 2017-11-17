@@ -11,6 +11,7 @@ const StyledSlider = styled.input`
 	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
 	overflow: initial;
+	margin-bottom: ${props => props.theme.bufferBottom};
 
 	&:focus {
 		border-bottom: 2px solid ${colors.background.darken(0.2)};
