@@ -38,7 +38,7 @@ class UpdatePassword extends React.Component {
 		)
 		const updateForm = (
 			<form onSubmit={this.onHandleSubmit}>
-				<h1 size="large">Update Password</h1>
+				<h1>Update Password</h1>
 				<Input
 					placeholder="Current Password"
 					type="password"

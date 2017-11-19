@@ -22,6 +22,11 @@ const StyledDiv = styled.div`
 	&:hover {
 		cursor: move;
 	}
+	& > canvas {
+		height: unset !important;
+		width: 100% !important;
+		max-width: 500px !important;
+	}
 `
 
 class Profile extends React.Component {
@@ -99,32 +104,32 @@ class Profile extends React.Component {
 		const userName = user.displayName || user.email
 		return (
 			<FlexContainer>
-				<h1 size="large">{userName || 'Profile'}</h1>
-				<h4>Profile Photo</h4>
+				<h1>{userName || 'Profile'}</h1>
+				<h2>Profile Photo</h2>
 				<div>
 					{(this.state.profilePicture || user.photoURL) && (
-							<div>
-								<StyledDiv>
-									<AvatarEditor
-										ref={this.setEditorRef}
-										border={5}
-										width={300}
-										height={300}
-										borderRadius={999}
-										color={[255, 255, 255, 0.6]}
-										scale={this.state.pictureScale}
-										image={this.state.profilePicture || user.photoURL}
-									/>
-								</StyledDiv>
-								<Slider
-									min="1"
-									max="2"
-									step=".01"
-									value={this.state.pictureScale}
-									onChange={this.handlePictureScale}
+						<div>
+							<StyledDiv>
+								<AvatarEditor
+									ref={this.setEditorRef}
+									border={5}
+									width={300}
+									height={300}
+									borderRadius={999}
+									color={[255, 255, 255, 0.6]}
+									scale={this.state.pictureScale}
+									image={this.state.profilePicture || user.photoURL}
 								/>
-							</div>
-						)}
+							</StyledDiv>
+							<Slider
+								min="1"
+								max="2"
+								step=".01"
+								value={this.state.pictureScale}
+								onChange={this.handlePictureScale}
+							/>
+						</div>
+					)}
 					{this.state.profilePicture ? (
 						<Button onClick={this.handleSaveClick}>Save your photo</Button>
 					) : (

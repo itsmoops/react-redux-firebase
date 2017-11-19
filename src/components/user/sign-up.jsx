@@ -49,7 +49,7 @@ class SignUp extends React.Component {
 		)
 		const signUpForm = (
 			<form onSubmit={this.onHandleSubmit}>
-				<h1 size="large">Sign Up</h1>
+				<h1>Sign Up</h1>
 				<Input
 					placeholder="Email"
 					type="email"

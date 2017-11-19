@@ -8,7 +8,7 @@ class Account extends React.Component {
     render() {
         return (
             <FlexContainer>
-                <h1 size="large">Account Settings</h1>
+                <h1>Account Settings</h1>
                 <div>
 					But I must explain to you how all this mistaken idea of denouncing pleasure and
 					praising pain was born and I will give you a complete account of the system, and
