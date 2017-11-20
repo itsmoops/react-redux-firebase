@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import * as globalActions from '../../actions/global-actions'
 import ProfilePicture from './profile-picture'
 import { caretDown } from 'react-icons-kit/fa/caretDown'
+import { caretUp } from 'react-icons-kit/fa/caretUp'
 
 const StyledDropdownButton = styled.button`
 	outline: none;
@@ -46,13 +47,14 @@ class Dropdown extends React.PureComponent {
 	}
 
 	render() {
+		const { menuOpen } = this.props.global
 		return (
 			<div>
 				<DropdownHeader onClick={this.toggleDropDown}>
 					<StyledProfilePictureContainer>
 						<ProfilePicture tiny />
 					</StyledProfilePictureContainer>
-					<StyledIcon icon={caretDown} />
+					<StyledIcon icon={menuOpen ? caretUp : caretDown} />
 				</DropdownHeader>
 				<StyledDropdownContent open={this.props.global.menuOpen}>
 					{this.props.children}

@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 const StyledDropdownLink = styled.a`
 	position: relative;
 	color: black;
-	padding: 12px 16px;
+	padding: 25px 16px;
 	text-decoration: none;
 	display: block;
 
