@@ -28,6 +28,10 @@ const StyledIcon = styled(Icon)`
 	padding-left: 5px;
 `
 
+const StyledProfilePictureContainer = styled.div`
+	color: ${colors.background.darken(0.2)};
+`
+
 const DropdownHeader = horizontalCenter(props => (
 	<StyledDropdownButton onClick={props.onClick}>{props.children}</StyledDropdownButton>
 ))
@@ -45,7 +49,9 @@ class Dropdown extends React.PureComponent {
 		return (
 			<div>
 				<DropdownHeader onClick={this.toggleDropDown}>
-					<ProfilePicture tiny />
+					<StyledProfilePictureContainer>
+						<ProfilePicture tiny />
+					</StyledProfilePictureContainer>
 					<StyledIcon icon={caretDown} />
 				</DropdownHeader>
 				<StyledDropdownContent open={this.props.global.menuOpen}>
