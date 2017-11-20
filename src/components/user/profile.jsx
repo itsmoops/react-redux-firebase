@@ -56,7 +56,7 @@ class Profile extends React.Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user) {
-			if (!nextProps.user.data.authenticated) {
+			if (!nextProps.user.authenticated) {
 				this.props.history.push('/')
 			}
 			this.setState({
@@ -80,7 +80,7 @@ class Profile extends React.Component {
 			this.props.globalActions.loadingStateChange(true)
 			const canvas = this.editor.getImage()
 			canvas.toBlob(blob => {
-				const uniqueId = this.props.user.data.uid
+				const uniqueId = this.props.user.uid
 				const photoName = this.state.profilePicture.name
 				const storageRef = firebase
 					.storage()
@@ -152,7 +152,7 @@ class Profile extends React.Component {
 	}
 	setEditorRef = editor => (this.editor = editor)
 	render() {
-		const user = this.props.user.data
+		const user = this.props.user
 		const userName = user.displayName || user.email
 		return (
 			<FlexContainer>

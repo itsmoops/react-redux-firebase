@@ -75,8 +75,8 @@ export function userSignUp(email, password) {
             }
             dispatch(userSignUpSuccess(userData))
             dispatch(loadingStateChange(false))
-        } catch (ex) {
-            dispatch(userSignUpFailure(ex))
+        } catch (err) {
+            dispatch(userSignUpFailure(err))
             dispatch(loadingStateChange(false))
         }
     }
@@ -113,8 +113,8 @@ export function userLogin(email, password) {
             }
             dispatch(userLoginSuccess(userData))
             dispatch(loadingStateChange(false))
-        } catch (ex) {
-            dispatch(userLoginFailure(ex))
+        } catch (err) {
+            dispatch(userLoginFailure(err))
             dispatch(loadingStateChange(false))
         }
     }
@@ -142,8 +142,8 @@ export function userLogout() {
                 authenticated: false
             }
             dispatch(userLogoutSuccess(userData))
-        } catch (ex) {
-            dispatch(userLogoutFailure(ex))
+        } catch (err) {
+            dispatch(userLogoutFailure(err))
         }
     }
 }
@@ -170,8 +170,8 @@ export function sendEmailVerification() {
                 emailSent: true
             }
             dispatch(sendEmailVerificationSuccess(success))
-        } catch (ex) {
-            dispatch(sendEmailVerificationFailure(ex))
+        } catch (err) {
+            dispatch(sendEmailVerificationFailure(err))
         }
     }
 }
@@ -200,8 +200,8 @@ export function sendPasswordResetEmail(email) {
             }
             dispatch(sendPasswordResetEmailSuccess(success))
             dispatch(loadingStateChange(false))
-        } catch (ex) {
-            dispatch(sendPasswordResetEmailFailure(ex))
+        } catch (err) {
+            dispatch(sendPasswordResetEmailFailure(err))
             dispatch(loadingStateChange(false))
         }
     }
@@ -237,8 +237,8 @@ export function userUpdatePassword(currentPassword, newPassword) {
             }
             dispatch(userUpdatePasswordSuccess(success))
             dispatch(loadingStateChange(false))
-        } catch (ex) {
-            dispatch(userUpdatePasswordFailure(ex))
+        } catch (err) {
+            dispatch(userUpdatePasswordFailure(err))
             dispatch(loadingStateChange(false))
         }
     }
@@ -271,8 +271,8 @@ export function saveUserProfilePicture(photoURL) {
             }
             dispatch(saveUserProfilePictureSuccess(success))
             dispatch(loadingStateChange(false))
-        } catch (ex) {
-            dispatch(saveUserProfilePictureFailure(ex))
+        } catch (err) {
+            dispatch(saveUserProfilePictureFailure(err))
             dispatch(loadingStateChange(false))
         }
     }

@@ -33,7 +33,7 @@ class NavLarge extends React.Component {
 		this.props.history.push('/')
 	}
 	render() {
-		const user = this.props.user.data
+		const user = this.props.user
 		const userName = user.displayName || user.email
 		const guestMenu = (
 			<div>

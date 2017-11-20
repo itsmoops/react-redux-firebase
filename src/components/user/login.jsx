@@ -21,7 +21,7 @@ class Login extends React.Component {
 		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.data.authenticated) {
+		if (nextProps.user.authenticated) {
 			this.props.history.push('/')
 		}
 	}
@@ -33,12 +33,12 @@ class Login extends React.Component {
 	onHandleSubmit = async e => {
 		e.preventDefault()
 		await this.props.actions.userLogin(this.state.email, this.state.password)
-		if (this.props.user.data.authenticated) {
+		if (this.props.user.authenticated) {
 			this.props.history.push('/account')
 		}
 	}
 	render() {
-		const { message } = this.props.user.error
+		const { message } = this.props.user
 		return (
 			<FlexContainer>
 				<form onSubmit={this.onHandleSubmit}>

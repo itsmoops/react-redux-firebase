@@ -28,8 +28,7 @@ class UpdatePassword extends React.Component {
 		this.props.actions.userUpdatePassword(this.state.currentPassword, this.state.newPassword)
 	}
 	render() {
-		const { message } = this.props.user.error
-		const { passwordUpdated } = this.props.user.data
+		const { message, passwordUpdated } = this.props.user
 		const success = (
 			<div>
 				<h1>Update Password</h1>

@@ -20,7 +20,7 @@ class SignUp extends React.Component {
 		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.data.authenticated && !this.state.submitting) {
+		if (nextProps.user.authenticated && !this.state.submitting) {
 			this.props.history.push('/')
 		}
 	}
@@ -36,8 +36,7 @@ class SignUp extends React.Component {
 		this.props.actions.sendEmailVerification()
 	}
 	render() {
-		const { message } = this.props.user.error
-		const { emailSent } = this.props.user.data
+		const { message, emailSent } = this.props.user
 		const thankYou = (
 			<div>
 				<h1>Sign Up</h1>

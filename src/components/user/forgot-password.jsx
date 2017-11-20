@@ -19,7 +19,7 @@ class ForgotPassword extends React.Component {
 		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.data.authenticated) {
+		if (nextProps.user.authenticated) {
 			this.props.history.push('/')
 		}
 	}
@@ -33,8 +33,7 @@ class ForgotPassword extends React.Component {
 		this.props.actions.sendPasswordResetEmail(this.state.email)
 	}
 	render() {
-		const { message } = this.props.user.error
-		const { emailSent } = this.props.user.data
+		const { message, emailSent } = this.props.user
 		const thankYou = (
 			<div>
 				<h1>Recover Password</h1>

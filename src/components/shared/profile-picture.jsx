@@ -59,13 +59,13 @@ const ProfilePicture = (props) => {
         height = 200
     }
     let icon
-    if (props.user.data.photoURL) {
+    if (props.user.photoURL) {
         icon = (
             <img
                 width={width}
                 height={height}
-                alt={props.user.data.displayName || props.user.data.email}
-                src={props.user.data.photoURL} />
+                alt={props.user.displayName || props.user.email}
+                src={props.user.photoURL} />
         )
     } else {
         icon = <Icon icon={userCircle} size={width} />

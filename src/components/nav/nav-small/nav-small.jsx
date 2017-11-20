@@ -128,7 +128,7 @@ class NavSmall extends React.Component {
 		this.handleItemClick()
 	}
 	render() {
-		const user = this.props.user.data
+		const user = this.props.user
 		const userName = user.displayName || user.email
 
 		const guestMenu = (
