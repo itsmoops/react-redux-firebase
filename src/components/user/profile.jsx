@@ -25,12 +25,16 @@ const StyledDiv = styled.div`
 	}
 `
 
-const StyledIconContainer = styled.div`
+const StyledIconContainer = styled.button`
 	position: absolute;
 	cursor: pointer;
 	padding: 10px;
 	margin-top: 125px;
 	margin-left: 125px;
+	background: none;
+	border: none;
+	outline: none;
+	${props => props.disabled && props.theme.disabled};
 `
 
 class Profile extends React.Component {
@@ -162,7 +166,10 @@ class Profile extends React.Component {
 									scale={this.state.pictureScale}
 									image={this.state.profilePicture || user.photoURL}
 								/>
-								<StyledIconContainer onClick={this.handlePictureRotate}>
+								<StyledIconContainer
+									onClick={this.handlePictureRotate}
+									disabled={!this.state.profilePicture}
+								>
 									<Icon icon={rotateRight} size={30} />
 								</StyledIconContainer>
 							</StyledDiv>

@@ -10,7 +10,10 @@ const common = {
         small: '@media screen and (max-width: 768px)',
         xSmall: '@media screen and (max-width: 480px)'
     },
-    disabled: 'cursor: not-allowed; filter: alpha(opacity=65); opacity: 0.65;',
+    disabled: `cursor: not-allowed;
+                filter: alpha(opacity=65); opacity: 0.65;
+                outline: none;
+                border: none;`,
     alignLeft: 'text-align: left;',
     alignCenter: 'text-align: center;',
     alignRight: 'text-align: right;'
