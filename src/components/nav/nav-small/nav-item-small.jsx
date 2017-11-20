@@ -8,6 +8,7 @@ const StyledItemContainer = styled.div`
 	cursor: pointer;
 	font-size: 1.5em;
 	font-weight: ${props => (props.active ? 'bold' : 'normal')};
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `
 
 const StyledItem = styled.div`
@@ -18,6 +19,7 @@ const StyledItem = styled.div`
 	-webkit-margin-after: 1em;
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	& > div {
 		display: flex !important;
 		justify-content: space-between !important;

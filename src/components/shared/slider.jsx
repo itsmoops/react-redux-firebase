@@ -12,6 +12,7 @@ const StyledSlider = styled.input`
 	transition: opacity 0.2s;
 	overflow: initial;
 	margin-bottom: ${props => props.theme.bufferBottom};
+	${props => props.disabled && props.theme.disabled};
 
 	&:focus {
 		border-bottom: 2px solid ${colors.background.darken(0.2)};
@@ -27,6 +28,7 @@ const StyledSlider = styled.input`
 		cursor: pointer;
 		&:hover {
 			cursor: -webkit-grab;
+			${props => props.disabled && props.theme.disabled};
 		}
 		&:active {
 			cursor: -webkit-grabbing;
@@ -60,6 +62,7 @@ class Slider extends React.Component {
 					min={this.props.min}
 					max={this.props.max}
 					value={this.props.value}
+					disabled={this.props.disabled}
 					onChange={e => {
 						this.props.onChange(e)
 					}}

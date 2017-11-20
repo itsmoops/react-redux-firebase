@@ -1,11 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledButton = styled.button`
 	background: ${colors.buttonBackground};
-	width: 100%;
+	width: ${props => props.width};
+	float: ${props => props.align};
 	height: 50px;
 	padding: 10px 16px;
-	margin: 5px 0px;
+	margin: 5px 5px;
 	font-size: 18px;
 	font: inherit;
 	cursor: pointer;
@@ -20,7 +21,11 @@ const StyledButton = styled.button`
 class Button extends React.PureComponent {
     render() {
         return (
-            <StyledButton type={this.props.type || 'submit'} onClick={this.props.onClick}>
+            <StyledButton
+                type={this.props.type || 'submit'}
+                onClick={this.props.onClick}
+                align={this.props.align}
+                width={this.props.width}>
                 {this.props.children}
             </StyledButton>
         )
@@ -28,11 +33,13 @@ class Button extends React.PureComponent {
 }
 
 Button.defaultProps = {
-    type: 'submit'
+    type: 'submit',
+    width: '100%'
 }
 
 Button.propTypes = {
-    type: PropTypes.string
+    type: PropTypes.string,
+    width: PropTypes.string
 }
 
 export default Button

@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import AvatarEditor from 'react-avatar-editor'
 import styled from 'styled-components'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
+import { rotateRight } from 'react-icons-kit/fa/rotateRight'
 import * as userActions from '../../actions/user-actions'
 import * as globalActions from '../../actions/global-actions'
 import FlexContainer from '../shared/flex-container'
@@ -22,25 +23,34 @@ const StyledDiv = styled.div`
 	&:hover {
 		cursor: move;
 	}
-	& > canvas {
-		height: unset !important;
-		width: 100% !important;
-		max-width: 500px !important;
-	}
+`
+
+const StyledIconContainer = styled.div`
+	position: absolute;
+	cursor: pointer;
+	padding: 10px;
+	margin-top: 125px;
+	margin-left: 125px;
 `
 
 class Profile extends React.Component {
 	state = {
 		profilePicture: undefined,
-		pictureScale: 1
+		pictureScale: 1,
+		rotation: 0
 	}
 	componentDidMount() {
 		document.title = 'Profile'
 		this.handleUploadListener()
 	}
 	componentWillReceiveProps(nextProps) {
-		if (!nextProps.user.data.authenticated) {
-			this.props.history.push('/')
+		if (nextProps.user) {
+			if (!nextProps.user.data.authenticated) {
+				this.props.history.push('/')
+			}
+			this.setState({
+				currentPicture: nextProps.user.photoURL
+			})
 		}
 	}
 	handleUploadListener = () => {
@@ -92,11 +102,43 @@ class Profile extends React.Component {
 			})
 		}
 	}
+	handleDiscardClick = () => {
+		this.setState({
+			profilePicture: this.state.previousPicture,
+			pictureScale: 1,
+			rotation: 0
+		})
+	}
 	handlePictureScale = e => {
 		const pictureScale = parseFloat(e.target.value)
 		this.setState({
 			pictureScale
 		})
+	}
+	handlePictureRotate = () => {
+		const currentRotation = this.state.rotation
+		switch (currentRotation) {
+			case 0:
+				this.setState({
+					rotation: 90
+				})
+				break
+			case 90:
+				this.setState({
+					rotation: 180
+				})
+				break
+			case 180:
+				this.setState({
+					rotation: 270
+				})
+				break
+			case 270:
+				this.setState({
+					rotation: 0
+				})
+				break
+		}
 	}
 	setEditorRef = editor => (this.editor = editor)
 	render() {
@@ -115,23 +157,35 @@ class Profile extends React.Component {
 									border={5}
 									width={300}
 									height={300}
+									rotate={this.state.rotation}
 									borderRadius={999}
 									color={[255, 255, 255, 0.6]}
 									scale={this.state.pictureScale}
 									image={this.state.profilePicture || user.photoURL}
 								/>
+								<StyledIconContainer onClick={this.handlePictureRotate}>
+									<Icon icon={rotateRight} size={30} />
+								</StyledIconContainer>
 							</StyledDiv>
 							<Slider
 								min="1"
 								max="2"
 								step=".01"
 								value={this.state.pictureScale}
+								disabled={!this.state.profilePicture}
 								onChange={this.handlePictureScale}
 							/>
 						</div>
 					)}
 					{this.state.profilePicture ? (
-						<Button onClick={this.handleSaveClick}>Save your photo</Button>
+						<div>
+							<Button onClick={this.handleDiscardClick} width="46%" align="left">
+								Discard
+							</Button>
+							<Button onClick={this.handleSaveClick} width="46%" align="right">
+								Save
+							</Button>
+						</div>
 					) : (
 						<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
 					)}
