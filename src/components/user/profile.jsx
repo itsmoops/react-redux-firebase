@@ -25,6 +25,13 @@ const StyledDiv = styled.div`
 	}
 `
 
+const StyledGreyDiv = styled(StyledDiv)`
+	color: ${colors.background.darken(0.1)};
+	&:hover {
+		cursor: initial;
+	}
+`
+
 const StyledIconContainer = styled.button`
 	position: absolute;
 	cursor: pointer;
@@ -152,7 +159,7 @@ class Profile extends React.Component {
 				<h1>{userName || 'Profile'}</h1>
 				<h2>Profile Photo</h2>
 				<div>
-					{(this.state.profilePicture || user.photoURL) && (
+					{this.state.profilePicture || user.photoURL ? (
 						<div>
 							<StyledDiv>
 								<AvatarEditor
@@ -173,15 +180,21 @@ class Profile extends React.Component {
 									<Icon icon={rotateRight} size={30} />
 								</StyledIconContainer>
 							</StyledDiv>
-							<Slider
-								min="1"
-								max="2"
-								step=".01"
-								value={this.state.pictureScale}
-								disabled={!this.state.profilePicture}
-								onChange={this.handlePictureScale}
-							/>
+							{this.state.profilePicture && (
+								<Slider
+									min="1"
+									max="2"
+									step=".01"
+									value={this.state.pictureScale}
+									disabled={!this.state.profilePicture}
+									onChange={this.handlePictureScale}
+								/>
+							)}
 						</div>
+					) : (
+						<StyledGreyDiv>
+							<Icon icon={userCircle} size={300} />
+						</StyledGreyDiv>
 					)}
 					{this.state.profilePicture ? (
 						<div>

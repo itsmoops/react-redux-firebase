@@ -17,7 +17,7 @@ const StyledNavContainer = styled.div`
 	position: fixed;
 	width: 100%;
 	height: ${props => props.theme.navBarHeight};
-	z-index: 1;
+	z-index: 100;
 `
 
 const StyledChevron = styled.button`
@@ -102,6 +102,7 @@ const StyledMenu = styled.div`
 	position: absolute;
 	height: calc(100% - ${props => props.theme.navBarHeight});
 	width: 100%;
+	z-index: 99;
 	${props => {
 		if (props.open) {
 			return css`
