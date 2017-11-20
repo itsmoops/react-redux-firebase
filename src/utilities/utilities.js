@@ -11,6 +11,8 @@ const utilities = {
 
     sanitizeUserErrorMessage(error) {
         switch (error.code) {
+            case 'auth/user-not-found':
+                return 'There is no user record corresponding to this email address. Make sure that you\'ve entered your information correctly.'
             case 'auth/email-already-in-use':
                 return 'This email address is already in use by another account.'
             case 'auth/wrong-password':
