@@ -4,8 +4,8 @@ import onClickOutside from 'react-onclickoutside'
 import styled from 'styled-components'
 import * as globalActions from '../../actions/global-actions'
 import ProfilePicture from './profile-picture'
-import { caretDown } from 'react-icons-kit/fa/caretDown'
-import { caretUp } from 'react-icons-kit/fa/caretUp'
+import { thinDown } from 'react-icons-kit/entypo/thinDown'
+import { thinUp } from 'react-icons-kit/entypo/thinUp'
 
 const StyledDropdownButton = styled.button`
 	outline: none;
@@ -54,7 +54,7 @@ class Dropdown extends React.PureComponent {
 					<StyledProfilePictureContainer>
 						<ProfilePicture tiny />
 					</StyledProfilePictureContainer>
-					<StyledIcon icon={menuOpen ? caretUp : caretDown} />
+					<StyledIcon icon={menuOpen ? thinUp : thinDown} />
 				</DropdownHeader>
 				<StyledDropdownContent open={this.props.global.menuOpen}>
 					{this.props.children}
