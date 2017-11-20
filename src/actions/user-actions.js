@@ -1,5 +1,6 @@
 import * as types from './action-types'
 import { loadingStateChange } from './global-actions'
+import { sanitizeUserErrorMessage } from '../utilities/utilities'
 
 function checkForUserSuccess(user) {
     return {
@@ -76,6 +77,7 @@ export function userSignUp(email, password) {
             dispatch(userSignUpSuccess(userData))
             dispatch(loadingStateChange(false))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(userSignUpFailure(err))
             dispatch(loadingStateChange(false))
         }
@@ -114,6 +116,7 @@ export function userLogin(email, password) {
             dispatch(userLoginSuccess(userData))
             dispatch(loadingStateChange(false))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(userLoginFailure(err))
             dispatch(loadingStateChange(false))
         }
@@ -143,6 +146,7 @@ export function userLogout() {
             }
             dispatch(userLogoutSuccess(userData))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(userLogoutFailure(err))
         }
     }
@@ -171,6 +175,7 @@ export function sendEmailVerification() {
             }
             dispatch(sendEmailVerificationSuccess(success))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(sendEmailVerificationFailure(err))
         }
     }
@@ -201,6 +206,7 @@ export function sendPasswordResetEmail(email) {
             dispatch(sendPasswordResetEmailSuccess(success))
             dispatch(loadingStateChange(false))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(sendPasswordResetEmailFailure(err))
             dispatch(loadingStateChange(false))
         }
@@ -238,6 +244,7 @@ export function userUpdatePassword(currentPassword, newPassword) {
             dispatch(userUpdatePasswordSuccess(success))
             dispatch(loadingStateChange(false))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(userUpdatePasswordFailure(err))
             dispatch(loadingStateChange(false))
         }
@@ -272,6 +279,7 @@ export function saveUserProfilePicture(photoURL) {
             dispatch(saveUserProfilePictureSuccess(success))
             dispatch(loadingStateChange(false))
         } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(saveUserProfilePictureFailure(err))
             dispatch(loadingStateChange(false))
         }

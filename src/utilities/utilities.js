@@ -7,6 +7,19 @@ const utilities = {
             return true
         }
         return false
+    },
+
+    sanitizeUserErrorMessage(error) {
+        switch (error.code) {
+            case 'auth/email-already-in-use':
+                return 'This email address is already in use by another account.'
+            case 'auth/wrong-password':
+                return 'The password entered is incorrect.'
+            case 'auth/invalid-email':
+                return 'The email address entered is badly formatted.'
+            default:
+                return error.message
+        }
     }
 }
 
