@@ -21,7 +21,7 @@ const StyledDiv = styled.div`
 	-webkit-justify-content: center;
 	padding: 20 0 20 0;
 	&:hover {
-		cursor: move;
+		cursor: ${props => (props.pictureLoaded && props.moveable ? 'move' : 'initial')};
 	}
 `
 
@@ -161,7 +161,10 @@ class Profile extends React.Component {
 				<div>
 					{this.state.profilePicture || user.photoURL ? (
 						<div>
-							<StyledDiv>
+							<StyledDiv
+								pictureLoaded={!!this.state.profilePicture}
+								moveable={this.state.pictureScale > 1}
+							>
 								<AvatarEditor
 									ref={this.setEditorRef}
 									border={5}

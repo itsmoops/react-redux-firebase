@@ -10,7 +10,7 @@ const common = {
         small: '@media screen and (max-width: 768px)',
         xSmall: '@media screen and (max-width: 480px)'
     },
-    disabled: `cursor: not-allowed;
+    disabled: `cursor: initial;
                 filter: alpha(opacity=65); opacity: 0.65;
                 outline: none;
                 border: none;`,
