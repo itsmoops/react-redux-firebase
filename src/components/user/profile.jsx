@@ -37,7 +37,7 @@ class Profile extends React.Component {
 	state = {
 		profilePicture: undefined,
 		pictureScale: 1,
-		rotation: 0
+		currentRotation: 0
 	}
 	componentDidMount() {
 		document.title = 'Profile'
@@ -106,7 +106,7 @@ class Profile extends React.Component {
 		this.setState({
 			profilePicture: this.state.previousPicture,
 			pictureScale: 1,
-			rotation: 0
+			currentRotation: 0
 		})
 	}
 	handlePictureScale = e => {
@@ -116,26 +116,25 @@ class Profile extends React.Component {
 		})
 	}
 	handlePictureRotate = () => {
-		const currentRotation = this.state.rotation
-		switch (currentRotation) {
+		switch (this.state.currentRotation) {
 			case 0:
 				this.setState({
-					rotation: 90
+					currentRotation: 90
 				})
 				break
 			case 90:
 				this.setState({
-					rotation: 180
+					currentRotation: 180
 				})
 				break
 			case 180:
 				this.setState({
-					rotation: 270
+					currentRotation: 270
 				})
 				break
 			case 270:
 				this.setState({
-					rotation: 0
+					currentRotation: 0
 				})
 				break
 		}
@@ -157,7 +156,7 @@ class Profile extends React.Component {
 									border={5}
 									width={300}
 									height={300}
-									rotate={this.state.rotation}
+									rotate={this.state.currentRotation}
 									borderRadius={999}
 									color={[255, 255, 255, 0.6]}
 									scale={this.state.pictureScale}
