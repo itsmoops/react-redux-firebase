@@ -32,13 +32,11 @@ export function checkForUser() {
                     uid: user.uid
                 }
                 dispatch(checkForUserSuccess(userData))
-                dispatch(loadingStateChange(false))
             } else {
-                user = {
+                const userData = {
                     authenticated: false
                 }
-                dispatch(checkForUserFailed(user))
-                dispatch(loadingStateChange(false))
+                dispatch(checkForUserFailed(userData))
             }
         })
     }
@@ -140,14 +138,17 @@ function userLogoutFailure(error) {
 export function userLogout() {
     return async (dispatch) => {
         try {
+            dispatch(loadingStateChange(true))
             await firebase.auth().signOut()
             const userData = {
                 authenticated: false
             }
             dispatch(userLogoutSuccess(userData))
+            dispatch(loadingStateChange(false))
         } catch (err) {
             err.message = err.code && sanitizeUserErrorMessage(err)
             dispatch(userLogoutFailure(err))
+            dispatch(loadingStateChange(false))
         }
     }
 }
@@ -181,6 +182,38 @@ export function sendEmailVerification() {
     }
 }
 
+function verifyEmailCodeSuccess(success) {
+    return {
+        type: types.SEND_EMAIL_VERIFICATION_SUCCESS,
+        success
+    }
+}
+
+function verifyEmailCodeFailure(error) {
+    return {
+        type: types.SEND_EMAIL_VERIFICATION_FAILURE,
+        error
+    }
+}
+
+export function verifyEmailCode(code) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            await firebase.auth().applyActionCode(code)
+            const success = {
+                codeVerified: true
+            }
+            dispatch(verifyEmailCodeSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
+            dispatch(verifyEmailCodeFailure(err))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
 function verifyPasswordResetCodeSuccess(success) {
     return {
         type: types.VERIFY_PASSWORD_RESET_CODE_SUCCESS,
@@ -201,7 +234,7 @@ export function verifyPasswordResetCode(code) {
             dispatch(loadingStateChange(true))
             await firebase.auth().verifyPasswordResetCode(code)
             const success = {
-                passwordResetCodeVerified: true
+                codeVerified: true
             }
             dispatch(verifyPasswordResetCodeSuccess(success))
             dispatch(loadingStateChange(false))
@@ -354,7 +387,7 @@ export function sanitizeUserState() {
     const reset = {
         emailSent: undefined,
         passwordUpdated: undefined,
-        passwordResetCodeVerified: undefined
+        codeVerified: undefined
     }
     return {
         type: types.SANITIZE_USER_STATE,

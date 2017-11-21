@@ -16,6 +16,11 @@ const StyledButton = styled.button`
 	&:hover {
 		background-color: ${colors.buttonBackground.darken(0.1)};
 	}
+	${props =>
+        props.disabled &&
+		css`
+			${props.theme.disabled};
+		`};
 `
 
 class Button extends React.PureComponent {
@@ -25,7 +30,8 @@ class Button extends React.PureComponent {
                 type={this.props.type || 'submit'}
                 onClick={this.props.onClick}
                 align={this.props.align}
-                width={this.props.width}>
+                width={this.props.width}
+                disabled={this.props.disabled}>
                 {this.props.children}
             </StyledButton>
         )

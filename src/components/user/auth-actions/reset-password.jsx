@@ -6,7 +6,7 @@ import Button from '../../shared/button'
 import Message from '../../shared/message'
 
 class ResetPassword extends React.Component {
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Reset Password'
 		this.props.actions.verifyPasswordResetCode(this.props.params.oobCode)
 	}
@@ -21,7 +21,7 @@ class ResetPassword extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		if (this.props.user.passwordResetCodeVerified) {
+		if (this.props.user.codeVerified) {
 			await this.props.actions.confirmPasswordReset(
 				this.props.params.oobCode,
 				this.state.newPassword
@@ -46,8 +46,9 @@ class ResetPassword extends React.Component {
 					onChange={this.handleInputChange}
 					required
 					toggleHiddenText
+					disabled={!this.props.user.codeVerified}
 				/>
-				<Button>Reset</Button>
+				<Button disabled={!this.props.user.codeVerified}>Reset</Button>
 				{message && <Message>{message}</Message>}
 			</form>
 		)

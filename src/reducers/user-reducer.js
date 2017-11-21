@@ -26,6 +26,10 @@ export default function userReducer(state = defaultState, action) {
             return { ...state, ...action.success }
         case types.SEND_EMAIL_VERIFICATION_FAILURE:
             return { ...state, ...action.error }
+        case types.VERIFY_EMAIL_CODE_SUCCESS:
+            return { ...state, ...action.success }
+        case types.VERIFY_EMAIL_CODE_FAILURE:
+            return { ...state, ...action.error }
         case types.VERIFY_PASSWORD_RESET_CODE_SUCCESS:
             return { ...state, ...action.success }
         case types.VERIFY_PASSWORD_RESET_CODE_FAILURE:

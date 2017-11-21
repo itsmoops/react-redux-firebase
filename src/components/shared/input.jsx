@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { eye } from 'react-icons-kit/fa/eye'
 import { eyeSlash } from 'react-icons-kit/fa/eyeSlash'
 
@@ -17,6 +17,11 @@ const StyledInput = styled.input`
 	&:focus {
 		border-bottom: 2px solid ${colors.accent1};
 	}
+	${props =>
+		props.disabled &&
+		css`
+			${props.theme.disabled};
+		`};
 `
 
 const StyledIcon = styled(Icon)`
@@ -57,6 +62,7 @@ class Input extends React.Component {
 					onChange={this.props.onChange}
 					required={this.props.required}
 					hidden={this.props.hidden}
+					disabled={this.props.disabled}
 				/>
 				{icon}
 			</div>

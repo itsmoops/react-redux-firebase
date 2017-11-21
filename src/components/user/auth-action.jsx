@@ -1,5 +1,4 @@
 import FlexContainer from '../shared/flex-container'
-import RecoverEmail from './auth-actions/recover-email'
 import ResetPassword from './auth-actions/reset-password'
 import VerifyEmail from './auth-actions/verify-email'
 
@@ -9,21 +8,22 @@ class AuthAction extends React.PureComponent {
 	}
 	componentWillMount() {
 		const query = this.props.location.search.substring(1)
-		const result = {}
-		query.split('&').forEach(part => {
-			const item = part.split('=')
-			result[item[0]] = decodeURIComponent(item[1])
-		})
-		this.setState({
-			result
-		})
+		if (query === '') {
+			this.props.history.push('/')
+		} else {
+			const result = {}
+			query.split('&').forEach(part => {
+				const item = part.split('=')
+				result[item[0]] = decodeURIComponent(item[1])
+			})
+			this.setState({
+				result
+			})
+		}
 	}
 	render() {
 		let Action
 		switch (this.state.result.mode) {
-			case 'recoverEmail':
-				Action = RecoverEmail
-				break
 			case 'resetPassword':
 				Action = ResetPassword
 				break
@@ -31,6 +31,7 @@ class AuthAction extends React.PureComponent {
 				Action = VerifyEmail
 				break
 			default:
+				Action = ResetPassword
 				break
 		}
 		return (
