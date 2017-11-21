@@ -1,6 +1,6 @@
-import FlexContainer from '../shared/flex-container'
-import ResetPassword from './auth-actions/reset-password'
-import VerifyEmail from './auth-actions/verify-email'
+import FlexContainer from '../../shared/flex-container'
+import ResetPassword from './reset-password'
+import VerifyEmail from './verify-email'
 
 class AuthAction extends React.PureComponent {
 	state = {
