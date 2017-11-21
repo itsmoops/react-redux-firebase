@@ -36,13 +36,13 @@ class SignUp extends React.Component {
 		this.props.actions.sendEmailVerification()
 	}
 	render() {
-		const { message, emailSent } = this.props.user
+		const { message, email, emailSent } = this.props.user
 		const thankYou = (
 			<div>
-				<h1>Sign Up</h1>
+				<h1>Confirm Your Email</h1>
 				<p>
-					Thanks! Please follow the instructions in the email we just sent you to verify
-					your account.
+					Thanks! We just sent a confirmation email to {email}. Please follow the
+					instructions in the email to verify your account.
 				</p>
 			</div>
 		)
@@ -73,7 +73,7 @@ class SignUp extends React.Component {
 
 function mapStateToProps(state, ownProps) {
 	return {
-		user: state.user // determined by our reducers/index.js file
+		user: state.user
 	}
 }
 

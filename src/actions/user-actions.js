@@ -181,16 +181,80 @@ export function sendEmailVerification() {
     }
 }
 
+function verifyPasswordResetCodeSuccess(success) {
+    return {
+        type: types.VERIFY_PASSWORD_RESET_CODE_SUCCESS,
+        success
+    }
+}
+
+function verifyPasswordResetCodeFailure(error) {
+    return {
+        type: types.VERIFY_PASSWORD_RESET_CODE_FAILURE,
+        error
+    }
+}
+
+export function verifyPasswordResetCode(code) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            await firebase.auth().verifyPasswordResetCode(code)
+            const success = {
+                passwordResetCodeVerified: true
+            }
+            dispatch(verifyPasswordResetCodeSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
+            dispatch(verifyPasswordResetCodeFailure(err))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
+function confirmPasswordResetSuccess(success) {
+    return {
+        type: types.CONFIRM_PASSWORD_RESET_SUCCESS,
+        success
+    }
+}
+
+function confirmPasswordResetFailure(error) {
+    return {
+        type: types.CONFIRM_PASSWORD_RESET_FAILURE,
+        error
+    }
+}
+
+export function confirmPasswordReset(code, newPassword) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            await firebase.auth().confirmPasswordReset(code, newPassword)
+            const success = {
+                passwordUpdated: true
+            }
+            dispatch(confirmPasswordResetSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
+            dispatch(confirmPasswordResetFailure(err))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
 function sendPasswordResetEmailSuccess(success) {
     return {
-        type: types.SEND_PASSWORD_RESET_SUCCESS,
+        type: types.SEND_PASSWORD_RESET_EMAIL_SUCCESS,
         success
     }
 }
 
 function sendPasswordResetEmailFailure(error) {
     return {
-        type: types.SEND_PASSWORD_RESET_FAILURE,
+        type: types.SEND_PASSWORD_RESET_EMAIL_FAILURE,
         error
     }
 }
@@ -289,7 +353,8 @@ export function saveUserProfilePicture(photoURL) {
 export function sanitizeUserState() {
     const reset = {
         emailSent: undefined,
-        passwordUpdated: undefined
+        passwordUpdated: undefined,
+        passwordResetCodeVerified: undefined
     }
     return {
         type: types.SANITIZE_USER_STATE,

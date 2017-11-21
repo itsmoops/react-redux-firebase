@@ -9,6 +9,7 @@ import UpdatePassword from './components/user/update-password'
 import ForgotPassword from './components/user/forgot-password'
 import Account from './components/user/account'
 import Profile from './components/user/profile'
+import AuthAction from './components/user/auth-action'
 import NotFound from './components/not-found/not-found'
 
 import LoadingSpinner from './components/shared/loading-spinner'
@@ -26,6 +27,7 @@ export default (
             <Route exact path="/forgot-password" component={ForgotPassword} />
             <Route exact path="/account" component={Account} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/auth-action" component={AuthAction} />
             <Route exact path="*" component={NotFound} />
         </Switch>
         <LoadingSpinner />
