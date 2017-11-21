@@ -1,7 +1,7 @@
 import FlexContainer from '../shared/flex-container'
 
 class About extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'About'
     }
     render() {

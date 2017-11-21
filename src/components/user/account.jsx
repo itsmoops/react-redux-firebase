@@ -2,7 +2,7 @@ import FlexContainer from '../shared/flex-container'
 import Link from '../shared/link'
 
 class Account extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'Account'
     }
     render() {

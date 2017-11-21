@@ -12,7 +12,7 @@ class SignUp extends React.Component {
 		password: '',
 		submitting: false
 	}
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Sign Up'
 	}
 	componentWillUnmount() {

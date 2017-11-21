@@ -1,7 +1,7 @@
 import FlexContainer from '../shared/flex-container'
 
 class NotFound extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'Page Not Found'
     }
     render() {

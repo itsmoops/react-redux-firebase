@@ -11,7 +11,7 @@ class ForgotPassword extends React.Component {
 	state = {
 		email: ''
 	}
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Forgot Password'
 	}
 	componentWillUnmount() {

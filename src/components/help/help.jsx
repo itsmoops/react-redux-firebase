@@ -1,7 +1,7 @@
 import FlexContainer from '../shared/flex-container'
 
 class Help extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'Help'
     }
     render() {

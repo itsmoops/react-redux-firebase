@@ -1,7 +1,7 @@
 import FlexContainer from '../shared/flex-container'
 
 class HomePage extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         document.title = 'Home'
     }
     render() {

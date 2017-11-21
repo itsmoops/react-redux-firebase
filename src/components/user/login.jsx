@@ -13,7 +13,7 @@ class Login extends React.Component {
 		email: '',
 		password: ''
 	}
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Login'
 	}
 	componentWillUnmount() {

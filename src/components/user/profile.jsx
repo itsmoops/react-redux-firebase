@@ -50,8 +50,10 @@ class Profile extends React.Component {
 		pictureScale: 1,
 		currentRotation: 0
 	}
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Profile'
+	}
+	componentDidMount() {
 		this.handleUploadListener()
 	}
 	componentWillReceiveProps(nextProps) {

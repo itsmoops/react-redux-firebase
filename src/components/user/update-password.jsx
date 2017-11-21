@@ -11,7 +11,7 @@ class UpdatePassword extends React.Component {
 		currentPassword: '',
 		newPassword: ''
 	}
-	componentDidMount() {
+	componentWillMount() {
 		document.title = 'Update Password'
 	}
 	componentWillUnmount() {
