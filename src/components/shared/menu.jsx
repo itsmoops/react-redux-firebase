@@ -13,10 +13,11 @@ const StyledMenu = styled.span`
 const StyledMenuItem = styled.a`
 	margin: 0 5 0 5;
 	padding: 15 10;
-	border-bottom: ${(props) => {
+	${(props) => {
         if (props.active) {
             return css`
-				2px solid ${colors.accent1};
+				border-bottom: 2px solid ${colors.accent1};
+				font-weight: bold;
 			`
         }
     }};
