@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 const StyledMenuContainer = styled.div`
 	width: 100%;
 	text-align: center;
-	margin: 25 0 25 0;
+	margin: 20 0 40 0;
 `
 
 const StyledMenu = styled.span`
@@ -12,7 +12,7 @@ const StyledMenu = styled.span`
 
 const StyledMenuItem = styled.a`
 	margin: 0 5 0 5;
-	padding: 20 10;
+	padding: 15 10;
 	border-bottom: ${(props) => {
         if (props.active) {
             return css`

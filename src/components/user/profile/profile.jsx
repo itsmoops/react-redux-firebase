@@ -44,7 +44,7 @@ class Profile extends React.Component {
 				break
 		}
 		return (
-			<FlexContainer centered>
+			<FlexContainer>
 				<Menu.Menu>
 					<Menu.Item
 						onClick={this.handleMenuItemClick}
