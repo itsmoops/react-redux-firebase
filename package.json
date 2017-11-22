@@ -33,6 +33,7 @@
 	"homepage": "https://github.com/itsmoops/react-redux-firebase#readme",
 	"dependencies": {
 		"firebase": "^4.6.0",
+		"grid-styled": "^2.0.0-11",
 		"less": "^2.7.2",
 		"prop-types": "^15.5.10",
 		"react": "^15.5.4",

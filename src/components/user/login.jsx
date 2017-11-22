@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { Box } from 'grid-styled'
 import * as userActions from '../../actions/user-actions'
-import FlexContainer from '../shared/flex-container'
+import Flex from '../shared/flex'
 import Input from '../shared/input'
 import Button from '../shared/button'
 import Message from '../shared/message'
@@ -40,30 +41,32 @@ class Login extends React.Component {
 	render() {
 		const { message } = this.props.user
 		return (
-			<FlexContainer>
-				<form onSubmit={this.onHandleSubmit}>
-					<h1>Login</h1>
-					<Input
-						placeholder="Email"
-						type="email"
-						name="email"
-						onChange={this.handleInputChange}
-						required
-					/>
-					<Input
-						placeholder="Password"
-						type="password"
-						name="password"
-						onChange={this.handleInputChange}
-						required
-					/>
-					<Button>Login</Button>
-					<Link to="/forgot-password" right>
-						I forgot my password
-					</Link>
-					{message && <Message>{message}</Message>}
-				</form>
-			</FlexContainer>
+			<Flex>
+				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+					<form onSubmit={this.onHandleSubmit}>
+						<h1>Login</h1>
+						<Input
+							placeholder="Email"
+							type="email"
+							name="email"
+							onChange={this.handleInputChange}
+							required
+						/>
+						<Input
+							placeholder="Password"
+							type="password"
+							name="password"
+							onChange={this.handleInputChange}
+							required
+						/>
+						<Button>Login</Button>
+						<Link to="/forgot-password" right>
+							I forgot my password
+						</Link>
+						{message && <Message>{message}</Message>}
+					</form>
+				</Box>
+			</Flex>
 		)
 	}
 }

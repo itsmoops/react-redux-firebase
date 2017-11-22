@@ -2,7 +2,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import styled from 'styled-components'
 import * as userActions from '../../../actions/user-actions'
-import FlexContainer from '../../shared/flex-container'
+import * as globalActions from '../../../actions/global-actions'
+import Button from '../../shared/button'
+import Input from '../../shared/input'
+import Message from '../../shared/message'
 
 class ProfileContentEditor extends React.Component {
 	state = {
@@ -26,7 +29,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		userActions: bindActionCreators(userActions, dispatch)
+		userActions: bindActionCreators(userActions, dispatch),
+		globalActions: bindActionCreators(globalActions, dispatch)
 	}
 }
 

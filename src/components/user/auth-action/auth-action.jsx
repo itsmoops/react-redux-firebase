@@ -1,4 +1,5 @@
-import FlexContainer from '../../shared/flex-container'
+import { Box } from 'grid-styled'
+import Flex from '../../shared/flex'
 import ResetPassword from './reset-password'
 import VerifyEmail from './verify-email'
 
@@ -35,9 +36,11 @@ class AuthAction extends React.PureComponent {
 				break
 		}
 		return (
-			<FlexContainer centered>
-				<Action params={this.state.result} />
-			</FlexContainer>
+			<Flex>
+				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+					<Action params={this.state.result} />
+				</Box>
+			</Flex>
 		)
 	}
 }

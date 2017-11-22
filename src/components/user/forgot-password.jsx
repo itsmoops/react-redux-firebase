@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { Box } from 'grid-styled'
 import * as userActions from '../../actions/user-actions'
-import FlexContainer from '../shared/flex-container'
+import Flex from '../shared/flex'
 import Input from '../shared/input'
 import Button from '../shared/button'
 import Message from '../shared/message'
@@ -55,7 +56,13 @@ class ForgotPassword extends React.Component {
 				{message && <Message>{message}</Message>}
 			</form>
 		)
-		return <FlexContainer centered>{emailSent ? thankYou : resetForm}</FlexContainer>
+		return (
+			<Flex wrap>
+				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+					{emailSent ? thankYou : resetForm}
+				</Box>
+			</Flex>
+		)
 	}
 }
 

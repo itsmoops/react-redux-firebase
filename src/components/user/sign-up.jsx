@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Box } from 'grid-styled'
 import * as userActions from '../../actions/user-actions'
-import FlexContainer from '../shared/flex-container'
+import Flex from '../shared/flex'
 import Input from '../shared/input'
 import Button from '../shared/button'
 import Message from '../shared/message'
@@ -67,7 +68,13 @@ class SignUp extends React.Component {
 				{message && <Message>{message}</Message>}
 			</form>
 		)
-		return <FlexContainer>{emailSent ? thankYou : signUpForm}</FlexContainer>
+		return (
+			<Flex>
+				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+					{emailSent ? thankYou : signUpForm}
+				</Box>
+			</Flex>
+		)
 	}
 }
 

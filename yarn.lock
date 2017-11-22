@@ -3772,6 +3772,15 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6,
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
+grid-styled@^2.0.0-11:
+  version "2.0.0-11"
+  resolved "https://code.bestbuy.com/artifactory/api/npm/npm-virtual/grid-styled/-/grid-styled-2.0.0-11.tgz#4cf40503bfe202e7764f08a5346adb99f6fdf260"
+  dependencies:
+    prop-types "^15.6.0"
+    styled-components "^2.2.0"
+    styled-system "^1.0.2"
+    tag-hoc "^1.0.0"
+
 grpc@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/grpc/-/grpc-1.4.1.tgz#3ee4a8346a613f2823928c9f8f99081b6368ec7c"
@@ -6249,7 +6258,7 @@ prompt@1.0.0:
     utile "0.3.x"
     winston "2.1.x"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -7424,7 +7433,7 @@ styled-components-theme@^1.0.5:
   dependencies:
     color "^1.0.3"
 
-styled-components@^2.2.3:
+styled-components@^2.2.0, styled-components@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.2.3.tgz#154575c269880c840f903f580287dab155cf684c"
   dependencies:
@@ -7437,6 +7446,12 @@ styled-components@^2.2.3:
     prop-types "^15.5.4"
     stylis "3.x"
     supports-color "^3.2.3"
+
+styled-system@^1.0.2:
+  version "1.0.8"
+  resolved "https://code.bestbuy.com/artifactory/api/npm/npm-virtual/styled-system/-/styled-system-1.0.8.tgz#a5a08ab26a8cc27e7a22e743d623211b82482b5e"
+  dependencies:
+    prop-types "^15.6.0"
 
 stylis@3.x:
   version "3.4.0"
@@ -7525,6 +7540,10 @@ table@^4.0.1:
     lodash "^4.17.4"
     slice-ansi "1.0.0"
     string-width "^2.1.1"
+
+tag-hoc@^1.0.0:
+  version "1.0.0"
+  resolved "https://code.bestbuy.com/artifactory/api/npm/npm-virtual/tag-hoc/-/tag-hoc-1.0.0.tgz#36ddc5f8831c40926ea520743cbddcc34f3c3ed9"
 
 tapable@^0.2.7:
   version "0.2.8"

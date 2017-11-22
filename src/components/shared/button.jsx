@@ -5,8 +5,8 @@ const StyledButton = styled.button`
 	width: ${props => props.width};
 	float: ${props => props.align};
 	height: 50px;
-	padding: 10px 16px;
-	margin: 5px 5px;
+	padding: 10px 0px;
+	margin: 5px 0px;
 	font-size: 18px;
 	font: inherit;
 	cursor: pointer;

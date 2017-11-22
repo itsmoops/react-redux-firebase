@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import styled from 'styled-components'
+import { Box } from 'grid-styled'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { rotateRight } from 'react-icons-kit/fa/rotateRight'
 import * as userActions from '../../../actions/user-actions'
 import * as globalActions from '../../../actions/global-actions'
-import FlexContainer from '../../shared/flex-container'
+import Flex from '../../shared/flex'
 import Menu from '../../shared/menu'
 import ProfileContentEditor from './profile-content-editor'
 import ProfilePhotoEditor from './profile-photo-editor'
@@ -44,23 +45,25 @@ class Profile extends React.Component {
 				break
 		}
 		return (
-			<FlexContainer>
-				<Menu.Menu>
-					<Menu.Item
-						onClick={this.handleMenuItemClick}
-						active={this.state.activeState === 'Profile'}
-					>
-						Profile
-					</Menu.Item>
-					<Menu.Item
-						onClick={this.handleMenuItemClick}
-						active={this.state.activeState === 'Photo'}
-					>
-						Photo
-					</Menu.Item>
-				</Menu.Menu>
-				{<ActiveState />}
-			</FlexContainer>
+			<Flex>
+				<Box w={[1, 2/3, 1/2, 1/3]} px={20} m="auto">
+					<Menu.Menu>
+						<Menu.Item
+							onClick={this.handleMenuItemClick}
+							active={this.state.activeState === 'Profile'}
+						>
+							Profile
+						</Menu.Item>
+						<Menu.Item
+							onClick={this.handleMenuItemClick}
+							active={this.state.activeState === 'Photo'}
+						>
+							Photo
+						</Menu.Item>
+					</Menu.Menu>
+					{<ActiveState />}
+				</Box>
+			</Flex>
 		)
 	}
 }
