@@ -7,7 +7,8 @@ const common = {
     screen: {
         large: '@media screen and (min-width: 64em)',
         medium: '@media screen and (min-width: 52em)',
-        small: '@media screen and (min-width: 40em)'
+        small: '@media screen and (min-width: 40em)',
+        xSmall: '@media screen and (max-width: 39.99em)'
     },
     disabled: `cursor: initial;
                 filter: alpha(opacity=65); opacity: 0.65;
