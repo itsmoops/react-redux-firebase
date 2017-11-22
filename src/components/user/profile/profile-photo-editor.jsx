@@ -6,7 +6,6 @@ import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { rotateRight } from 'react-icons-kit/fa/rotateRight'
 import * as userActions from '../../../actions/user-actions'
 import * as globalActions from '../../../actions/global-actions'
-import FlexContainer from '../../shared/flex-container'
 import Button from '../../shared/button'
 import Input from '../../shared/input'
 import Slider from '../../shared/slider'
@@ -154,66 +153,62 @@ class ProfilePhotoEditor extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		return (
-			<FlexContainer>
-				<h1>{userName || 'Profile'}</h1>
-				<h2>Profile Photo</h2>
-				<div>
-					{this.state.profilePicture || user.photoURL ? (
-						<div>
-							<StyledDiv
-								pictureLoaded={!!this.state.profilePicture}
-								moveable={this.state.pictureScale > 1}
+			<div>
+				{this.state.profilePicture || user.photoURL ? (
+					<div>
+						<StyledDiv
+							pictureLoaded={!!this.state.profilePicture}
+							moveable={this.state.pictureScale > 1}
+						>
+							<AvatarEditor
+								ref={this.setEditorRef}
+								border={5}
+								width={300}
+								height={300}
+								rotate={this.state.currentRotation}
+								borderRadius={999}
+								color={[255, 255, 255, 0.6]}
+								scale={this.state.pictureScale}
+								image={this.state.profilePicture || user.photoURL}
+							/>
+							<StyledIconContainer
+								onClick={this.handlePictureRotate}
+								disabled={!this.state.profilePicture}
 							>
-								<AvatarEditor
-									ref={this.setEditorRef}
-									border={5}
-									width={300}
-									height={300}
-									rotate={this.state.currentRotation}
-									borderRadius={999}
-									color={[255, 255, 255, 0.6]}
-									scale={this.state.pictureScale}
-									image={this.state.profilePicture || user.photoURL}
-								/>
-								<StyledIconContainer
-									onClick={this.handlePictureRotate}
-									disabled={!this.state.profilePicture}
-								>
-									<Icon icon={rotateRight} size={30} />
-								</StyledIconContainer>
-							</StyledDiv>
-							{this.state.profilePicture && (
-								<Slider
-									min="1"
-									max="2"
-									step=".01"
-									value={this.state.pictureScale}
-									disabled={!this.state.profilePicture}
-									onChange={this.handlePictureScale}
-								/>
-							)}
-						</div>
-					) : (
-						<StyledGreyDiv>
-							<Icon icon={userCircle} size={300} />
-						</StyledGreyDiv>
-					)}
-					{this.state.profilePicture ? (
-						<div>
-							<Button onClick={this.handleDiscardClick} width="46%" align="left">
-								Discard
-							</Button>
-							<Button onClick={this.handleSaveClick} width="46%" align="right">
-								Save
-							</Button>
-						</div>
-					) : (
-						<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
-					)}
-					{this.state.errorMessage && <Message>{this.state.errorMessage}</Message>}
-					<Input id="upload" type="file" hidden />
-				</div>
-			</FlexContainer>
+								<Icon icon={rotateRight} size={30} />
+							</StyledIconContainer>
+						</StyledDiv>
+						{this.state.profilePicture && (
+							<Slider
+								min="1"
+								max="2"
+								step=".01"
+								value={this.state.pictureScale}
+								disabled={!this.state.profilePicture}
+								onChange={this.handlePictureScale}
+							/>
+						)}
+					</div>
+				) : (
+					<StyledGreyDiv>
+						<Icon icon={userCircle} size={300} />
+					</StyledGreyDiv>
+				)}
+				{this.state.profilePicture ? (
+					<div>
+						<Button onClick={this.handleDiscardClick} width="46%" align="left">
+							Discard
+						</Button>
+						<Button onClick={this.handleSaveClick} width="46%" align="right">
+							Save
+						</Button>
+					</div>
+				) : (
+					<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
+				)}
+				{this.state.errorMessage && <Message>{this.state.errorMessage}</Message>}
+				<Input id="upload" type="file" hidden />
+			</div>
 		)
 	}
 }
