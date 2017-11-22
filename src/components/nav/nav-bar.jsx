@@ -5,7 +5,6 @@ import * as userActions from '../../actions/user-actions'
 import { isSmallDevice } from '../../utilities/utilities'
 import NavLarge from './nav-large/nav-large'
 import NavSmall from './nav-small/nav-small'
-// import './nav-bar.less'
 
 class NavBar extends React.Component {
 	componentDidMount() {

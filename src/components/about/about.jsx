@@ -8,7 +8,7 @@ class About extends React.Component {
     render() {
         return (
             <Flex>
-                <Box w={[1, 3 / 4, 2 / 3, 1 / 2]}  m="auto">
+                <Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
                     <Heading>About</Heading>
                     <Container>
                         <Text>

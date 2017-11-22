@@ -19,10 +19,6 @@ const global = `
   h6 {
     text-align: center;
   }
-
-  hr {
-    border-top: 1px solid rgba(34, 36, 38, 0.1);
-  }
 `
 
 export default injectGlobal`

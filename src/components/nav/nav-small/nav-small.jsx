@@ -1,13 +1,15 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import NavItem from './nav-item-small'
 import styled, { css, keyframes } from 'styled-components'
-import * as globalActions from '../../../actions/global-actions'
-import * as userActions from '../../../actions/user-actions'
+import { Container } from 'rebass'
 import { thinDown } from 'react-icons-kit/entypo/thinDown'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { gear } from 'react-icons-kit/fa/gear'
 import { signOut } from 'react-icons-kit/fa/signOut'
+import * as globalActions from '../../../actions/global-actions'
+import * as userActions from '../../../actions/user-actions'
+import NavItem from './nav-item-small'
+import Divider from '../../shared/divider'
 
 const animationTime = '0.3s'
 const menuMarginTop = '-250%'
@@ -132,7 +134,7 @@ class NavSmall extends React.Component {
 		const userName = user.displayName || user.email
 
 		const guestMenu = (
-			<div>
+			<Container px={0}>
 				<NavItem
 					linkTo="/sign-up"
 					value="Sign Up"
@@ -145,10 +147,10 @@ class NavSmall extends React.Component {
 					active={this.props.active === 'login'}
 					onClick={this.handleItemClick}
 				/>
-			</div>
+			</Container>
 		)
 		const userMenu = (
-			<div>
+			<Container px={0}>
 				<NavItem
 					linkTo="/profile"
 					value="Edit Profile"
@@ -164,11 +166,11 @@ class NavSmall extends React.Component {
 					onClick={this.handleItemClick}
 				/>
 				<NavItem value="Logout" icon={signOut} onClick={this.handleLogout} />
-			</div>
+			</Container>
 		)
 
 		return (
-			<div>
+			<Container px={0}>
 				<StyledNavContainer>
 					<StyledChevron onClick={this.handleIconClick}>
 						<StyledIcon open={this.props.global.menuOpen} icon={thinDown} />
@@ -187,9 +189,9 @@ class NavSmall extends React.Component {
 						active={this.props.active === 'about'}
 						onClick={this.handleItemClick}
 					/>
-					<hr />
+					<Divider />
 					{user.authenticated ? userMenu : guestMenu}
-					<hr />
+					<Divider />
 					<NavItem
 						linkTo="/help"
 						value="Help"
@@ -197,7 +199,7 @@ class NavSmall extends React.Component {
 						onClick={this.handleItemClick}
 					/>
 				</StyledMenu>
-			</div>
+			</Container>
 		)
 	}
 }

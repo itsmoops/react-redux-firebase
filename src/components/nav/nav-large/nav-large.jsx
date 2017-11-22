@@ -2,14 +2,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router'
 import styled from 'styled-components'
-import NavItem from './nav-item-large'
-import Dropdown from '../../shared/dropdown'
-import DropdownItem from '../../shared/dropdown-item'
-import * as userActions from '../../../actions/user-actions'
+import { Container } from 'rebass'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { gear } from 'react-icons-kit/fa/gear'
 import { question } from 'react-icons-kit/fa/question'
 import { signOut } from 'react-icons-kit/fa/signOut'
+import * as userActions from '../../../actions/user-actions'
+import NavItem from './nav-item-large'
+import Dropdown from '../../shared/dropdown'
+import DropdownItem from '../../shared/dropdown-item'
 
 const StyledNavContainer = styled.div`
 	background: ${colors.background};
@@ -36,7 +37,7 @@ class NavLarge extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		const guestMenu = (
-			<div>
+			<Container px={0}>
 				<NavItem
 					linkTo="/login"
 					value="Login"
@@ -55,7 +56,7 @@ class NavLarge extends React.Component {
 					active={this.props.active === 'help'}
 					align="right"
 				/>
-			</div>
+			</Container>
 		)
 		const userMenu = (
 			<StyledDropdownContainer>
