@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Box } from 'grid-styled'
+import { Box, Heading, Container, Text } from 'rebass'
 import * as userActions from '../../actions/user-actions'
 import Flex from '../shared/flex'
 import Input from '../shared/input'
@@ -39,38 +39,40 @@ class SignUp extends React.Component {
 	render() {
 		const { message, email, emailSent } = this.props.user
 		const thankYou = (
-			<div>
-				<h1>Confirm Your Email</h1>
-				<p>
+			<Container>
+				<Heading>Confirm Your Email</Heading>
+				<Text>
 					Thanks! We just sent a confirmation email to {email}. Please follow the
 					instructions in the email to verify your account.
-				</p>
-			</div>
+				</Text>
+			</Container>
 		)
 		const signUpForm = (
-			<form onSubmit={this.onHandleSubmit}>
-				<h1>Sign Up</h1>
-				<Input
-					placeholder="Email"
-					type="email"
-					name="email"
-					onChange={this.handleInputChange}
-					required
-				/>
-				<Input
-					placeholder="Password"
-					type="password"
-					name="password"
-					onChange={this.handleInputChange}
-					required
-				/>
-				<Button>Sign Up</Button>
-				{message && <Message>{message}</Message>}
-			</form>
+			<Container>
+				<form onSubmit={this.onHandleSubmit}>
+					<Heading>Sign Up</Heading>
+					<Input
+						placeholder="Email"
+						type="email"
+						name="email"
+						onChange={this.handleInputChange}
+						required
+					/>
+					<Input
+						placeholder="Password"
+						type="password"
+						name="password"
+						onChange={this.handleInputChange}
+						required
+					/>
+					<Button>Sign Up</Button>
+					{message && <Message>{message}</Message>}
+				</form>
+			</Container>
 		)
 		return (
 			<Flex>
-				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+				<Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
 					{emailSent ? thankYou : signUpForm}
 				</Box>
 			</Flex>

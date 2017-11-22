@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Heading, Container, Text } from 'rebass'
 import * as userActions from '../../../actions/user-actions'
 import Message from '../../shared/message'
 
@@ -13,14 +14,14 @@ class VerifyEmail extends React.Component {
         this.props.actions.sanitizeUserErrorState()
     }
     render() {
-        const success = <p>Success! Your email has been verified.</p>
+        const success = <Text>Success! Your email has been verified.</Text>
         const { codeVerified, message } = this.props.user
         return (
-            <div>
-                <h1>Verify Email</h1>
+            <Container>
+                <Heading>Verify Email</Heading>
                 {codeVerified && success}
                 {message && <Message>{message}</Message>}
-            </div>
+            </Container>
         )
     }
 }

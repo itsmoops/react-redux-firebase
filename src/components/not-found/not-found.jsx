@@ -1,4 +1,4 @@
-import { Box } from 'grid-styled'
+import { Box, Heading, Container } from 'rebass'
 import Flex from '../shared/flex'
 
 class NotFound extends React.Component {
@@ -8,9 +8,11 @@ class NotFound extends React.Component {
     render() {
         return (
             <Flex>
-                <Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
-                    <h1>404</h1>
-                    <h2>Page not found!</h2>
+                <Box w={[1, 2 / 3, 1 / 2]} m="auto">
+                    <Container>
+                        <Heading>404</Heading>
+                        <Heading is="h3">Page not found!</Heading>
+                    </Container>
                 </Box>
             </Flex>
         )

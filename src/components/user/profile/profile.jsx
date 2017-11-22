@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import styled from 'styled-components'
-import { Box } from 'grid-styled'
+import { Box, Heading, Container, Text } from 'rebass'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { rotateRight } from 'react-icons-kit/fa/rotateRight'
 import * as userActions from '../../../actions/user-actions'
@@ -46,22 +46,24 @@ class Profile extends React.Component {
 		}
 		return (
 			<Flex>
-				<Box w={[1, 2/3, 1/2, 1/3]} px={20} m="auto">
-					<Menu.Menu>
-						<Menu.Item
-							onClick={this.handleMenuItemClick}
-							active={this.state.activeState === 'Profile'}
-						>
-							Profile
-						</Menu.Item>
-						<Menu.Item
-							onClick={this.handleMenuItemClick}
-							active={this.state.activeState === 'Photo'}
-						>
-							Photo
-						</Menu.Item>
-					</Menu.Menu>
-					{<ActiveState />}
+				<Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
+					<Container>
+						<Menu.Menu>
+							<Menu.Item
+								onClick={this.handleMenuItemClick}
+								active={this.state.activeState === 'Profile'}
+							>
+								Profile
+							</Menu.Item>
+							<Menu.Item
+								onClick={this.handleMenuItemClick}
+								active={this.state.activeState === 'Photo'}
+							>
+								Photo
+							</Menu.Item>
+						</Menu.Menu>
+						{<ActiveState />}
+					</Container>
 				</Box>
 			</Flex>
 		)

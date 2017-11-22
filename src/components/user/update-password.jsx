@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Box } from 'grid-styled'
+import { Box, Heading, Container, Text } from 'rebass'
 import * as userActions from '../../actions/user-actions'
 import Flex from '../shared/flex'
 import Input from '../shared/input'
@@ -31,36 +31,38 @@ class UpdatePassword extends React.Component {
 	render() {
 		const { message, passwordUpdated } = this.props.user
 		const success = (
-			<div>
-				<h1>Update Password</h1>
-				<p>Success! Your password has been changed.</p>
-			</div>
+			<Container>
+				<Heading>Update Password</Heading>
+				<Text>Success! Your password has been changed.</Text>
+			</Container>
 		)
 		const updateForm = (
-			<form onSubmit={this.onHandleSubmit}>
-				<h1>Update Password</h1>
-				<Input
-					placeholder="Current Password"
-					type="password"
-					name="currentPassword"
-					onChange={this.handleInputChange}
-					required
-				/>
-				<Input
-					placeholder="New Password"
-					type="password"
-					name="newPassword"
-					onChange={this.handleInputChange}
-					required
-					toggleHiddenText
-				/>
-				<Button>Reset</Button>
-				{message && <Message>{message}</Message>}
-			</form>
+			<Container>
+				<form onSubmit={this.onHandleSubmit}>
+					<h1>Update Password</h1>
+					<Input
+						placeholder="Current Password"
+						type="password"
+						name="currentPassword"
+						onChange={this.handleInputChange}
+						required
+					/>
+					<Input
+						placeholder="New Password"
+						type="password"
+						name="newPassword"
+						onChange={this.handleInputChange}
+						required
+						toggleHiddenText
+					/>
+					<Button>Reset</Button>
+					{message && <Message>{message}</Message>}
+				</form>
+			</Container>
 		)
 		return (
 			<Flex>
-				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+				<Box w={[1, 2 / 3, 1 / 2]} m="auto">
 					{passwordUpdated ? success : updateForm}
 				</Box>
 			</Flex>

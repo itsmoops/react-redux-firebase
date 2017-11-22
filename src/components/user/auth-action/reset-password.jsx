@@ -31,26 +31,28 @@ class ResetPassword extends React.Component {
 	render() {
 		const { message, passwordUpdated } = this.props.user
 		const thankYou = (
-			<div>
-				<h1>Password Changed</h1>
-				<p>Thanks! You can now sign in with your new password.</p>
-			</div>
+			<Container>
+				<Heading>Password Changed</Heading>
+				<Text>Thanks! You can now sign in with your new password.</Text>
+			</Container>
 		)
 		const resetForm = (
-			<form onSubmit={this.onHandleSubmit}>
-				<h1>Reset Your Password</h1>
-				<Input
-					placeholder="New Password"
-					type="password"
-					name="newPassword"
-					onChange={this.handleInputChange}
-					required
-					toggleHiddenText
-					disabled={!this.props.user.codeVerified}
-				/>
-				<Button disabled={!this.props.user.codeVerified}>Reset</Button>
-				{message && <Message>{message}</Message>}
-			</form>
+			<Container>
+				<form onSubmit={this.onHandleSubmit}>
+					<h1>Reset Your Password</h1>
+					<Input
+						placeholder="New Password"
+						type="password"
+						name="newPassword"
+						onChange={this.handleInputChange}
+						required
+						toggleHiddenText
+						disabled={!this.props.user.codeVerified}
+					/>
+					<Button disabled={!this.props.user.codeVerified}>Reset</Button>
+					{message && <Message>{message}</Message>}
+				</form>
+			</Container>
 		)
 		return passwordUpdated ? thankYou : resetForm
 	}

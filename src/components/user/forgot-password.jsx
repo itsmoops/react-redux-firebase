@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Box } from 'grid-styled'
+import { Box, Heading, Container, Text } from 'rebass'
 import * as userActions from '../../actions/user-actions'
 import Flex from '../shared/flex'
 import Input from '../shared/input'
@@ -36,29 +36,33 @@ class ForgotPassword extends React.Component {
 	render() {
 		const { message, emailSent } = this.props.user
 		const thankYou = (
-			<div>
-				<h1>Recover Password</h1>
-				<p>Thanks! Please check your email for reset instructions.</p>
-			</div>
+			<Container>
+				<Heading>Recover Password</Heading>
+				<Text>Thanks! Please check your email for reset instructions.</Text>
+			</Container>
 		)
 		const resetForm = (
-			<form onSubmit={this.onHandleSubmit}>
-				<h1>Recover Password</h1>
-				<p>Enter your email address and a password reset email will be sent to you.</p>
-				<Input
-					placeholder="Email"
-					type="email"
-					onChange={this.handleInputChange}
-					required
-				/>
+			<Container>
+				<form onSubmit={this.onHandleSubmit}>
+					<Heading>Recover Password</Heading>
+					<Text>
+						Enter your email address and a password reset email will be sent to you.
+					</Text>
+					<Input
+						placeholder="Email"
+						type="email"
+						onChange={this.handleInputChange}
+						required
+					/>
 
-				<Button>Submit</Button>
-				{message && <Message>{message}</Message>}
-			</form>
+					<Button>Submit</Button>
+					{message && <Message>{message}</Message>}
+				</form>
+			</Container>
 		)
 		return (
-			<Flex wrap>
-				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+			<Flex>
+				<Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
 					{emailSent ? thankYou : resetForm}
 				</Box>
 			</Flex>

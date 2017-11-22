@@ -1,4 +1,4 @@
-import { Box } from 'grid-styled'
+import { Box, Heading, Container, Text } from 'rebass'
 import Flex from '../../shared/flex'
 import ResetPassword from './reset-password'
 import VerifyEmail from './verify-email'
@@ -37,7 +37,7 @@ class AuthAction extends React.PureComponent {
 		}
 		return (
 			<Flex>
-				<Box w={[1, 2 / 3, 1 / 2]} px={20} m="auto">
+				<Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
 					<Action params={this.state.result} />
 				</Box>
 			</Flex>
