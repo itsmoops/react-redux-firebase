@@ -7,6 +7,7 @@ import * as globalActions from '../../../actions/global-actions'
 import Button from '../../shared/button'
 import Input from '../../shared/input'
 import Message from '../../shared/message'
+import DatePicker from '../../shared/date-picker'
 
 class ProfileContentEditor extends React.Component {
 	state = {
@@ -59,7 +60,7 @@ class ProfileContentEditor extends React.Component {
 							</Label>
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
-							<Input type="text" name="birthDate" onChange={this.handleInputChange} />
+							<DatePicker />
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>

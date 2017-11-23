@@ -37,7 +37,7 @@ class NavLarge extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		const guestMenu = (
-			<Container px={0}>
+			<div>
 				<NavItem
 					linkTo="/login"
 					value="Login"
@@ -56,7 +56,7 @@ class NavLarge extends React.Component {
 					active={this.props.active === 'help'}
 					align="right"
 				/>
-			</Container>
+			</div>
 		)
 		const userMenu = (
 			<StyledDropdownContainer>
