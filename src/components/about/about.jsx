@@ -9,7 +9,7 @@ class About extends React.Component {
         return (
             <Flex>
                 <Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
-                    <Heading>About</Heading>
+                    <Heading mb={20}>About</Heading>
                     <Container>
                         <Text>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

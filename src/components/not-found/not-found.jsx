@@ -10,7 +10,7 @@ class NotFound extends React.Component {
             <Flex>
                 <Box w={[1, 2 / 3, 1 / 2]} m="auto">
                     <Container>
-                        <Heading>404</Heading>
+                        <Heading mb={20}>404</Heading>
                         <Heading is="h3">Page not found!</Heading>
                     </Container>
                 </Box>

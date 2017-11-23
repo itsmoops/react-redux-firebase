@@ -32,7 +32,7 @@ class ResetPassword extends React.Component {
 		const { message, passwordUpdated } = this.props.user
 		const thankYou = (
 			<Container>
-				<Heading>Password Changed</Heading>
+				<Heading mb={20}>Password Changed</Heading>
 				<Text>Thanks! You can now sign in with your new password.</Text>
 			</Container>
 		)

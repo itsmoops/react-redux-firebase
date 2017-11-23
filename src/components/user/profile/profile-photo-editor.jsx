@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AvatarEditor from 'react-avatar-editor'
 import styled from 'styled-components'
+import { Container } from 'rebass'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { rotateRight } from 'react-icons-kit/fa/rotateRight'
 import * as userActions from '../../../actions/user-actions'
@@ -153,9 +154,9 @@ class ProfilePhotoEditor extends React.Component {
 		const user = this.props.user
 		const userName = user.displayName || user.email
 		return (
-			<div>
+			<Container px={0}>
 				{this.state.profilePicture || user.photoURL ? (
-					<div>
+					<Container px={0}>
 						<StyledDiv
 							pictureLoaded={!!this.state.profilePicture}
 							moveable={this.state.pictureScale > 1}
@@ -188,27 +189,27 @@ class ProfilePhotoEditor extends React.Component {
 								onChange={this.handlePictureScale}
 							/>
 						)}
-					</div>
+					</Container>
 				) : (
 					<StyledGreyDiv>
 						<Icon icon={userCircle} size={300} />
 					</StyledGreyDiv>
 				)}
 				{this.state.profilePicture ? (
-					<div>
+					<Container px={0}>
 						<Button onClick={this.handleDiscardClick} width="46%" align="left">
 							Discard
 						</Button>
 						<Button onClick={this.handleSaveClick} width="46%" align="right">
 							Save
 						</Button>
-					</div>
+					</Container>
 				) : (
 					<Button onClick={this.handleUploadClick}>Upload a Photo</Button>
 				)}
 				{this.state.errorMessage && <Message>{this.state.errorMessage}</Message>}
 				<Input id="upload" type="file" hidden />
-			</div>
+			</Container>
 		)
 	}
 }

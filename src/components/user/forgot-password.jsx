@@ -37,14 +37,14 @@ class ForgotPassword extends React.Component {
 		const { message, emailSent } = this.props.user
 		const thankYou = (
 			<Container>
-				<Heading>Recover Password</Heading>
+				<Heading mb={20}>Recover Password</Heading>
 				<Text>Thanks! Please check your email for reset instructions.</Text>
 			</Container>
 		)
 		const resetForm = (
 			<Container>
 				<form onSubmit={this.onHandleSubmit}>
-					<Heading>Recover Password</Heading>
+					<Heading mb={20}>Recover Password</Heading>
 					<Text>
 						Enter your email address and a password reset email will be sent to you.
 					</Text>

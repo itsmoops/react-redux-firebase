@@ -40,7 +40,7 @@ class SignUp extends React.Component {
 		const { message, email, emailSent } = this.props.user
 		const thankYou = (
 			<Container>
-				<Heading>Confirm Your Email</Heading>
+				<Heading mb={20}>Confirm Your Email</Heading>
 				<Text>
 					Thanks! We just sent a confirmation email to {email}. Please follow the
 					instructions in the email to verify your account.
@@ -50,7 +50,7 @@ class SignUp extends React.Component {
 		const signUpForm = (
 			<Container>
 				<form onSubmit={this.onHandleSubmit}>
-					<Heading>Sign Up</Heading>
+					<Heading mb={20}>Sign Up</Heading>
 					<Input
 						placeholder="Email"
 						type="email"

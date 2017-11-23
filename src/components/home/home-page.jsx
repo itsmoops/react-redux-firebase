@@ -9,7 +9,7 @@ class HomePage extends React.Component {
         return (
             <Flex>
                 <Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
-                    <Heading>Home</Heading>
+                    <Heading mb={20}>Home</Heading>
                     <Container>
                         <Text>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem

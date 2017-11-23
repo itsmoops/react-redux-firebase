@@ -8,7 +8,7 @@ const StyledInput = styled.input`
 	font-size: 1.1em;
 	font-weight: 300;
 	padding: 5;
-	margin: 10 0 10 0;
+	margin: 0 0 10 0;
 	border: none;
 	border-bottom: 2px solid ${colors.background.darken(0.2)};
 	outline: none;
@@ -63,6 +63,7 @@ class Input extends React.Component {
 					required={this.props.required}
 					hidden={this.props.hidden}
 					disabled={this.props.disabled}
+					value={this.props.value}
 				/>
 				{icon}
 			</div>

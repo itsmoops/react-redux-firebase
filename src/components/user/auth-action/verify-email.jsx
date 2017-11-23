@@ -18,7 +18,7 @@ class VerifyEmail extends React.Component {
         const { codeVerified, message } = this.props.user
         return (
             <Container>
-                <Heading>Verify Email</Heading>
+                <Heading mb={20}>Verify Email</Heading>
                 {codeVerified && success}
                 {message && <Message>{message}</Message>}
             </Container>

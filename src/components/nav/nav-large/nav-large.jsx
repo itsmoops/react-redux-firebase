@@ -9,8 +9,8 @@ import { question } from 'react-icons-kit/fa/question'
 import { signOut } from 'react-icons-kit/fa/signOut'
 import * as userActions from '../../../actions/user-actions'
 import NavItem from './nav-item-large'
-import Dropdown from '../../shared/dropdown'
-import DropdownItem from '../../shared/dropdown-item'
+import Dropdown from './nav-dropdown'
+import DropdownItem from './nav-dropdown-item'
 
 const StyledNavContainer = styled.div`
 	background: ${colors.background};
