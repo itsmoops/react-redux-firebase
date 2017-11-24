@@ -1,24 +1,17 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Box, Heading, Container, Text } from 'rebass'
-import * as userActions from '../../actions/user-actions'
-import Flex from '../shared/flex'
-import Input from '../shared/input'
-import Button from '../shared/button'
-import Message from '../shared/message'
+import * as userActions from '../../../actions/user-actions'
+import Flex from '../../shared/flex'
+import Input from '../../shared/input'
+import Button from '../../shared/button'
+import Message from '../../shared/message'
 
-class SignUp extends React.Component {
+class CreateUser extends React.Component {
 	state = {
 		email: '',
 		password: '',
 		submitting: false
-	}
-	componentWillMount() {
-		document.title = 'Sign Up'
-	}
-	componentWillUnmount() {
-		this.props.actions.sanitizeUserState()
-		this.props.actions.sanitizeUserErrorState()
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user.authenticated && !this.state.submitting) {
@@ -34,23 +27,17 @@ class SignUp extends React.Component {
 		e.preventDefault()
 		this.setState({ submitting: true })
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
-		this.props.actions.sendEmailVerification()
+		await this.props.actions.sendEmailVerification()
+		if (!this.props.user.message) {
+			this.props.handleStateChange('completeProfile')
+		}
 	}
 	render() {
-		const { message, email, emailSent } = this.props.user
-		const thankYou = (
-			<Container>
-				<Heading mb={20}>Confirm Your Email</Heading>
-				<Text>
-					Thanks! We just sent a confirmation email to {email}. Please follow the
-					instructions in the email to verify your account.
-				</Text>
-			</Container>
-		)
-		const signUpForm = (
+		const { message } = this.props.user
+		return (
 			<Container>
 				<form onSubmit={this.onHandleSubmit}>
-					<Heading mb={20}>Sign Up</Heading>
+					<Heading mb={20}>Let's get started</Heading>
 					<Input
 						placeholder="Email"
 						type="email"
@@ -64,18 +51,12 @@ class SignUp extends React.Component {
 						name="password"
 						onChange={this.handleInputChange}
 						required
+						toggleHiddenText
 					/>
 					<Button>Sign Up</Button>
 					{message && <Message>{message}</Message>}
 				</form>
 			</Container>
-		)
-		return (
-			<Flex>
-				<Box w={[1, 3 / 4, 2 / 3, 1 / 2]} m="auto">
-					{emailSent ? thankYou : signUpForm}
-				</Box>
-			</Flex>
 		)
 	}
 }
@@ -92,4 +73,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser)

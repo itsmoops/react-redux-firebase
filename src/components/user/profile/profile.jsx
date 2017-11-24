@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { Box, Heading, Container, Text } from 'rebass'
 import { userCircle } from 'react-icons-kit/fa/userCircle'
 import { rotateRight } from 'react-icons-kit/fa/rotateRight'
-import * as userActions from '../../../actions/user-actions'
-import * as globalActions from '../../../actions/global-actions'
 import Flex from '../../shared/flex'
 import Menu from '../../shared/menu'
 import ProfileContentEditor from './profile-content-editor'
@@ -74,11 +72,4 @@ function mapStateToProps(state) {
 	return { user: state.user }
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		userActions: bindActionCreators(userActions, dispatch),
-		globalActions: bindActionCreators(globalActions, dispatch)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)

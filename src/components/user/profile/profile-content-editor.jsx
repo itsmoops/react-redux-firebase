@@ -69,7 +69,7 @@ class ProfileContentEditor extends React.Component {
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
 							<Input
-								type="text"
+								type="email"
 								name="email"
 								value={user.email}
 								onChange={this.handleInputChange}
@@ -82,9 +82,10 @@ class ProfileContentEditor extends React.Component {
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
 							<Input
-								type="text"
+								type="tel"
 								name="phoneNumber"
 								value={user.phoneNumber || ''}
+								pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}"
 								onChange={this.handleInputChange}
 							/>
 						</Box>

@@ -14,6 +14,7 @@ const StyledInput = styled.input`
 	outline: none;
 	overflow: auto;
 	box-shadow: none;
+	border-radius: 0px;
 	&:focus {
 		border-bottom: 2px solid ${colors.accent1};
 	}

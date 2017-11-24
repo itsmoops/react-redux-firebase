@@ -73,6 +73,7 @@ export function userSignUp(email, password) {
                 message: undefined
             }
             dispatch(userSignUpSuccess(userData))
+            dispatch(sanitizeUserErrorState())
             dispatch(loadingStateChange(false))
         } catch (err) {
             err.message = err.code && sanitizeUserErrorMessage(err)
