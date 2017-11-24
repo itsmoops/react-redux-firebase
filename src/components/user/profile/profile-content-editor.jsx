@@ -11,7 +11,13 @@ import DatePicker from '../../shared/date-picker'
 
 class ProfileContentEditor extends React.Component {
 	state = {
-		name: undefined
+		firstName: undefined,
+		lastName: undefined,
+		email: undefined,
+		birthDay: '1',
+		birthMonth: '1',
+		birthYear: new Date().getFullYear().toString(),
+		phoneNumber: undefined
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user) {
@@ -44,7 +50,13 @@ class ProfileContentEditor extends React.Component {
 							</Label>
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
-							<Input type="text" name="firstName" onChange={this.handleInputChange} />
+							<Input
+								type="text"
+								name="firstName"
+								placeholder={user.firstName}
+								value={this.state.firstName}
+								onChange={this.handleInputChange}
+							/>
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>
@@ -52,7 +64,13 @@ class ProfileContentEditor extends React.Component {
 							</Label>
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
-							<Input type="text" name="lastName" onChange={this.handleInputChange} />
+							<Input
+								type="text"
+								name="lastName"
+								placeholder={user.lastName}
+								value={this.state.lastName}
+								onChange={this.handleInputChange}
+							/>
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>
@@ -60,7 +78,7 @@ class ProfileContentEditor extends React.Component {
 							</Label>
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
-							<DatePicker />
+							<DatePicker onChange={this.handleInputChange} />
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>
@@ -71,7 +89,8 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="email"
 								name="email"
-								value={user.email}
+								placeholder={user.email}
+								value={this.state.email}
 								onChange={this.handleInputChange}
 							/>
 						</Box>
@@ -84,13 +103,13 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="tel"
 								name="phoneNumber"
-								value={user.phoneNumber || ''}
-								pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}"
+								placeholder={user.phoneNumber}
+								value={this.state.phoneNumber}
+								pattern="^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
 								onChange={this.handleInputChange}
 							/>
 						</Box>
 					</Flex>
-
 					<Button>Save</Button>
 				</form>
 			</Container>

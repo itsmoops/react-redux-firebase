@@ -11,14 +11,16 @@ import StatePicker from '../../shared/state-picker'
 
 class CompleteProfile extends React.Component {
 	state = {
-		email: '',
-		password: '',
-		submitting: false
-	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.authenticated && !this.state.submitting) {
-			this.props.history.push('/')
-		}
+		address1: '',
+		address2: '',
+		birthDay: '1',
+		birthMonth: '1',
+		birthYear: new Date().getFullYear().toString(),
+		city: '',
+		firstName: '',
+		lastName: '',
+		state: '',
+		zipcode: ''
 	}
 	handleInputChange = e => {
 		const name = e.target.name
@@ -27,10 +29,14 @@ class CompleteProfile extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		// this.setState({ submitting: true })
-		// await this.props.actions.userSignUp(this.state.email, this.state.password)
-		// await this.props.actions.sendEmailVerification()
-		if (!this.props.user.message) {
+		const userProfile = this.state
+		const { birthYear, birthMonth, birthDay } = userProfile
+		delete userProfile.birthYear
+		delete userProfile.birthMonth
+		delete userProfile.birthDay
+		userProfile.dateOfBirth = new Date(birthYear, birthMonth - 1, birthDay).toString()
+		await this.props.actions.completeUserProfile(this.state)
+		if (!this.props.user.message && this.props.user.profileSaved) {
 			this.props.handleStateChange('thankYou')
 		}
 	}
@@ -41,32 +47,53 @@ class CompleteProfile extends React.Component {
 				<form onSubmit={this.onHandleSubmit}>
 					<Heading mb={20}>Complete your profile</Heading>
 					<Input
-						placeholder="Address Line 1"
-						type="address1"
-						name="text"
+						placeholder="First Name"
+						type="text"
+						name="firstName"
 						onChange={this.handleInputChange}
 						required
+						autocomplete="fname"
+					/>
+					<Input
+						placeholder="Last Name"
+						type="text"
+						name="lastName"
+						onChange={this.handleInputChange}
+						autocomplete="lname"
+					/>
+					<Input
+						placeholder="Address Line 1"
+						type="text"
+						name="address1"
+						onChange={this.handleInputChange}
+						required
+						autocomplete="address-line1"
 					/>
 					<Input
 						placeholder="Address Line 2"
-						type="address2"
-						name="text"
+						type="text"
+						name="address2"
 						onChange={this.handleInputChange}
+						autocomplete="address-line2"
 					/>
 					<Input
 						placeholder="City"
 						type="text"
 						name="city"
 						onChange={this.handleInputChange}
+						required
+						autocomplete="city"
 					/>
-					<StatePicker />
+					<StatePicker onChange={this.handleInputChange} />
 					<Input
 						placeholder="Zipcode"
-						type="number"
+						type="text"
 						name="zipcode"
 						onChange={this.handleInputChange}
+						required
+						autocomplete="zip"
 					/>
-					<DatePicker />
+					<DatePicker onChange={this.handleInputChange} />
 					<Button>Complete Profile</Button>
 					{message && <Message>{message}</Message>}
 				</form>

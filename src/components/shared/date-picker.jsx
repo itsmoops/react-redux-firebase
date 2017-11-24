@@ -1,5 +1,14 @@
-import { Container } from 'rebass'
+import styled, { css } from 'styled-components'
+import { Container, Flex, Box } from 'rebass'
 import Select from './select'
+
+const StyledBox = styled(Box)`
+	${props => css`
+		${props.theme.screen.small} {
+			padding-left: 5px;
+		}
+	`};
+`
 
 const DatePicker = (props) => {
     const days = []
@@ -33,26 +42,34 @@ const DatePicker = (props) => {
     }
     return (
         <Container px={0}>
-            <Select name="birthMonth" w={[1, 3 / 10]} mr={10}>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </Select>
-            <Select name="birthDay" w={[1, 3 / 10]} mr={10}>
-                {days}
-            </Select>
-            <Select name="birthYear" w={[1, 3 / 10]} mr={10}>
-                {years.reverse()}
-            </Select>
+            <Flex wrap>
+                <Box w={[1, 1 / 3]}>
+                    <Select name="birthMonth" onChange={props.onChange}>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </Select>
+                </Box>
+                <StyledBox w={[1, 1 / 3]}>
+                    <Select name="birthDay" onChange={props.onChange}>
+                        {days}
+                    </Select>
+                </StyledBox>
+                <StyledBox w={[1, 1 / 3]}>
+                    <Select name="birthYear" onChange={props.onChange}>
+                        {years.reverse()}
+                    </Select>
+                </StyledBox>
+            </Flex>
         </Container>
     )
 }

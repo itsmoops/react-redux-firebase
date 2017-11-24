@@ -1,8 +1,7 @@
-import { Container } from 'rebass'
 import Select from './select'
 
 const StatePicker = props => (
-    <Select name="state" w={[1, 3 / 10]} mr={10}>
+    <Select name="state" mr={10} autocomplete="state" onChange={props.onChange}>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>

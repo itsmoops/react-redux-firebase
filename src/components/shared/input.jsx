@@ -7,7 +7,7 @@ const StyledInput = styled.input`
 	min-height: 35px;
 	font-size: 1.1em;
 	font-weight: 300;
-	padding: 5;
+	padding: 5 0 5 15;
 	margin: 0 0 10 0;
 	border: none;
 	border-bottom: 2px solid ${colors.background.darken(0.2)};
@@ -58,6 +58,7 @@ class Input extends React.Component {
 				<StyledInput
 					id={this.props.id}
 					placeholder={this.props.placeholder}
+					autocomplete={this.props.autocomplete}
 					type={this.state.inputType}
 					name={this.props.name}
 					onChange={this.props.onChange}

@@ -52,6 +52,7 @@ class Login extends React.Component {
 								name="email"
 								onChange={this.handleInputChange}
 								required
+								autocomplete="email"
 							/>
 							<Input
 								placeholder="Password"
@@ -59,6 +60,7 @@ class Login extends React.Component {
 								name="password"
 								onChange={this.handleInputChange}
 								required
+								autocomplete="password"
 							/>
 							<Button>Login</Button>
 							<Link to="/forgot-password" right>

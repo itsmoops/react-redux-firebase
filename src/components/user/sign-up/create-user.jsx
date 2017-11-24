@@ -10,13 +10,7 @@ import Message from '../../shared/message'
 class CreateUser extends React.Component {
 	state = {
 		email: '',
-		password: '',
-		submitting: false
-	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.user.authenticated && !this.state.submitting) {
-			this.props.history.push('/')
-		}
+		password: ''
 	}
 	handleInputChange = e => {
 		const name = e.target.name
@@ -25,7 +19,6 @@ class CreateUser extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		this.setState({ submitting: true })
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
 		await this.props.actions.sendEmailVerification()
 		if (!this.props.user.message) {
@@ -44,6 +37,7 @@ class CreateUser extends React.Component {
 						name="email"
 						onChange={this.handleInputChange}
 						required
+						autocomplete="email"
 					/>
 					<Input
 						placeholder="Password"
@@ -52,6 +46,7 @@ class CreateUser extends React.Component {
 						onChange={this.handleInputChange}
 						required
 						toggleHiddenText
+						autocomplete="password"
 					/>
 					<Button>Sign Up</Button>
 					{message && <Message>{message}</Message>}

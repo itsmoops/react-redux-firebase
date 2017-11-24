@@ -14,6 +14,10 @@ export default function userReducer(state = defaultState, action) {
             return { ...state, ...action.user }
         case types.USER_SIGN_UP_FAILURE:
             return { ...state, ...action.error }
+        case types.COMPLETE_USER_PROFILE_SUCCESS:
+            return { ...state, ...action.user }
+        case types.COMPLETE_USER_PROFILE_FAILURE:
+            return { ...state, ...action.error }
         case types.USER_LOGIN_SUCCESS:
             return { ...state, ...action.user }
         case types.USER_LOGIN_FAILURE:
