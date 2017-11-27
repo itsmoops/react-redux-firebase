@@ -41,7 +41,7 @@ class CompleteProfile extends React.Component {
 		}
 	}
 	render() {
-		const { message } = this.props.user
+		const { message, dateOfBirth } = this.props.user
 		return (
 			<Container>
 				<form onSubmit={this.onHandleSubmit}>

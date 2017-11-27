@@ -10,20 +10,19 @@ import Message from '../../shared/message'
 import DatePicker from '../../shared/date-picker'
 
 class ProfileContentEditor extends React.Component {
-	state = {
-		firstName: undefined,
-		lastName: undefined,
-		email: undefined,
-		birthDay: '1',
-		birthMonth: '1',
-		birthYear: new Date().getFullYear().toString(),
-		phoneNumber: undefined
-	}
+	state = {}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user) {
 			if (!nextProps.user.authenticated) {
 				this.props.history.push('/')
 			}
+			this.setState({
+				firstName: nextProps.user.firstName,
+				lastName: nextProps.user.lastName,
+				dateOfBirth: nextProps.user.dateOfBirth,
+				email: nextProps.user.email,
+				phoneNumber: nextProps.user.phoneNumber
+			})
 		}
 	}
 	handleInputChange = e => {
@@ -33,10 +32,6 @@ class ProfileContentEditor extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		// await this.props.actions.userLogin(this.state.email, this.state.password)
-		// if (this.props.user.authenticated) {
-		// 	this.props.history.push('/')
-		// }
 	}
 	render() {
 		const { user } = this.props
@@ -53,8 +48,7 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="text"
 								name="firstName"
-								placeholder={user.firstName}
-								value={this.state.firstName}
+								value={this.state.firstName || ''}
 								onChange={this.handleInputChange}
 							/>
 						</Box>
@@ -67,8 +61,7 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="text"
 								name="lastName"
-								placeholder={user.lastName}
-								value={this.state.lastName}
+								value={this.state.lastName || ''}
 								onChange={this.handleInputChange}
 							/>
 						</Box>
@@ -78,7 +71,10 @@ class ProfileContentEditor extends React.Component {
 							</Label>
 						</Box>
 						<Box w={[1, 1, 4 / 5]}>
-							<DatePicker onChange={this.handleInputChange} />
+							<DatePicker
+								onChange={this.handleInputChange}
+								date={this.state.dateOfBirth}
+							/>
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>
@@ -89,8 +85,7 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="email"
 								name="email"
-								placeholder={user.email}
-								value={this.state.email}
+								value={this.state.email || ''}
 								onChange={this.handleInputChange}
 							/>
 						</Box>
@@ -103,8 +98,7 @@ class ProfileContentEditor extends React.Component {
 							<Input
 								type="tel"
 								name="phoneNumber"
-								placeholder={user.phoneNumber}
-								value={this.state.phoneNumber}
+								value={this.state.phoneNumber || ''}
 								pattern="^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
 								onChange={this.handleInputChange}
 							/>
