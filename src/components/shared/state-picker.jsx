@@ -1,7 +1,7 @@
 import Select from './select'
 
 const StatePicker = props => (
-    <Select name="state" mr={10} autocomplete="state" onChange={props.onChange}>
+    <Select name="state" mr={10} autocomplete="state" onChange={props.onChange} value={props.value}>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>

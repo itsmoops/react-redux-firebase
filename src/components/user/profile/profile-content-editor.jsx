@@ -8,9 +8,21 @@ import Button from '../../shared/button'
 import Input from '../../shared/input'
 import Message from '../../shared/message'
 import DatePicker from '../../shared/date-picker'
+import StatePicker from '../../shared/state-picker'
 
 class ProfileContentEditor extends React.Component {
-	state = {}
+	state = {
+		firstName: this.props.user.firstName,
+		lastName: this.props.user.lastName,
+		email: this.props.user.email,
+		address1: this.props.user.address1,
+		address2: this.props.user.address2,
+		city: this.props.user.city,
+		state: this.props.user.state,
+		zipcode: this.props.user.zipcode,
+		dateOfBirth: this.props.user.dateOfBirth,
+		phoneNumber: this.props.user.phoneNumber
+	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.user) {
 			if (!nextProps.user.authenticated) {
@@ -19,8 +31,13 @@ class ProfileContentEditor extends React.Component {
 			this.setState({
 				firstName: nextProps.user.firstName,
 				lastName: nextProps.user.lastName,
-				dateOfBirth: nextProps.user.dateOfBirth,
 				email: nextProps.user.email,
+				address1: nextProps.user.address1,
+				address2: nextProps.user.address2,
+				city: nextProps.user.city,
+				state: nextProps.user.state,
+				zipcode: nextProps.user.zipcode,
+				dateOfBirth: nextProps.user.dateOfBirth,
 				phoneNumber: nextProps.user.phoneNumber
 			})
 		}
@@ -50,6 +67,8 @@ class ProfileContentEditor extends React.Component {
 								name="firstName"
 								value={this.state.firstName || ''}
 								onChange={this.handleInputChange}
+								autocomplete="fname"
+								required
 							/>
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
@@ -63,6 +82,86 @@ class ProfileContentEditor extends React.Component {
 								name="lastName"
 								value={this.state.lastName || ''}
 								onChange={this.handleInputChange}
+								autocomplete="lname"
+								required
+							/>
+						</Box>
+						<Box w={[1, 1, 1 / 5]}>
+							<Label pt={20} mb={0}>
+								Email Address
+							</Label>
+						</Box>
+						<Box w={[1, 1, 4 / 5]}>
+							<Input
+								type="email"
+								name="email"
+								value={this.state.email || ''}
+								onChange={this.handleInputChange}
+								autocomplete="email"
+								disabled
+								required
+							/>
+						</Box>
+						<Box w={[1, 1, 1 / 5]}>
+							<Label pt={20} mb={0}>
+								Address
+							</Label>
+						</Box>
+						<Box w={[1, 1, 4 / 5]}>
+							<Input
+								placeholder="Line 1"
+								type="text"
+								name="address1"
+								value={this.state.address1 || ''}
+								onChange={this.handleInputChange}
+								autocomplete="address-line1"
+							/>
+							<Input
+								placeholder="Line 2"
+								type="text"
+								name="address2"
+								value={this.state.address2 || ''}
+								onChange={this.handleInputChange}
+								autocomplete="address-line2"
+							/>
+						</Box>
+						<Box w={[1, 1, 1 / 5]}>
+							<Label pt={20} mb={0}>
+								City
+							</Label>
+						</Box>
+						<Box w={[1, 1, 4 / 5]}>
+							<Input
+								type="text"
+								name="city"
+								value={this.state.city || ''}
+								onChange={this.handleInputChange}
+								autocomplete="city"
+							/>
+						</Box>
+						<Box w={[1, 1, 1 / 5]}>
+							<Label pt={20} mb={0}>
+								State
+							</Label>
+						</Box>
+						<Box w={[1, 1, 4 / 5]}>
+							<StatePicker
+								onChange={this.handleInputChange}
+								value={this.state.state}
+							/>
+						</Box>
+						<Box w={[1, 1, 1 / 5]}>
+							<Label pt={20} mb={0}>
+								Zipcode
+							</Label>
+						</Box>
+						<Box w={[1, 1, 4 / 5]}>
+							<Input
+								type="text"
+								name="zipcode"
+								value={this.state.zipcode || ''}
+								onChange={this.handleInputChange}
+								autocomplete="zip"
 							/>
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
@@ -78,19 +177,6 @@ class ProfileContentEditor extends React.Component {
 						</Box>
 						<Box w={[1, 1, 1 / 5]}>
 							<Label pt={20} mb={0}>
-								Email Address
-							</Label>
-						</Box>
-						<Box w={[1, 1, 4 / 5]}>
-							<Input
-								type="email"
-								name="email"
-								value={this.state.email || ''}
-								onChange={this.handleInputChange}
-							/>
-						</Box>
-						<Box w={[1, 1, 1 / 5]}>
-							<Label pt={20} mb={0}>
 								Phone Number
 							</Label>
 						</Box>
@@ -99,8 +185,8 @@ class ProfileContentEditor extends React.Component {
 								type="tel"
 								name="phoneNumber"
 								value={this.state.phoneNumber || ''}
-								pattern="^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
 								onChange={this.handleInputChange}
+								autocomplete="phone"
 							/>
 						</Box>
 					</Flex>

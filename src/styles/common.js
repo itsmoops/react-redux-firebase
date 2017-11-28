@@ -11,8 +11,7 @@ const common = {
     },
     disabled: `cursor: initial;
                 filter: alpha(opacity=65); opacity: 0.65;
-                outline: none;
-                border: none;`,
+                outline: none;`,
     alignLeft: 'text-align: left;',
     alignCenter: 'text-align: center;',
     alignRight: 'text-align: right;'

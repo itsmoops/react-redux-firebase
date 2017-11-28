@@ -20,7 +20,6 @@ class CreateUser extends React.Component {
 	onHandleSubmit = async e => {
 		e.preventDefault()
 		await this.props.actions.userSignUp(this.state.email, this.state.password)
-		await this.props.actions.sendEmailVerification()
 		if (!this.props.user.message) {
 			this.props.handleStateChange('completeProfile')
 		}

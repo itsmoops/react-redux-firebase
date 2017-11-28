@@ -20,7 +20,8 @@ class CompleteProfile extends React.Component {
 		firstName: '',
 		lastName: '',
 		state: '',
-		zipcode: ''
+		zipcode: '',
+		phoneNumber: ''
 	}
 	handleInputChange = e => {
 		const name = e.target.name
@@ -36,6 +37,7 @@ class CompleteProfile extends React.Component {
 		delete userProfile.birthDay
 		userProfile.dateOfBirth = new Date(birthYear, birthMonth - 1, birthDay).toString()
 		await this.props.actions.completeUserProfile(this.state)
+		await this.props.actions.sendEmailVerification()
 		if (!this.props.user.message && this.props.user.profileSaved) {
 			this.props.handleStateChange('thankYou')
 		}
@@ -94,6 +96,14 @@ class CompleteProfile extends React.Component {
 						autocomplete="zip"
 					/>
 					<DatePicker onChange={this.handleInputChange} />
+					<Input
+						placeholder="Phone Number"
+						type="text"
+						name="phoneNumber"
+						onChange={this.handleInputChange}
+						required
+						autocomplete="phone"
+					/>
 					<Button>Complete Profile</Button>
 					{message && <Message>{message}</Message>}
 				</form>
