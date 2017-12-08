@@ -7,7 +7,8 @@ export function sanitizeUserState() {
         emailSent: undefined,
         passwordUpdated: undefined,
         codeVerified: undefined,
-        profileSaved: undefined
+        profileSaved: undefined,
+        profileUpdated: undefined
     }
     return {
         type: types.SANITIZE_USER_STATE,
@@ -79,14 +80,14 @@ export function checkForUser() {
 
 function userSignUpSuccess(user) {
     return {
-        type: types.COMPLETE_USER_PROFILE_SUCCESS,
+        type: types.USER_SIGN_UP_SUCCESS,
         user
     }
 }
 
 function userSignUpFailure(error) {
     return {
-        type: types.COMPLETE_USER_PROFILE_FAILURE,
+        type: types.USER_SIGN_UP_FAILURE,
         error
     }
 }
@@ -118,21 +119,21 @@ export function userSignUp(email, password) {
     }
 }
 
-function completeUserProfileSuccess(user) {
+function userCompleteProfileSuccess(user) {
     return {
-        type: types.USER_SIGN_UP_SUCCESS,
+        type: types.USER_COMPLETE_PROFILE_SUCCESS,
         user
     }
 }
 
-function completeUserProfileFailure(error) {
+function userCompleteProfileFailure(error) {
     return {
-        type: types.USER_SIGN_UP_FAILURE,
+        type: types.USER_COMPLETE_PROFILE_FAILURE,
         error
     }
 }
 
-export function completeUserProfile(userProfile) {
+export function userCompleteProfile(userProfile) {
     return async (dispatch) => {
         try {
             dispatch(loadingStateChange(true))
@@ -148,12 +149,12 @@ export function completeUserProfile(userProfile) {
             const success = {
                 profileSaved: true
             }
-            dispatch(completeUserProfileSuccess(success))
+            dispatch(userCompleteProfileSuccess(success))
             dispatch(sanitizeUserErrorState())
             dispatch(loadingStateChange(false))
         } catch (err) {
             err.message = err.code && sanitizeUserErrorMessage(err)
-            dispatch(completeUserProfileFailure(err))
+            dispatch(userCompleteProfileFailure(err))
             dispatch(loadingStateChange(false))
         }
     }
@@ -425,14 +426,50 @@ export function userUpdatePassword(currentPassword, newPassword) {
     }
 }
 
-export function saveUserProfilePictureSuccess(success) {
+function userUpdateProfileSuccess(user) {
+    return {
+        type: types.USER_UPDATE_PROFILE_SUCCESS,
+        user
+    }
+}
+
+function userUpdateProfileFailure(error) {
+    return {
+        type: types.USER_UPDATE_PROFILE_FAILURE,
+        error
+    }
+}
+
+export function userUpdateProfile(userProfile) {
+    return async (dispatch) => {
+        try {
+            dispatch(loadingStateChange(true))
+            const user = firebase.auth().currentUser
+            await firebase
+                .database()
+                .ref(`users/${user.uid}`)
+                .update(userProfile)
+            const success = {
+                profileUpdated: true
+            }
+            dispatch(userUpdateProfileSuccess(success))
+            dispatch(loadingStateChange(false))
+        } catch (err) {
+            err.message = err.code && sanitizeUserErrorMessage(err)
+            dispatch(userUpdateProfileFailure(err))
+            dispatch(loadingStateChange(false))
+        }
+    }
+}
+
+function saveUserProfilePictureSuccess(success) {
     return {
         type: types.UPLOAD_PROFILE_PICTURE_SUCCESS,
         success
     }
 }
 
-export function saveUserProfilePictureFailure(error) {
+function saveUserProfilePictureFailure(error) {
     return {
         type: types.UPLOAD_PROFILE_PICTURE_FAILURE,
         error

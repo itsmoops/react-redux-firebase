@@ -13,9 +13,6 @@ class CompleteProfile extends React.Component {
 	state = {
 		address1: '',
 		address2: '',
-		birthDay: '1',
-		birthMonth: '1',
-		birthYear: new Date().getFullYear().toString(),
 		city: '',
 		firstName: '',
 		lastName: '',
@@ -30,13 +27,12 @@ class CompleteProfile extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		const userProfile = this.state
-		const { birthYear, birthMonth, birthDay } = userProfile
-		delete userProfile.birthYear
-		delete userProfile.birthMonth
-		delete userProfile.birthDay
-		userProfile.dateOfBirth = new Date(birthYear, birthMonth - 1, birthDay).toString()
-		await this.props.actions.completeUserProfile(this.state)
+		const { month, day, year } = this.state
+		delete this.state.month
+		delete this.state.day
+		delete this.state.year
+		this.state.dateOfBirth = new Date(year, month - 1, day).toString()
+		await this.props.actions.userCompleteProfile(this.state)
 		await this.props.actions.sendEmailVerification()
 		if (!this.props.user.message && this.props.user.profileSaved) {
 			this.props.handleStateChange('thankYou')

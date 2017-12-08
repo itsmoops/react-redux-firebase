@@ -13,9 +13,9 @@ const StyledBox = styled(Box)`
 
 class DatePicker extends React.Component {
 	state = {
-		birthMonth: undefined,
-		birthDay: undefined,
-		birthYear: undefined
+		month: undefined,
+		day: undefined,
+		year: undefined
 	}
 	handleSelectChange = e => {
 		const name = e.target.name
@@ -24,15 +24,24 @@ class DatePicker extends React.Component {
 			[name]: value
 		})
 	}
+	getDateParts = date => {
+		debugger
+		const dateParts = {}
+		const formattedDate = format(new Date(date), 'MM/DD/YYYY').split('/')
+		dateParts.month = formattedDate[0].includes('0')
+			? formattedDate[0].substring(1)
+			: formattedDate[0]
+		dateParts.day = formattedDate[1].includes('0')
+			? formattedDate[1].substring(1)
+			: formattedDate[1]
+		dateParts.year = formattedDate[2]
+		return dateParts
+	}
 	render() {
-		let selectedMonth
-		let selectedDay
-		let selectedYear
+		let date = {}
 		if (this.props.date) {
-			const date = format(new Date(this.props.date), 'MM/DD/YYYY').split('/')
-			selectedMonth = date[0].includes('0') ? date[0].substring(1) : date[0]
-			selectedDay = date[1].includes('0') ? date[1].substring(1) : date[1]
-			selectedYear = date[2]
+			date = this.getDateParts(this.props.date)
+			debugger
 		}
 
 		const monthNames = [
@@ -93,36 +102,36 @@ class DatePicker extends React.Component {
 				<Flex wrap>
 					<Box w={[1, 1 / 3]}>
 						<Select
-							name="birthMonth"
+							name="month"
 							onChange={e => {
 								this.handleSelectChange(e)
 								this.props.onChange(e)
 							}}
-							value={this.state.birthMonth || selectedMonth}
+							value={this.state.month || date.month}
 						>
 							{months}
 						</Select>
 					</Box>
 					<StyledBox w={[1, 1 / 3]}>
 						<Select
-							name="birthDay"
+							name="day"
 							onChange={e => {
 								this.handleSelectChange(e)
 								this.props.onChange(e)
 							}}
-							value={this.state.birthDay || selectedDay}
+							value={this.state.day || date.day}
 						>
 							{days}
 						</Select>
 					</StyledBox>
 					<StyledBox w={[1, 1 / 3]}>
 						<Select
-							name="birthYear"
+							name="year"
 							onChange={e => {
 								this.handleSelectChange(e)
-								this.props.onChange(e)
+								this.props.onChange()
 							}}
-							value={this.state.birthYear || selectedYear}
+							value={this.state.year || date.year}
 						>
 							{years.reverse()}
 						</Select>

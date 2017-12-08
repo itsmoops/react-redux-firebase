@@ -14,9 +14,9 @@ export default function userReducer(state = defaultState, action) {
             return { ...state, ...action.user }
         case types.USER_SIGN_UP_FAILURE:
             return { ...state, ...action.error }
-        case types.COMPLETE_USER_PROFILE_SUCCESS:
+        case types.USER_COMPLETE_PROFILE_SUCCESS:
             return { ...state, ...action.user }
-        case types.COMPLETE_USER_PROFILE_FAILURE:
+        case types.USER_COMPLETE_PROFILE_FAILURE:
             return { ...state, ...action.error }
         case types.USER_LOGIN_SUCCESS:
             return { ...state, ...action.user }
@@ -49,6 +49,10 @@ export default function userReducer(state = defaultState, action) {
         case types.USER_UPDATE_PASSWORD_SUCCESS:
             return { ...state, ...action.success }
         case types.USER_UPDATE_PASSWORD_FAILURE:
+            return { ...state, ...action.error }
+        case types.USER_UPDATE_PROFILE_SUCCESS:
+            return { ...state, ...action.success }
+        case types.USER_UPDATE_PROFILE_FAILURE:
             return { ...state, ...action.error }
         case types.SAVE_USER_PROFILE_PICTURE_SUCCESS:
             return { ...state, ...action.success }

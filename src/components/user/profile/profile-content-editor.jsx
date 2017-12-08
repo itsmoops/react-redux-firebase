@@ -20,6 +20,9 @@ class ProfileContentEditor extends React.Component {
 		city: this.props.user.city,
 		state: this.props.user.state,
 		zipcode: this.props.user.zipcode,
+		month: '1',
+		day: '1',
+		year: new Date().getFullYear().toString(),
 		dateOfBirth: this.props.user.dateOfBirth,
 		phoneNumber: this.props.user.phoneNumber
 	}
@@ -28,6 +31,7 @@ class ProfileContentEditor extends React.Component {
 			if (!nextProps.user.authenticated) {
 				this.props.history.push('/')
 			}
+
 			this.setState({
 				firstName: nextProps.user.firstName,
 				lastName: nextProps.user.lastName,
@@ -37,6 +41,9 @@ class ProfileContentEditor extends React.Component {
 				city: nextProps.user.city,
 				state: nextProps.user.state,
 				zipcode: nextProps.user.zipcode,
+				month: '1',
+				day: '1',
+				year: new Date().getFullYear().toString(),
 				dateOfBirth: nextProps.user.dateOfBirth,
 				phoneNumber: nextProps.user.phoneNumber
 			})
@@ -49,6 +56,12 @@ class ProfileContentEditor extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
+		const { month, day, year } = this.state
+		delete this.state.month
+		delete this.state.day
+		delete this.state.year
+		this.state.dateOfBirth = new Date(birthYear, birthMonth - 1, birthDay).toString()
+		await this.props.userActions.userUpdateProfile(this.state)
 	}
 	render() {
 		const { user } = this.props
