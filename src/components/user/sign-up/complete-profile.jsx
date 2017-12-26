@@ -27,12 +27,13 @@ class CompleteProfile extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		const { month, day, year } = this.state
-		delete this.state.month
-		delete this.state.day
-		delete this.state.year
+		const userProfile = { ...this.state }
+		const { month, day, year } = userProfile
+		delete userProfile.month
+		delete userProfile.day
+		delete userProfile.year
 		this.state.dateOfBirth = new Date(year, month - 1, day).toString()
-		await this.props.actions.userCompleteProfile(this.state)
+		await this.props.actions.userCompleteProfile(userProfile)
 		await this.props.actions.sendEmailVerification()
 		if (!this.props.user.message && this.props.user.profileSaved) {
 			this.props.handleStateChange('thankYou')

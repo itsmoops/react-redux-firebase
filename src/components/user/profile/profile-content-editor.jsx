@@ -20,9 +20,6 @@ class ProfileContentEditor extends React.Component {
 		city: this.props.user.city,
 		state: this.props.user.state,
 		zipcode: this.props.user.zipcode,
-		month: '1',
-		day: '1',
-		year: new Date().getFullYear().toString(),
 		dateOfBirth: this.props.user.dateOfBirth,
 		phoneNumber: this.props.user.phoneNumber
 	}
@@ -56,12 +53,13 @@ class ProfileContentEditor extends React.Component {
 	}
 	onHandleSubmit = async e => {
 		e.preventDefault()
-		const { month, day, year } = this.state
-		delete this.state.month
-		delete this.state.day
-		delete this.state.year
-		this.state.dateOfBirth = new Date(birthYear, birthMonth - 1, birthDay).toString()
-		await this.props.userActions.userUpdateProfile(this.state)
+		const userProfile = { ...this.state }
+		const { month, day, year } = userProfile
+		delete userProfile.month
+		delete userProfile.day
+		delete userProfile.year
+		userProfile.dateOfBirth = new Date(year, month - 1, day).toString()
+		await this.props.userActions.userUpdateProfile(userProfile)
 	}
 	render() {
 		const { user } = this.props

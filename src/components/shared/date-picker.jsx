@@ -13,9 +13,9 @@ const StyledBox = styled(Box)`
 
 class DatePicker extends React.Component {
 	state = {
-		month: undefined,
-		day: undefined,
-		year: undefined
+		month: '1',
+		day: '1',
+		year: new Date().getFullYear().toString()
 	}
 	handleSelectChange = e => {
 		const name = e.target.name
@@ -24,8 +24,17 @@ class DatePicker extends React.Component {
 			[name]: value
 		})
 	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.date && nextProps.date !== this.props.date) {
+			const date = this.getDateParts(nextProps.date)
+			this.setState({
+				month: date.month,
+				day: date.day,
+				year: date.year
+			})
+		}
+	}
 	getDateParts = date => {
-		debugger
 		const dateParts = {}
 		const formattedDate = format(new Date(date), 'MM/DD/YYYY').split('/')
 		dateParts.month = formattedDate[0].includes('0')
@@ -41,7 +50,6 @@ class DatePicker extends React.Component {
 		let date = {}
 		if (this.props.date) {
 			date = this.getDateParts(this.props.date)
-			debugger
 		}
 
 		const monthNames = [
@@ -129,7 +137,7 @@ class DatePicker extends React.Component {
 							name="year"
 							onChange={e => {
 								this.handleSelectChange(e)
-								this.props.onChange()
+								this.props.onChange(e)
 							}}
 							value={this.state.year || date.year}
 						>
