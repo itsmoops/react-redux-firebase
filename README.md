@@ -28,6 +28,12 @@ In the left nav of your database console, under Develop, click "Storage", and th
 Started" -> "Got It" buttons. This will enable your database to use file storage (can be used for
 profile pictures, etc.).
 
+#### Enable Hosting
+In the left nav of your database console, under Develop, click "Hosting", and then click the "Get
+Started"
+
+To use a custom domain, click the "Connect Domain" button. Instructions don't work out of the box with namecheap, but [this article](https://www.macariojames.com/blog/2018/02/19/firebase-custom-domain-verification-namecheap-dns/) has more detail about setting up DNS.
+
 #### Add Database Config to Project
 
 In the left nav of your database console, click "Project Overview", and then click the "Add Firebase
